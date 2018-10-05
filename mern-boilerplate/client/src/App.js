@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "react-emotion";
+import Home from "./pages/Home";
+import Budget from "./pages/Budget.js";
+import Purchase from "./pages/Purchase.js";
+import Articles from "./pages/Articles.js";
+import Navbar from "./components/Navbar";
+
 
 const Header = styled('div')({
   width: '100%',
@@ -12,23 +19,30 @@ const Header = styled('div')({
 })
 
 const Content = styled('div')({
-  marginTop: 50,
+  marginTop: 100,
   textAlign: 'center'
 })
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header>
-          Welcome!
-        </Header>
-        <Content>
-          Mern boilerplate with react-emotion
-        </Content>
-      </div>
-    );
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Content>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/budget" component={Budget} />
+              <Route exact path="/purchase" component={Purchase} />
+              <Route exact path="/articles" component={Articles} />
+            </Content>
+          </Switch>
+        </div>
+      </Router>
+    )
   }
 }
+
 
 export default App;
