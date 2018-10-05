@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import styled from "react-emotion";
+import Grid from "@material-ui/core/Grid";
+
+const Wrapper = styled('div')(
+    {
+        border: '5px solid #092d63',
+        textAlign: 'center',
+        margin: '20px 0'
+    }
+)
 
 class Budget extends Component {
 
@@ -8,14 +17,22 @@ class Budget extends Component {
     }
 
     componentDidMount() {
-        console.log("Budget Page")
+        console.log("BUDGET PAGE")
     }
 
     render() {
         return (
-            <div>
-                Budget Page
-            </div>
+            <Grid container justify="center">
+
+                <Grid item lg={8} md={10} sm={10} xs={12}>
+                    <Wrapper>
+                        <h1>
+                            BUDGET PAGE
+                        </h1>
+                    </Wrapper>
+                </Grid>
+
+            </Grid>
         )
     }
 }

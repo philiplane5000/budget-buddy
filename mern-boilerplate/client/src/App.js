@@ -7,19 +7,8 @@ import Purchase from "./pages/Purchase.js";
 import Articles from "./pages/Articles.js";
 import Navbar from "./components/Navbar";
 
-
-const Header = styled('div')({
-  width: '100%',
-  height: 50,
-  boxShadow: '0 2px 2px 2px rgba(0,0,0,.3)',
-  textAlign: 'center',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-})
-
 const Content = styled('div')({
-  marginTop: 100,
+  marginTop: 25,
   textAlign: 'center'
 })
 
@@ -43,6 +32,5 @@ class App extends Component {
     )
   }
 }
-
 
 export default App;
