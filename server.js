@@ -1,8 +1,9 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 3001;
+// const routes = require("./routes");
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +14,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+// app.use(routes);
 
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget");
+
+//if SOCKET.IO --> here//
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -22,5 +28,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+  console.log(`🌎 ==> Server listening on ${PORT}!`);
 });
