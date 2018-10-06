@@ -24,7 +24,14 @@ class Budget extends Component {
         return (
             <Grid container justify="center">
 
-                <Grid item lg={8} md={10} sm={10} xs={12}>
+                <Grid item lg={6} md={6} sm={10} xs={12}>
+                    <Wrapper>
+                        <h1>
+                            BUDGET PAGE
+                        </h1>
+                    </Wrapper>
+                </Grid>
+                <Grid item lg={6} md={6} sm={10} xs={12}>
                     <Wrapper>
                         <h1>
                             BUDGET PAGE

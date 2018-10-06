@@ -3,23 +3,26 @@ import styled from "react-emotion";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 
-const Title = styled('h1')(
+const NavWrapper = styled('div')(
+    {
+        display: 'flex',
+    }
+)
+
+const Title = styled('div')(
     {
         fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
-        textAlign: 'center',
+        textAlign: 'left',
         color: 'white',
-        paddingTop: 5,
-        fontSize: '60px'
+        fontSize: '20px',
+        flex: 1,
     }
 )
 
 const LinksWrapper = styled('div')(
     {
-        margin: '0 auto',
-        display: 'flex',
-        justifyContent: 'space-around',
-        paddingBottom: 5,
-        color: 'white'
+        color: 'white',
+        
     }
 )
 
@@ -29,23 +32,29 @@ const LinkItem = styled('p')(
         color: 'white',
         textDecoration: 'none',
         borderBottom: 'none',
-        fontSize: '1.4rem',
+        fontSize: '1.2rem',
         padding: '0 15px',
+        display: 'inline-block',
+        // margin: '0 auto',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 )
 
 const Navbar = () => {
     return (
-        <AppBar position="static" style={{backgroundColor: "#2fc4a6", borderBottom:"2.5px solid #1162bc"}}>
-            <Title>
-                BUDGET BUDDY
-            </Title>
-            <LinksWrapper>
-                <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>
-                <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>
-                <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>MAKE PURCHASE</LinkItem></Link>
-                <Link to="/articles" style={{textDecoration: 'none'}}><LinkItem>STAY ON TRACK</LinkItem></Link>
-            </LinksWrapper>
+        <AppBar position="static" style={{backgroundColor: "#2ce28c", borderBottom:"2.5px solid #092d63"}}>
+            <NavWrapper>
+                <Title>
+                    <h1>BUDGET BUDDY</h1>
+                </Title>
+                <LinksWrapper>
+                    <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>|
+                    <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>|
+                    <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>MAKE PURCHASE</LinkItem></Link>|
+                    <Link to="/articles" style={{textDecoration: 'none'}}><LinkItem>STAY ON TRACK</LinkItem></Link>
+                </LinksWrapper>
+            </NavWrapper>
         </AppBar>
     )
 }
