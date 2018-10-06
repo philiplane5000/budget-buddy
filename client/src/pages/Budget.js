@@ -29,13 +29,30 @@ const SaveButton = styled('button')(
 class Budget extends Component {
 
     state = {
-        data: {},
-        category: '',
-        amount: ''
-    }
+        meals: '',
+        groceries: '',
+        household: '',
+        recreation: '',
+        transportation: '',
+        misc: ''
+      }
 
     componentDidMount() {
         console.log("BUDGET PAGE")
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleSubmit = () => {
+        // post my state to the api to save the budget form,
+        // then set the state to some kind of success message
+        // and show the user some feedback
+        alert(JSON.stringify(this.state))
     }
 
     render() {
@@ -49,58 +66,46 @@ class Budget extends Component {
                         </h1>
                         <Category>
                             <BudgetItem
-                                name="category"
-                                label="Category"
-                                onChangeFn={this.handleChange}
-                                value={this.state.name}
-                            />
-                            <BudgetItem
-                                name="amount"
-                                label="Amount"
+                                name="meals"
+                                label="Meals Out"
                                 onChangeFn={this.handleChange}
                                 value={this.state.amount}
                             />
                         </Category>
                         <Category>
                             <BudgetItem
-                                name="category"
-                                label="Category"
+                                name="groceries"
+                                label="Groceries"
                                 onChangeFn={this.handleChange}
                                 value={this.state.name}
                             />
                             <BudgetItem
-                                name="amount"
-                                label="Amount"
+                                name="household"
+                                label="Household Items"
                                 onChangeFn={this.handleChange}
                                 value={this.state.amount}
                             />
                         </Category>
                         <Category>
                             <BudgetItem
-                                name="category"
-                                label="Category"
+                                name="recreation"
+                                label="Recreation"
                                 onChangeFn={this.handleChange}
                                 value={this.state.name}
                             />
                             <BudgetItem
-                                name="amount"
-                                label="Amount"
+                                name="transportation"
+                                label="Transportation"
                                 onChangeFn={this.handleChange}
                                 value={this.state.amount}
                             />
                         </Category>
                         <Category>
                             <BudgetItem
-                                name="category"
-                                label="Category"
+                                name="misc"
+                                label="Misc"
                                 onChangeFn={this.handleChange}
                                 value={this.state.name}
-                            />
-                            <BudgetItem
-                                name="amount"
-                                label="Amount"
-                                onChangeFn={this.handleChange}
-                                value={this.state.amount}
                             />
                         </Category>
                         <SaveButton onClick={this.handleSubmit}>
