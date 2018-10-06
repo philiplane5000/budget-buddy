@@ -6,7 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 const NavWrapper = styled('div')(
     {
         display: 'flex',
-        height: 80
+        height: 80,
     }
 )
 
@@ -42,7 +42,8 @@ const LinkItem = styled('p')(
         fontSize: '1.2rem',
         padding: '0 15px',
         display: 'inline-block',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        borderRight: '.01em solid #092d63',
     }
 )
 
@@ -54,9 +55,9 @@ const Navbar = () => {
                     <Logo>BUDGET BUDDY</Logo>
                 </Title>
                 <LinksWrapper>
-                    <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>|
-                    <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>|
-                    <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>MAKE PURCHASE</LinkItem></Link>|
+                    <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>
+                    <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>
+                    <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>MAKE PURCHASE</LinkItem></Link>
                     <Link to="/articles" style={{textDecoration: 'none'}}><LinkItem>STAY ON TRACK</LinkItem></Link>
                 </LinksWrapper>
             </NavWrapper>
