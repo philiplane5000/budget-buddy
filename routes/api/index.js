@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const budgetRoutes = require("./budgets");
 
-// Book routes
+// Budget routes
 router.use("/budgets", budgetRoutes);
 
 module.exports = router;
