@@ -1,12 +1,13 @@
 import React from "react";
 // import styled from "react-emotion";
+import ProgressBar from "./ProgressBar";
 
 class ProgressUpdate extends React.Component {
     constructor(props) {
         super(props)
 
         this.state= {
-            percentage: 0
+            percentage: 33
         }
     }
     render() {

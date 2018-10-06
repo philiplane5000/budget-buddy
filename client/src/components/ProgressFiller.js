@@ -3,7 +3,7 @@ import React from "react";
 
 const ProgressFiller = (props) => {
     return (
-        <div className="progress-filler">
+        <div className="progress-filler" style={{ width: `${props.percentage}%` }}>
             
         </div>
     )
