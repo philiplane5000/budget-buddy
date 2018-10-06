@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from "react-emotion";
 import Grid from "@material-ui/core/Grid";
 import BudgetItem from "../components/BudgetItem";
+import API from "../utils/API";
 
 const Wrapper = styled('div')(
     {
@@ -24,16 +25,22 @@ const SaveButton = styled('button')(
 class Budget extends Component {
 
     state = {
-        meals: '0.00',
-        groceries: '0.00',
-        household: '0.00',
-        recreation: '0.00',
-        transportation: '0.00',
-        misc: '0.00'
-      }
+        budgets: []
+    }
+
+    // constructor(props) {
+    //     super(props);
+    //     API.getCurrentBudget().then(response => {
+    //         this.setState({data: response})
+    //     })
+    // }
+
 
     componentDidMount() {
-        console.log("BUDGET PAGE")
+        API.getCurrentBudget().then(dbBudget => {
+            this.setState({budgets: dbBudget.data})
+            console.log(this.state)
+        })
     }
 
     handleChange = (e) => {
@@ -53,56 +60,25 @@ class Budget extends Component {
     render() {
         return (
             <Grid container justify="center">
-                    <Wrapper>
+                <Wrapper>
+                    {
+                        this.state.budgets.length > 0
+                        ?   this.state.budgets.map(doc =>
+                            <BudgetItem
+                            name={doc.category}
+                            label={doc.label}
+                            onChangeFn={this.handleChange}
+                            value={doc.amount} 
+                            />
+                            )
+                        :   <h2>loading</h2>
+                    }
 
-                        <h1>
-                            BUDGET SETUP
-                        </h1>
-                        <Grid item lg={5} md={5} sm={5} xs={12}>
-                            <BudgetItem
-                                name="meals"
-                                label="Meals Out"
-                                onChangeFn={this.handleChange}
-                                value={this.state.meals}
-                            />
-                            <BudgetItem
-                                name="groceries"
-                                label="Groceries"
-                                onChangeFn={this.handleChange}
-                                value={this.state.groceries}
-                            />
-                            <BudgetItem
-                                name="household"
-                                label="Household Items"
-                                onChangeFn={this.handleChange}
-                                value={this.state.household}
-                            />
-                        </Grid>
-                        <Grid item lg={5} md={5} sm={5} xs={12}>
-                            <BudgetItem
-                                name="recreation"
-                                label="Recreation"
-                                onChangeFn={this.handleChange}
-                                value={this.state.recreation}
-                            />
-                            <BudgetItem
-                                name="transportation"
-                                label="Transportation"
-                                onChangeFn={this.handleChange}
-                                value={this.state.transportation}
-                            />
-                            <BudgetItem
-                                name="misc"
-                                label="Misc"
-                                onChangeFn={this.handleChange}
-                                value={this.state.misc}
-                            />
-                        </Grid>
-                        <SaveButton onClick={this.handleSubmit}>
-                            Save
+                    <SaveButton onClick={this.handleSubmit}>
+                        Save
                         </SaveButton>
 
-                    </Wrapper>
+                </Wrapper>
             </Grid>
         )
     }
