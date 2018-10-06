@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import styled from "react-emotion";
 import Grid from "@material-ui/core/Grid";
 import Welcome from "../components/Welcome";
-import Button from "@material-ui/core/Button";
 import Main from "../components/Main";
 import ProgressBar from "../components/ProgressBar";
+
 // import ProgressUpdate from "../components/ProgressUpdate";
 
 const Wrapper = styled("div")({
@@ -47,13 +47,14 @@ class Home extends Component {
       <Grid container justify="center">
         <Grid item lg={8} md={8} sm={10} xs={12}>
           <Wrapper>
-            <Welcome />
+            <Welcome 
+            />
           </Wrapper>
         </Grid>
         <Grid item lg={8} md={8} sm={10} xs={12}>
           <Wrapper>
             <Main>
-              <Button />
+              
             </Main>
           </Wrapper>
         </Grid>

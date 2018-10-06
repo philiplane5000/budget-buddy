@@ -9,7 +9,7 @@ const Welcome = () => {
   return (
     <Wrapper>
       <div>
-        <h1>Welcome to Budget Buddy!</h1>
+        <h1>Total Budget: $2000</h1>
       </div>
     </Wrapper>
   );
