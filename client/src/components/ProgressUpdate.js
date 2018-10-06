@@ -7,7 +7,7 @@ class ProgressUpdate extends React.Component {
         super(props)
 
         this.state= {
-            percentage: 33
+            percentage: 0
         }
     }
     render() {

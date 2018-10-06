@@ -3,10 +3,10 @@ import React from "react";
 import ProgressFiller from "./ProgressFiller";
 
 
-const ProgressBar = props => {
+const ProgressBar = (props) => {
   return (
       <div className="progress-bar">
-        <ProgressFiller percentage={props.percentage}/>
+        <ProgressFiller percentage={props.percentage} />
       </div>
   );
 };

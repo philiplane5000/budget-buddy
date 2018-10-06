@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Welcome from "../components/Welcome";
 import Button from "@material-ui/core/Button";
 import Main from "../components/Main";
-// import ProgressBar from "../components/ProgressBar";
-import ProgressUpdate from "../components/ProgressUpdate";
+import ProgressBar from "../components/ProgressBar";
+// import ProgressUpdate from "../components/ProgressUpdate";
 
 const Wrapper = styled("div")({
   border: "4px solid #092d63",
@@ -18,7 +18,7 @@ const Wrapper = styled("div")({
 const Progress = styled("div")({
   position: "relative",
   height: 100,
-  width: '100%',
+//   width: '',
   borderRadius: 50,
   border: "1 solid #333",
   margin: '0 auto'
@@ -26,14 +26,16 @@ const Progress = styled("div")({
 
 const Filler = styled("div")({
   background: "#2ce28c",
+  color: 'black',
   height: '100%',
   borderRadius: "inherit",
-  transition: "width .2s ease-ine"
+  transition: "width .2s ease-ine",
 });
 
 class Home extends Component {
   state = {
-    data: {}
+    data: {},
+    percentage: 60
   };
 
   componentDidMount() {
@@ -58,7 +60,9 @@ class Home extends Component {
         <Grid item lg={8} md={8} sm={10} xs={12}>
             <Progress>
                 <Filler>
-                    <ProgressUpdate />
+                    <ProgressBar 
+                        percentage={this.state.percentage}
+                    />
                 </Filler>
             </Progress>
         </Grid>
