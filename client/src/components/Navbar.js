@@ -6,23 +6,30 @@ import AppBar from "@material-ui/core/AppBar";
 const NavWrapper = styled('div')(
     {
         display: 'flex',
+        height: 80
     }
 )
 
 const Title = styled('div')(
     {
         fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
-        textAlign: 'left',
         color: 'white',
-        fontSize: '20px',
         flex: 1,
+        alignSelf: 'center',
+    }
+)
+
+const Logo = styled('h1')(
+    {
+        padding: 5,
+        marginLeft: 5,
     }
 )
 
 const LinksWrapper = styled('div')(
     {
         color: 'white',
-        
+        alignSelf: 'center',
     }
 )
 
@@ -35,9 +42,7 @@ const LinkItem = styled('p')(
         fontSize: '1.2rem',
         padding: '0 15px',
         display: 'inline-block',
-        // margin: '0 auto',
-        justifyContent: 'center',
-        alignItems: 'center'
+        fontWeight: 'bold'
     }
 )
 
@@ -46,7 +51,7 @@ const Navbar = () => {
         <AppBar position="static" style={{backgroundColor: "#2ce28c", borderBottom:"2.5px solid #092d63"}}>
             <NavWrapper>
                 <Title>
-                    <h1>BUDGET BUDDY</h1>
+                    <Logo>BUDGET BUDDY</Logo>
                 </Title>
                 <LinksWrapper>
                     <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>|
