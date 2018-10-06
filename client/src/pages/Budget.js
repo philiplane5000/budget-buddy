@@ -28,14 +28,6 @@ class Budget extends Component {
         budgets: []
     }
 
-    // constructor(props) {
-    //     super(props);
-    //     API.getCurrentBudget().then(response => {
-    //         this.setState({data: response})
-    //     })
-    // }
-
-
     componentDidMount() {
         API.getCurrentBudget().then(dbBudget => {
             this.setState({budgets: dbBudget.data})
