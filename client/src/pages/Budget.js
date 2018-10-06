@@ -7,13 +7,8 @@ const Wrapper = styled('div')(
     {
         border: '5px solid #092d63',
         itemAlign: 'center',
-        margin: '20px 0'
-    }
-)
-
-const Category = styled('div')(
-    {
-        border: '2px solid #092d63'
+        // margin: '20px 0',
+        color: '#092d63'
     }
 )
 
@@ -29,12 +24,12 @@ const SaveButton = styled('button')(
 class Budget extends Component {
 
     state = {
-        meals: '',
-        groceries: '',
-        household: '',
-        recreation: '',
-        transportation: '',
-        misc: ''
+        meals: '0.00',
+        groceries: '0.00',
+        household: '0.00',
+        recreation: '0.00',
+        transportation: '0.00',
+        misc: '0.00'
       }
 
     componentDidMount() {
@@ -58,62 +53,56 @@ class Budget extends Component {
     render() {
         return (
             <Grid container justify="center">
-
-                <Grid item lg={6} md={6} sm={10} xs={12}>
                     <Wrapper>
+
                         <h1>
-                            BUDGET PAGE
+                            BUDGET SETUP
                         </h1>
-                        <Category>
+                        <Grid item lg={5} md={5} sm={5} xs={12}>
                             <BudgetItem
                                 name="meals"
                                 label="Meals Out"
                                 onChangeFn={this.handleChange}
-                                value={this.state.amount}
+                                value={this.state.meals}
                             />
-                        </Category>
-                        <Category>
                             <BudgetItem
                                 name="groceries"
                                 label="Groceries"
                                 onChangeFn={this.handleChange}
-                                value={this.state.name}
+                                value={this.state.groceries}
                             />
                             <BudgetItem
                                 name="household"
                                 label="Household Items"
                                 onChangeFn={this.handleChange}
-                                value={this.state.amount}
+                                value={this.state.household}
                             />
-                        </Category>
-                        <Category>
+                        </Grid>
+                        <Grid item lg={5} md={5} sm={5} xs={12}>
                             <BudgetItem
                                 name="recreation"
                                 label="Recreation"
                                 onChangeFn={this.handleChange}
-                                value={this.state.name}
+                                value={this.state.recreation}
                             />
                             <BudgetItem
                                 name="transportation"
                                 label="Transportation"
                                 onChangeFn={this.handleChange}
-                                value={this.state.amount}
+                                value={this.state.transportation}
                             />
-                        </Category>
-                        <Category>
                             <BudgetItem
                                 name="misc"
                                 label="Misc"
                                 onChangeFn={this.handleChange}
-                                value={this.state.name}
+                                value={this.state.misc}
                             />
-                        </Category>
+                        </Grid>
                         <SaveButton onClick={this.handleSubmit}>
                             Save
                         </SaveButton>
-                    </Wrapper>
-                </Grid>
 
+                    </Wrapper>
             </Grid>
         )
     }

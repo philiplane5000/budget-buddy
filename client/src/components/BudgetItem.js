@@ -9,7 +9,7 @@ const CategoryInput = styled('input')({
 })
 
 const Label = styled('div')({
-  fontSize: 10
+  fontSize: 14
 })
 
 const BudgetItem = ({ label, onChangeFn, name, value }) => {
