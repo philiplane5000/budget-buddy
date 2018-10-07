@@ -1,11 +1,18 @@
 import React from "react";
-// import styled from "react-emotion";
+import styled from "react-emotion";
 
-const ProgressFiller = (props) => {
+const Test = styled('div')(
+    {
+
+    }
+)
+
+const ProgressFiller = ({ percentage }) => {
     return (
-        <div className="progress-filler">
-            
-        </div>
+        <Test>
+            <div className="progress-filler" style={{ width: `${percentage}%` }}>
+            </div>
+        </Test>
     )
 }
 

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import styled from "react-emotion";
 import Grid from "@material-ui/core/Grid";
 import Welcome from "../components/Welcome";
-import Button from "@material-ui/core/Button";
 import Main from "../components/Main";
 import ProgressBar from "../components/ProgressBar";
+import Footer from "../components/Footer";
+
+// import ProgressUpdate from "../components/ProgressUpdate";
 
 const Wrapper = styled("div")({
   border: "4px solid #092d63",
@@ -17,21 +19,23 @@ const Wrapper = styled("div")({
 const Progress = styled("div")({
   position: "relative",
   height: 100,
-  width: '100%',
   borderRadius: 50,
-  border: "1 solid #333"
+  border: "1 solid #333",
+  margin: '0 auto'
 });
 
 const Filler = styled("div")({
   background: "#2ce28c",
+  color: 'black',
   height: '100%',
   borderRadius: "inherit",
-  transition: "width .2s ease-ine"
+  transition: "width .2s ease-ine",
 });
 
 class Home extends Component {
   state = {
-    data: {}
+    data: {},
+    percentage: 60
   };
 
   componentDidMount() {
@@ -43,24 +47,28 @@ class Home extends Component {
       <Grid container justify="center">
         <Grid item lg={8} md={8} sm={10} xs={12}>
           <Wrapper>
-            <Welcome />
+            <Welcome 
+            />
           </Wrapper>
         </Grid>
         <Grid item lg={8} md={8} sm={10} xs={12}>
           <Wrapper>
             <Main>
-              <Button />
+              
             </Main>
           </Wrapper>
         </Grid>
         <Grid item lg={8} md={8} sm={10} xs={12}>
-          <Wrapper>
             <Progress>
                 <Filler>
-                    <ProgressBar />
+                    <ProgressBar 
+                        percentage={this.state.percentage}
+                    />
                 </Filler>
             </Progress>
-          </Wrapper>
+        </Grid>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
+           <Footer />
         </Grid>
       </Grid>
     );

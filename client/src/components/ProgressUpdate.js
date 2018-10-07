@@ -1,5 +1,6 @@
 import React from "react";
 // import styled from "react-emotion";
+import ProgressBar from "./ProgressBar";
 
 class ProgressUpdate extends React.Component {
     constructor(props) {
