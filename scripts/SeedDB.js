@@ -10,23 +10,36 @@ mongoose.connect(
 
 const budgetSeed = [
   {
-    meals: 150,
+    category: "meals",
+    label: "Meals Out",
+    amount: 150
   },
   {
-    groceries: 250,
+    category: "groceries",
+    label: "Groceries",
+    amount: 250
   },
   {
-    household: 100,
+    category: "household",
+    label: "Household Items",
+    amount: 200
   },
   {
-    transportation: 200,
+    category: "recreation",
+    label: "Recreation",
+    amount: 150
   },
   {
-    recreation: 125,
+    category: "transportation",
+    label: "Transportation",
+    amount: 150
   },
   {
-    misc: 150
-  }
+    category: "misc",
+    label: "Misc",
+    amount: 100
+  },
+
 ];
 
 db.Budget
