@@ -49,7 +49,7 @@ const LinkItem = styled('p')(
 
 const Navbar = () => {
     return (
-        <AppBar position="static" style={{backgroundColor: "#2ce28c", borderBottom:"2.5px solid #092d63"}}>
+        <AppBar position="static" style={{backgroundColor: "#2fc4a6", borderBottom:"2.5px solid #092d63"}}>
             <NavWrapper>
                 <Title>
                     <Logo>BUDGET BUDDY</Logo>

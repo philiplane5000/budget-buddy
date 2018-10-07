@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Welcome from "../components/Welcome";
 import Main from "../components/Main";
 import ProgressBar from "../components/ProgressBar";
+import Footer from "../components/Footer";
 
 // import ProgressUpdate from "../components/ProgressUpdate";
 
@@ -18,7 +19,6 @@ const Wrapper = styled("div")({
 const Progress = styled("div")({
   position: "relative",
   height: 100,
-//   width: '',
   borderRadius: 50,
   border: "1 solid #333",
   margin: '0 auto'
@@ -66,6 +66,9 @@ class Home extends Component {
                     />
                 </Filler>
             </Progress>
+        </Grid>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
+           <Footer />
         </Grid>
       </Grid>
     );
