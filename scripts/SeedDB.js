@@ -12,7 +12,7 @@ const budgetSeed = [
   {
     category: "meals",
     label: "Meals Out",
-    amount: 150
+    amount: 180
   },
   {
     category: "groceries",
@@ -25,19 +25,19 @@ const budgetSeed = [
     amount: 200
   },
   {
-    category: "recreation",
-    label: "Recreation",
-    amount: 150
-  },
-  {
     category: "transportation",
     label: "Transportation",
-    amount: 150
+    amount: 120
+  },
+  {
+    category: "recreation",
+    label: "Recreation",
+    amount: 100
   },
   {
     category: "misc",
     label: "Misc",
-    amount: 100
+    amount: 150
   },
 
 ];
