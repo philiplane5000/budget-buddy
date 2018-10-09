@@ -7,20 +7,22 @@ import API from "../utils/API";
 const Wrapper = styled('div')(
     {
         border: '5px solid #092d63',
+        borderRadius: '5px',
         itemAlign: 'center',
-        // margin: '20px 0',
         color: '#092d63'
     }
 )
 
-const SaveButton = styled('button')(
-    {
-        padding: 15,
-        textTransform: 'uppercase',
-        border: '1px solid black',
-        borderRadius: 5
-    }
-)
+const SaveButton = styled("button")({
+    backgroundColor: "#1162bc",
+    fontSize: 30,
+    color: "white",
+    borderRadius: 45,
+    margin: 10,
+    height: 50,
+    width: 250,
+    fontFamily: "Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif"
+  });
 
 class Budget extends Component {
 
@@ -68,7 +70,7 @@ class Budget extends Component {
 
                     <SaveButton onClick={this.handleSubmit}>
                         Save
-                        </SaveButton>
+                    </SaveButton>
 
                 </Wrapper>
             </Grid>
