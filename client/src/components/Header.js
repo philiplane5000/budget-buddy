@@ -1,16 +1,20 @@
 import React from "react";
 import styled from "react-emotion";
 
-const Title = styled('div')`
-    font-family: 'Calibri';
-    color: ${props => props.color};
-    font-size: ${props => props.size};
-`
+const HeaderWrapper = styled('div')(
+    {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    color: '#092d63',
+    backgroundColor: '#d5d6d2',
+    margin: '0 auto'
+    }
+)
 
-const Header = props => (
-    <Title color={props.color} size={props.size}>
-        {props.children}
-    </Title>
+const Header = () => (
+    <HeaderWrapper>
+        <h1>Total Budget: $2000</h1>
+    </HeaderWrapper>
 )
 
 export default Header;

@@ -1,21 +1,23 @@
-import React from "react";
-import styled from "react-emotion";
+import React from 'react';
+import styled from 'react-emotion';
 
-const Btn = styled('button')`
-    font-family: 'Calibri';
-    cursor: pointer;
-    color: white;
-    height: 60px;
-    width: ${props => props.width};
-    min-width: ${props => props.minWidth};
-    background-color: ${props => props.bg};
-    margin-top: 20px;
-    border-radius: 10px;
-    border: none;
-`;
+const Btn = styled('button')(
+    {
+        fontFamily: 'Roboto',
+        cursor: 'pointer',
+        color: 'white',
+        height: '60px',
+        width: 150,
+        minWidth: 50,
+        backgroundColor: '#092d63',
+        margin: 10,
+        borderRadius: 10,
+        border: 'none'
+    }
+)
 
 const Button = props => (
-    <Btn bg={props.bg} width={props.width} minWidth={props.minWidth} onClick={props.handlePurchase}>
+    <Btn {...props}>
     {props.children}
     </Btn>
 )

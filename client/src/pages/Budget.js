@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
 import styled from "react-emotion";
+import { Motion, spring } from 'react-motion';
 import Grid from "@material-ui/core/Grid";
 import BudgetItem from "../components/BudgetItem";
 import API from "../utils/API";
+import Button from "../components/Button";
 
 const Wrapper = styled('div')(
     {
         border: '5px solid #092d63',
         borderRadius: '5px',
         itemAlign: 'center',
-        color: '#092d63'
+        color: '#092d63',
+        backgroundColor: 'd5d6d2'
     }
 )
-
-const SaveButton = styled("button")({
-    backgroundColor: "#1162bc",
-    fontSize: 30,
-    color: "white",
-    borderRadius: 45,
-    margin: 10,
-    height: 50,
-    width: 250,
-    fontFamily: "Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif"
-  });
 
 class Budget extends Component {
 
@@ -68,9 +60,9 @@ class Budget extends Component {
                         :   <h2>loading</h2>
                     }
 
-                    <SaveButton onClick={this.handleSubmit}>
+                    <Button onClick={this.handleSubmit}>
                         Save
-                    </SaveButton>
+                    </Button>
 
                 </Wrapper>
             </Grid>

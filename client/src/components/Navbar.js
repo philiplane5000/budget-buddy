@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "react-emotion";
-import { Link } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
+import React from 'react';
+import styled from 'react-emotion';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
 
 const NavWrapper = styled('div')(
     {
@@ -43,13 +43,13 @@ const LinkItem = styled('p')(
         padding: '0 15px',
         display: 'inline-block',
         fontWeight: 'bold',
-        borderRight: '.01em solid #092d63',
+        borderRight: '.01em solid #2fc4a6',
     }
 )
 
 const Navbar = () => {
     return (
-        <AppBar position="static" style={{backgroundColor: "#2fc4a6", borderBottom:"2.5px solid #092d63"}}>
+        <AppBar position="static" style={{backgroundColor: "#092d63", borderBottom:"2.5px solid #2fc4a6"}}>
             <NavWrapper>
                 <Title>
                     <Logo>BUDGET BUDDY</Logo>
