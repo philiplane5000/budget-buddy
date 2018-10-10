@@ -12,7 +12,7 @@ const Wrapper = styled('div')(
     borderTop: '2px solid #2fc4a6',
     left: 0,
     bottom: 0,
-    position: 'fixed'
+    position: 'fixed',
   }
 )
 
@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <Logo>
-        <h3>Budget Buddy &copy;</h3>
+        <h3>&copy; BUDGET BUDDY &copy;</h3>
       </Logo>
     </Wrapper>
   );

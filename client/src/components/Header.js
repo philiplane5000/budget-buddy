@@ -6,7 +6,6 @@ const HeaderWrapper = styled('div')(
     textAlign: 'center',
     fontFamily: 'Roboto',
     color: '#092d63',
-    backgroundColor: '#d5d6d2',
     margin: '0 auto'
     }
 )
