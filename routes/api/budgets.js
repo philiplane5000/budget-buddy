@@ -5,16 +5,13 @@ const scrapeController = require("../../controllers/scrapeControler")
 // Matches with "/api/budgets"
 router.route("/")
   .get(budgetController.findAll)
-  .post(budgetController.create);
+  .post(budgetController.create)
+  .put(scrapeController.findArticles)
 
 // Matches with "/api/budgets/:id"
 router.route("/:id")
   .get(budgetController.findById)
   .put(budgetController.update)
   .delete(budgetController.remove);
-
-  // Matches with "/api/budgets/scrape"
-  router.route("/scrape")
-    .get(scrapeController.findArticles)
 
 module.exports = router;

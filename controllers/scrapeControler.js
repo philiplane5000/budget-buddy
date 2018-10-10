@@ -1,34 +1,30 @@
 const cheerio = require('cheerio');
-const request = require('request');
+const axios = require('axios');
 
-module.exports = {
+let findArticles = (req, res) => {
 
-    findArticles: function (req, res) {
+        axios.get("https://money.usnews.com/money/personal-finance/saving-and-budgeting").then(function (response) {
 
-        request("https://money.usnews.com/money/personal-finance/saving-and-budgeting", function (error, res, html) {
-
-           // let $ = cheerio.load(html);
+            let $ = cheerio.load(response.data);
 
             let allArticles = [];
 
-            $("#main-articles").each(function (i, element) {
+            $(".medium-top").each(function (i, element) {
 
                 let result = {}
 
-                result.image =  $(this).find("pictures").attr("srcset");
-                result.title = $(this).find("a").text().trim();
-                result.excerpt = $(this).find(".block-flush").text().trim();
+                result.title = $(this).find("h3").text().trim();
+                result.excerpt = $(this).find(".show-for-medium-up").find('.block-flush').text().trim();
                 result.link = $(this).find("a").attr("href");
 
                 allArticles.push(result);
 
             })
 
-        });
+            res.json(allArticles);
 
-        // console.log(allArticles)
-        res.json(allArticles);
+        });
 
     }
 
-}
+    module.exports.findArticles = findArticles;
