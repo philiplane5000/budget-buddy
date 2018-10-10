@@ -1,7 +1,25 @@
 import React from 'react';
-import styled from 'react-emotion';
+// import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
+import styled, { keyframes } from 'react-emotion'
+
+const bounce = keyframes`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+`
 
 const NavWrapper = styled('div')(
     {
@@ -23,6 +41,9 @@ const Logo = styled('h1')(
     {
         padding: 5,
         marginLeft: 5,
+        fontSize: 45,
+        animation: `${bounce} 1s ease infinite`
+
     }
 )
 
@@ -43,7 +64,7 @@ const LinkItem = styled('p')(
         padding: '0 15px',
         display: 'inline-block',
         fontWeight: 'bold',
-        borderRight: '.01em solid #2fc4a6',
+        fontSize: 20
     }
 )
 
