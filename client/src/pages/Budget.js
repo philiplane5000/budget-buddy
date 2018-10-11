@@ -6,14 +6,15 @@ import BudgetItem from "../components/BudgetItem";
 import API from "../utils/API";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Wrapper = styled('div')(
     {
-        border: '5px solid #092d63',
+        border: '3px solid #1162bc',
         borderRadius: '5px',
         itemAlign: 'center',
         color: '#092d63',
-        backgroundColor: 'd5d6d2'
+        backgroundColor: 'f9f9f9'
     }
 )
 
@@ -67,6 +68,7 @@ class Budget extends Component {
                     </Button>
 
                 </Wrapper>
+                <Footer />
             </Grid>
         )
     }

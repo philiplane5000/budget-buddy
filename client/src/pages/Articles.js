@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import styled from "react-emotion";
 import Grid from "@material-ui/core/Grid";
+import Footer from "../components/Footer";
 
 const Wrapper = styled('div')(
     {
-        border: '5px solid #092d63',
+        border: '3px solid #1162bc',
         textAlign: 'center',
-        margin: '20px 0'
+        margin: '20px 0',
+        backgroundColor: '#f9f9f9',
+        borderRadius: 10
     }
 )
 
@@ -31,7 +34,7 @@ class Articles extends Component {
                         </h1>
                     </Wrapper>
                 </Grid>
-
+                <Footer />
             </Grid>
         )
     }
