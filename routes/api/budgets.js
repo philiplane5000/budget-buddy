@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const budgetController = require("../../controllers/budgetController");
-const scrapeController = require("../../controllers/scrapeControler")
+const scrapeController = require("../../controllers/scrapeController")
 
 // Matches with "/api/budgets"
 router.route("/")
