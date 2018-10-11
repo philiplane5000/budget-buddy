@@ -10,9 +10,9 @@ const HeaderWrapper = styled('div')(
     }
 )
 
-const Header = () => (
+const Header = (props) => (
     <HeaderWrapper>
-        <h1>Total Budget: $2000</h1>
+        {props.headerText}
     </HeaderWrapper>
 )
 

@@ -19,7 +19,7 @@ const MainWrapper = styled('div')(
 const Main = () => {
   return (
     <MainWrapper>
-      <Header />
+      <Header headerText="Total Budget = $2000.00"/>
       <Button>
         <Link to="/purchase" style={{ textDecoration: "none", color: "white" }}>
           Make a Purchase

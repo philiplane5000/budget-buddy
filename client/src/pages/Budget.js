@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import BudgetItem from "../components/BudgetItem";
 import API from "../utils/API";
 import Button from "../components/Button";
+import Header from "../components/Header";
 
 const Wrapper = styled('div')(
     {
@@ -47,6 +48,7 @@ class Budget extends Component {
         return (
             <Grid container justify="center">
                 <Wrapper>
+                <Header headerText="Your Budget Setup"/>
                     {
                         this.state.budgets.length > 0
                         ?   this.state.budgets.map(doc =>
