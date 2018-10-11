@@ -18,7 +18,6 @@ class Home extends Component {
     return (
       <Grid container justify="center">
         <Grid item lg={6} md={6} sm={8} xs={8}>
-          <Header headerText="Total Budget = $2000.00"/> {/* will be edited by Phil to become dynamic */}
             <Main />
         </Grid>
         <Footer />

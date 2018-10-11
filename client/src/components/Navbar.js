@@ -21,6 +21,7 @@ const bounce = keyframes`
   }
 `
 
+
 const NavWrapper = styled('div')(
     {
         display: 'flex',

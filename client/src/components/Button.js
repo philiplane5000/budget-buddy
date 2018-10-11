@@ -9,12 +9,11 @@ const Btn = styled('button')(
         height: '60px',
         width: 190,
         minWidth: 50,
-        backgroundColor: '#092d63',
+        backgroundColor: '#1162bc',
         margin: 10,
-        borderRadius: 50,
+        borderRadius: 30,
         border: 'none',
         fontSize: 25,
-        border: '2px solid #2fc4a6'
     }
 )
 

@@ -6,11 +6,11 @@ import Header from "../components/Header";
 
 const MainWrapper = styled('div')(
   {
-    border: '2px solid #092d63',
+    border: '2px solid #1162bc',
     padding: 40,
     borderRadius: 10,
     boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#f3f3f3',
     marginTop: '40px'
   }
 )
