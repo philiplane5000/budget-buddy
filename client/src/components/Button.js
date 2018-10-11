@@ -11,7 +11,7 @@ const Btn = styled('button')(
         minWidth: 50,
         backgroundColor: '#1162bc',
         margin: 10,
-        borderRadius: 30,
+        borderRadius: 10,
         border: 'none',
         fontSize: 25,
         boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',

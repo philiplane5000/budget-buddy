@@ -43,7 +43,7 @@ const Logo = styled('h1')(
         padding: 5,
         marginLeft: 5,
         fontSize: 45,
-        animation: `${bounce} 1s ease infinite`
+        animation: `${bounce} 1s ease`
 
     }
 )

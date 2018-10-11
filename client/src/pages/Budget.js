@@ -48,26 +48,28 @@ class Budget extends Component {
     render() {
         return (
             <Grid container justify="center">
-                <Wrapper>
-                <Header headerText="Your Budget Setup"/>
-                    {
-                        this.state.budgets.length > 0
-                        ?   this.state.budgets.map(doc =>
-                            <BudgetItem
-                            name={doc.category}
-                            label={doc.label}
-                            onChangeFn={this.handleChange}
-                            value={doc.amount} 
-                            />
-                            )
-                        :   <h2>loading</h2>
-                    }
+                <Grid item lg={6} md={6} sm={8} xs={8}>
+                    <Wrapper>
+                    <Header headerText="Your Budget Setup"/>
+                        {
+                            this.state.budgets.length > 0
+                            ?   this.state.budgets.map(doc =>
+                                <BudgetItem
+                                name={doc.category}
+                                label={doc.label}
+                                onChangeFn={this.handleChange}
+                                value={doc.amount} 
+                                />
+                                )
+                            :   <h2>loading</h2>
+                        }
 
-                    <Button onClick={this.handleSubmit}>
-                        Save
-                    </Button>
+                        <Button onClick={this.handleSubmit}>
+                            Save
+                        </Button>
 
-                </Wrapper>
+                    </Wrapper>
+                </Grid>
                 <Footer />
             </Grid>
         )

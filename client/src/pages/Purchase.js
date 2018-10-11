@@ -72,10 +72,12 @@ class Purchase extends Component {
 
         return (
             <Grid container justify="center">
-                <Grid item lg={8} md={8} sm={10} xs={12}>
+                <Grid item lg={6} md={6} sm={8} xs={8}>
                     <Wrapper>
 
-                        <Header headerText="Make a Purchase"></Header>
+
+                        <Header headerText="Make a Purchase" />
+
 
                         <Grid container justify="space-around">
 
@@ -127,7 +129,7 @@ class Purchase extends Component {
 
                         <Grid container justify="center">
 
-                            <Grid item lg={9} md={9} sm={12} xs={12}>
+                            <Grid item lg={8} md={8} sm={8} xs={8}>
                                 <form noValidate autoComplete="off">
                                     <TextField
                                         id="filled-number"
@@ -146,7 +148,7 @@ class Purchase extends Component {
                                 </form>
                             </Grid>
 
-                            <Grid item lg={3} md={3} sm={4} xs={6}>
+                            <Grid item lg={4} md={4} sm={8} xs={8}>
                                 <Button onClick={this.handlePurchase}>
                                     COMPLETE PURCHASE
                                 </Button>
