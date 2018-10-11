@@ -61,7 +61,6 @@ const LinkItem = styled('p')(
         color: 'white',
         textDecoration: 'none',
         borderBottom: 'none',
-        fontSize: '1.2rem',
         padding: '0 15px',
         display: 'inline-block',
         fontWeight: 'bold',

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import styled from "react-emotion";
 import Grid from "@material-ui/core/Grid";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+
 
 class Home extends Component {
   state = {
