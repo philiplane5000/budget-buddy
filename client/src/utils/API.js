@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export default {
-  //ALL API ROUTES TO FETCH mongoDB DATA (SAVED budgetS):
-
   // Gets all saved budgets:
   getCurrentBudget: () => {
       return axios.get("/api/budgets");
@@ -17,5 +15,9 @@ export default {
   deleteSavedbudget: (id) => {
     return axios.delete("/api/budgets/" + id);
   },
+
+  findArticles: () => {
+    return axios.get("/api/scrape");
+  }
 
 };
