@@ -75,7 +75,7 @@ class Purchase extends Component {
                 <Grid item lg={8} md={8} sm={10} xs={12}>
                     <Wrapper>
 
-                        <Header>Make a Purchase</Header>
+                        <Header headerText="Make a Purchase"></Header>
 
                         <Grid container justify="space-around">
 
