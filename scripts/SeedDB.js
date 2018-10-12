@@ -21,7 +21,7 @@ const budgetSeed = [
   },
   {
     category: "household",
-    label: "Household Items",
+    label: "Household",
     amount: 200
   },
   {
