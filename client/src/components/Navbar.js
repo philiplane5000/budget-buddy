@@ -88,26 +88,25 @@ const Bar = styled('div')`
         padding: 0 0 0 15px;
 
 `
+const handleClick = (e) => {
+    e.preventDefault();
+    alert('button works');
+    let links = <LinkItem/>;
+    console.log(links);
+}
 
-const Navbar = () => {
+const Navbar = props => {
     return (
         <AppBar position="static" style={{backgroundColor: "#092d63", borderBottom:"2.5px solid #3de28c"}}>
             <NavWrapper>
                 <Title>
                     <Logo>BUDGET BUDDY</Logo>
                 </Title>
-                <HamWrapper>
+                <HamWrapper onClick={handleClick}> 
                     <Bar/>
                     <Bar/>
                     <Bar/>
                 </HamWrapper>
-                <Drawer open={true} >
-                   <ul>
-                       <li>Home</li>
-                       <li>Things</li>
-                       <li>Thats</li>
-                   </ul>
-                </Drawer>
                 <LinksWrapper>
                     <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>
                     <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>
