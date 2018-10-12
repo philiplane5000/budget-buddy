@@ -14,7 +14,8 @@ const Wrapper = styled('div')(
         borderRadius: '5px',
         itemAlign: 'center',
         color: '#092d63',
-        backgroundColor: 'f9f9f9'
+        backgroundColor: 'f9f9f9',
+        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',
     }
 )
 
