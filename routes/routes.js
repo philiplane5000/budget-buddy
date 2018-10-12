@@ -14,7 +14,7 @@ module.exports = function (app) {
 
     app.delete("/api/budgets/:id", budgetController.remove)
 
-    app.get("/api/scrape", scrapeController.findArticles)
+    app.get("/api/scrape/usnews", scrapeController.findUSNews)
 
     // // If no API routes are hit, send the React app
     app.get("/", (req, res) => {

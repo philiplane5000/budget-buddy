@@ -16,8 +16,8 @@ export default {
     return axios.delete("/api/budgets/" + id);
   },
 
-  findArticles: () => {
-    return axios.get("/api/scrape");
+  findUSNews: () => {
+    return axios.get("/api/scrape/usnews");
   }
 
 };

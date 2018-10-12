@@ -4,7 +4,7 @@ import styled from 'react-emotion'
 const Wrapper = styled('div')(
     {
         display: 'flex',
-        border: '4px solid #2fc4ac',
+        border: '6px double #2fc4ac',
         borderRadius: 10,
         padding: 20,
         margin: 20
