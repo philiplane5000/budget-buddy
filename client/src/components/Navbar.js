@@ -1,8 +1,9 @@
 import React from 'react';
-// import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import styled, { keyframes } from 'react-emotion'
+import Drawer from 'react-motion-drawer';
+
 
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
@@ -20,7 +21,6 @@ const bounce = keyframes`
     transform: translate3d(0,-4px,0);
   }
 `
-
 
 const NavWrapper = styled('div')(
     {
@@ -44,7 +44,6 @@ const Logo = styled('h1')(
         marginLeft: 5,
         fontSize: 45,
         animation: `${bounce} 1s ease`
-
     }
 )
 
@@ -55,31 +54,65 @@ const LinksWrapper = styled('div')(
     }
 )
 
-const LinkItem = styled('p')(
-    {
-        fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
-        color: 'white',
-        textDecoration: 'none',
-        borderBottom: 'none',
-        padding: '0 15px',
-        display: 'inline-block',
-        fontWeight: 'bold',
-        fontSize: 20
-    }
-)
+const LinkItem = styled('p')`
+        font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+        color: white;
+        text-decoration: none;
+        border-bottom: none;
+        padding: 0 15px;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 25px;
+
+        @media (max-width: 900px) {
+            display: none;  
+          }
+`
+
+const HamWrapper = styled('div')`
+    
+        align-self: center;
+        display: none;
+
+        @media (max-width: 763px) {
+            display: block;
+            margin: 10px;
+          }
+`
+
+const Bar = styled('div')`
+        width: 35px;
+        height: 5px;
+        background-color: white;
+        margin: 8px 0;
+        padding: 0 0 0 15px;
+
+`
 
 const Navbar = () => {
     return (
-        <AppBar position="static" style={{backgroundColor: "#092d63", borderBottom:"2.5px solid #2fc4a6"}}>
+        <AppBar position="static" style={{backgroundColor: "#092d63", borderBottom:"2.5px solid #3de28c"}}>
             <NavWrapper>
                 <Title>
                     <Logo>BUDGET BUDDY</Logo>
                 </Title>
+                <HamWrapper>
+                    <Bar/>
+                    <Bar/>
+                    <Bar/>
+                </HamWrapper>
+                <Drawer open={true} >
+                   <ul>
+                       <li>Home</li>
+                       <li>Things</li>
+                       <li>Thats</li>
+                   </ul>
+                </Drawer>
                 <LinksWrapper>
                     <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>
                     <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>
-                    <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>MAKE PURCHASE</LinkItem></Link>
-                    <Link to="/articles" style={{textDecoration: 'none'}}><LinkItem>STAY ON TRACK</LinkItem></Link>
+                    <Link to="/purchase" style={{textDecoration: 'none'}}><LinkItem>PURCHASE</LinkItem></Link>
+                    <Link to="/articles" style={{textDecoration: 'none'}}><LinkItem>LEARN</LinkItem></Link> 
                 </LinksWrapper>
             </NavWrapper>
         </AppBar>
