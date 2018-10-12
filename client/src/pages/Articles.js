@@ -23,7 +23,7 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        API.findArticles().then(articles => {
+        API.findUSNews().then(articles => {
             this.setState({articles: articles.data})
         })
     }
@@ -37,8 +37,8 @@ class Articles extends Component {
                         <Header headerText="Articles Page"/>
 
                     {this.state.articles.length > 0 ? (
-                        this.state.articles.map(doc=>(
-                            <Article headline={doc.title} link={doc.link} excerpt={doc.excerpt}></Article>
+                        this.state.articles.map(article=>(
+                            <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
                         ))
                     ) : (
                         <h6>loading...</h6>

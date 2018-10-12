@@ -56,10 +56,10 @@ class Budget extends Component {
                             this.state.budgets.length > 0
                             ?   this.state.budgets.map(doc =>
                                 <BudgetItem
-                                name={doc.category}
+                                category={doc.category}
                                 label={doc.label}
                                 onChangeFn={this.handleChange}
-                                value={doc.amount} 
+                                amount={doc.amount} 
                                 />
                                 )
                             :   <h2>loading</h2>
