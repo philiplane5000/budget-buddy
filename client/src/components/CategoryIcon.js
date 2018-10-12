@@ -11,15 +11,14 @@ const IconWrapper = styled('div')(
 const Icon = styled('div')`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
+    justify-content: space-around;
     font-family: 'Calibri';
     text-transform: uppercase;
     width: 350px;
     min-width: 250px;
+    min-height: 140px;
     border-radius: 10px;
     margin: 20px 10px 20px 10px;
-    padding: 20px;
     background: ${props => props.bg}; 
     border: 1px solid rgba(0,0,0,0.35);
 `
@@ -27,11 +26,13 @@ const Icon = styled('div')`
 const Category = styled('div')`
     font-size: 24px;
     color: white;
+    margin-top: 10px;
 `
 
 const Balance = styled('div')`
     font-size: 62px;
     color: white;
+    margin-bottom: 10px;
 `
 
 const CategoryIcon = props => (

@@ -8,11 +8,16 @@ import TextField from "@material-ui/core/TextField"
 import Button from "../components/Button"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal)
 
 const Wrapper = styled('div')(
     {
         border: '2px solid rgba(0,0,0,0.1)',
-        padding: 40,
+        paddingTop: 20,
+        paddingBottom: 40,
         borderRadius: 10,
         boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',
         backgroundColor: '#f9f9f9'
@@ -50,6 +55,11 @@ class Purchase extends Component {
         let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2);
         API.updateBudgetCategory(this.state._id, { amount: adjusted })
             .then(dbBudget => {
+                MySwal.fire({
+                    title: <h4 style={{ fontFamily: 'Calibri' }}>TRANSACTION ACCOUNTED FOR!</h4>,
+                    type: 'success',
+                    confirmButtonText: 'Ok'
+                })
                 API.getCurrentBudget().then(res => {
                     const stateCopy = this.state;
                     stateCopy.budgets = res.data;
@@ -72,12 +82,10 @@ class Purchase extends Component {
 
         return (
             <Grid container justify="center">
-                <Grid item lg={6} md={6} sm={8} xs={8}>
+                <Grid item lg={6} md={8} sm={10} xs={12}>
                     <Wrapper>
 
-
                         <Header headerText="Make a Purchase" />
-
 
                         <Grid container justify="space-around">
 
@@ -99,7 +107,7 @@ class Purchase extends Component {
 
                         </Grid>
 
-                        <div style={{ marginTop: 25, marginBottom: 25 }}>
+                        <div style={{ margin: 40 }}>
                             <Grid container justify="space-around" spacing={16}>
                                 {this.state.budgets.length > 0 ? (
                                     this.state.budgets.map(doc => (
@@ -129,7 +137,7 @@ class Purchase extends Component {
 
                         <Grid container justify="center">
 
-                            <Grid item lg={8} md={8} sm={8} xs={8}>
+                            <Grid item lg={7} md={7} sm={8} xs={8}>
                                 <form noValidate autoComplete="off">
                                     <TextField
                                         id="filled-number"
@@ -153,7 +161,6 @@ class Purchase extends Component {
                                     COMPLETE PURCHASE
                                 </Button>
                             </Grid>
-
 
                         </Grid>
 
