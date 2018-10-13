@@ -16,7 +16,7 @@ class Home extends Component {
   render() {
     return (
       <Grid container justify="center">
-        <Grid item lg={6} md={6} sm={8} xs={8}>
+        <Grid item lg={6} md={6} sm={10} xs={10}>
             <Main />
         </Grid>
         <Footer />
