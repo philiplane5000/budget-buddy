@@ -103,13 +103,13 @@ class Budget extends Component {
         return (
 
             <Grid container justify="center">
-                <Grid item lg={6} md={8} sm={10} xs={12} spacing={40}>
+                <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
                     <Wrapper>
                         <Header headerText="Manage Your Budget" />
 
                         <Grid container justify="center">
 
-                            <Grid item lg={12} md={12} sm={10} xs={10}>
+                            <Grid item lg={10} md={10} sm={10} xs={10}>
 
                                 <CategoryIcon
                                     bg="#2fc4a6"
@@ -118,7 +118,7 @@ class Budget extends Component {
                                 />
                             </Grid>
 
-                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                            <Grid item lg={10} md={10} sm={10} xs={10}>
                                 <FormWrapper>
 
                                     <InputWrapper>
@@ -151,7 +151,7 @@ class Budget extends Component {
                             {
                                 this.state.budgets.length > 0
                                     ? this.state.budgets.map(doc =>
-                                        <Grid item lg={6} md={6} sm={12} xs={12}>
+                                        <Grid item lg={6} md={6} sm={10} xs={10}>
                                             <BudgetItem
                                                 key={doc._id}
                                                 category={doc.category}
