@@ -7,7 +7,7 @@ const Btn = styled('button')(
         cursor: 'pointer',
         color: 'white',
         height: '60px',
-        width: 190,
+        width: 200,
         minWidth: 50,
         backgroundColor: '#1162bc',
         margin: 10,
