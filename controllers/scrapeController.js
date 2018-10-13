@@ -36,7 +36,8 @@ module.exports = {
 
                 result.title = $(this).find(".js-list-wrap").find(".hgpm-list-text").find(".js-asset-headline").text().trim();
                 result.excerpt = $(this).find(".js-list-wrap").find(".hgpm-list-text").find(".hgpm-back-listview-text").text().trim();
-                result.link = $(this).find("a").attr("href");
+                let todayLink = $(this).find("a").attr("href");
+                result.link = `https://www.usatoday.com${todayLink}`
 
                 allArticles.push(result);
 
@@ -57,7 +58,8 @@ module.exports = {
 
                 result.title = $(this).find(".news-list__block").find(".news-list__body").find("a").find("h3").text().trim();
                 result.excerpt = $(this).find(".news-list__block").find(".news-list__body").find("p").text().trim()
-                result.link = $(this).find("a").attr("href");
+                let streetLink = $(this).find("a").attr("href");
+                result.link = `https://www.thestreet.com${streetLink}`
 
                 allArticles.push(result);
 
