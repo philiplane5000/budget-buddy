@@ -13,7 +13,9 @@
     "react-motion": "^0.5.2",
     "react-motion-drawer": "^3.1.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "sweetalert2": "^7.28.5",
+    "sweetalert2-react-content": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

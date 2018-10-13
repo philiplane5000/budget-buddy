@@ -9,16 +9,17 @@ const BudgetWrapper = styled("div")({
   margin: '7.5px 0'
 });
 
-const EditButton = styled('div')({
-    textAlign: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    width: 40,
-    backgroundColor: '#dc3545',
-    borderRadius: 10,
-  })
+const EditButton = styled('div')`
+  cursor: pointer;
+  textAlign: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 40px;
+  border-radius: 10px;
+  background-color: ${props => props.bg}
+`
 
 const CategoryInput = styled('input')({
   fontSize: 16,
@@ -34,20 +35,25 @@ const CategoryInput = styled('input')({
   borderRadius: 10,
 })
 
-const Label = styled('div')({
-  fontFamily: 'Calibri',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#1162bc',
-  color: 'white',
-  marginRight: 10,
-  borderRadius: 10,
-  fontSize: 20,
-  width: 200
-})
+const Label = styled('div')`
+  font-family: 'Calibri';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1162bc;
+  color: white;
+  margin-right: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 145px;
+  @media (min-width: 1460px) {
+    width: 185px;
+    font-size: 22px;
+  }
+`
 
 const BudgetItem = props => {
+
   return (
     <BudgetWrapper>
       <Label>{props.label}</Label>
@@ -55,9 +61,15 @@ const BudgetItem = props => {
         category={props.category}
         amount={props.amount}
         onChange={props.onChangeFn}
-        value={props.amount}
+        value={props.amount.toFixed(2)}
+        disabled
       />
-      <EditButton category={props.category} amount={props.amount} onClick={()=> console.log(props)}>+</EditButton>
+      <EditButton
+        onClick={(e) => props.handleClick(props.category, props.amount, props._id)}
+        bg={props.bg}
+      >
+        <i class="far fa-edit"></i>
+      </EditButton>
     </BudgetWrapper>
   )
 }

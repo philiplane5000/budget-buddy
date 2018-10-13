@@ -19,7 +19,7 @@ const IconWrapper = styled('div')`
     margin-right: 40px;
     border: 2.5px solid #1162bc;
 
-    @media (max-width: 860px) {
+    @media (max-width: 980px) {
         display: none;
       }
 `
