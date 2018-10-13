@@ -10,19 +10,9 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Wrapper from '../components/Wrapper';
 
 const MySwal = withReactContent(Swal)
-
-const Wrapper = styled('div')(
-    {
-        border: '2px solid rgba(0,0,0,0.1)',
-        paddingTop: 20,
-        paddingBottom: 40,
-        borderRadius: 10,
-        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',
-        backgroundColor: '#f9f9f9'
-    }
-)
 
 class Purchase extends Component {
 
