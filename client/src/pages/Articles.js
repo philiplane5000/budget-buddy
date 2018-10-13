@@ -5,16 +5,8 @@ import Grid from "@material-ui/core/Grid"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Article from "../components/Article"
+import Wrapper from "../components/Wrapper"
 
-const Wrapper = styled('div')(
-    {
-        border: '3px solid #1162bc',
-        textAlign: 'center',
-        margin: '20px 0',
-        backgroundColor: '#f9f9f9',
-        borderRadius: 10
-    }
-)
 
 class Articles extends Component {
 

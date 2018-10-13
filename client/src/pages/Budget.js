@@ -9,20 +9,10 @@ import Footer from "../components/Footer";
 import TextField from "@material-ui/core/TextField";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Wrapper from "../components/Wrapper";
 
 const MySwal = withReactContent(Swal)
 
-const Wrapper = styled('div')(
-    {
-        border: '3px solid #1162bc',
-        borderRadius: '5px',
-        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);',
-        padding: '20px 20px 40px 20px',
-        itemAlign: 'center',
-        color: '#092d63',
-        backgroundColor: '#f9f9f9'
-    }
-)
 
 const FormWrapper = styled('div')`
         display: flex;
@@ -111,6 +101,7 @@ class Budget extends Component {
 
     render() {
         return (
+
             <Grid container justify="center">
                 <Grid item lg={6} md={8} sm={10} xs={12} spacing={40}>
                     <Wrapper>
