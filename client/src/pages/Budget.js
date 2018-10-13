@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from "react-emotion";
+import styled from 'react-emotion';
 import Grid from "@material-ui/core/Grid";
 import BudgetItem from "../components/BudgetItem";
 import API from "../utils/API";
