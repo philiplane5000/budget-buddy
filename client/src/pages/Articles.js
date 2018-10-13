@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import styled from 'react-emotion'
 import API from '../utils/API'
 import Grid from '@material-ui/core/Grid'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Article from '../components/Article'
-import Wrapper from "../components/Wrapper"
-import Button from "../components/Button"
+import Wrapper from '../components/Wrapper'
+import Button from '../components/Button'
 
 
 class Articles extends Component {
