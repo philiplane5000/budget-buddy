@@ -21,7 +21,10 @@ module.exports = {
 
             })
             res.json(allArticles);
-        });
+        })
+        .catch (function(err) {
+            res.send(err)
+        })
     },
     findToday: (req, res) => {
         axios.get("https://www.usatoday.com/money/personal-finance").then(function (response) {
@@ -44,6 +47,9 @@ module.exports = {
             })
             res.json(allArticles);
         })
+        .catch (function(err) {
+            res.send(err)
+        })
     },
     findStreet: (req, res) => {
         axios.get("https://www.thestreet.com/personal-finance").then(function (response) {
@@ -65,6 +71,9 @@ module.exports = {
 
             })
             res.json(allArticles);
+        })
+        .catch (function(err) {
+            res.send(err)
         })
     }
 
