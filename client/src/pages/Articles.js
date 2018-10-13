@@ -3,8 +3,8 @@ import styled from 'react-emotion'
 import API from '../utils/API'
 import Grid from '@material-ui/core/Grid'
 import Header from '../components/Header'
-import Footer from "../components/Footer"
-import Article from "../components/Article"
+import Footer from '../components/Footer'
+import Article from '../components/Article'
 import Wrapper from "../components/Wrapper"
 import Button from "../components/Button"
 
