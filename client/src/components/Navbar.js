@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
-import styled, { keyframes } from 'react-emotion'
-import Drawer from 'react-motion-drawer';
-
+import styled, { keyframes } from 'react-emotion';
+import Icon from '../image/money-pig.png';
 
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
@@ -26,26 +25,41 @@ const NavWrapper = styled('div')(
     {
         display: 'flex',
         height: 80,
+        justifyContent: 'space-between'
     }
 )
 
-const Title = styled('div')(
-    {
-        fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
-        color: 'white',
-        flex: 1,
-        alignSelf: 'center',
-    }
-)
+const Title = styled('div')`
+    
+        font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+        color: white;
+        flex: 1;
+        align-self: center;
+    `
+const IconWrapper = styled('div')`
+          max-height: 100px;
+          max-wdith: 100px;
+          display: none;
+        @media (max-width: 763px) {
+            display: block;  
+  }
 
-const Logo = styled('h1')(
-    {
-        padding: 5,
-        marginLeft: 5,
-        fontSize: 45,
-        animation: `${bounce} 1s ease`
-    }
-)
+
+` 
+
+const Logo = styled('h1')`
+
+    
+        padding: 5px;
+        margin-left: 5px;
+        font-size: 45px;
+        animation: ${bounce} 1s ease;
+
+        @media (max-width: 763px) {
+            display: none;  
+          }
+    `
+
 
 const LinksWrapper = styled('div')(
     {
@@ -88,26 +102,29 @@ const Bar = styled('div')`
         padding: 0 0 0 15px;
 
 `
+const handleClick = (e) => {
+    e.preventDefault();
+    alert('button works');
+    let links = <LinkItem/>;
+    console.log(links);
+}
 
-const Navbar = () => {
+const Navbar = props => {
     return (
         <AppBar position="static" style={{backgroundColor: "#092d63", borderBottom:"2.5px solid #3de28c"}}>
             <NavWrapper>
                 <Title>
                     <Logo>BUDGET BUDDY</Logo>
+                    <IconWrapper>
+                    <img style={{ height: '80px', width: '80px'}}src={Icon} alt='moneypig' />
+                    </IconWrapper>
                 </Title>
-                <HamWrapper>
+               
+                <HamWrapper onClick={handleClick}> 
                     <Bar/>
                     <Bar/>
                     <Bar/>
                 </HamWrapper>
-                <Drawer open={true} >
-                   <ul>
-                       <li>Home</li>
-                       <li>Things</li>
-                       <li>Thats</li>
-                   </ul>
-                </Drawer>
                 <LinksWrapper>
                     <Link to="/" style={{textDecoration: 'none'}}><LinkItem>HOME</LinkItem></Link>
                     <Link to="/budget" style={{textDecoration: 'none'}}><LinkItem>BUDGET</LinkItem></Link>

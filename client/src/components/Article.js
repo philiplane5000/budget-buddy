@@ -7,7 +7,7 @@ const Wrapper = styled('div')(
         border: '6px double #2fc4ac',
         borderRadius: 10,
         padding: 20,
-        margin: 20
+        margin: 20,
     }
 )
 
