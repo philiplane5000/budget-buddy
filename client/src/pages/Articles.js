@@ -24,7 +24,7 @@ class Articles extends Component {
         return (
             <Grid container justify="center">
 
-                <Grid item lg={8} md={10} sm={10} xs={12}>
+                <Grid item lg={8} md={10} sm={10} xs={10}>
                     <Wrapper>
                         <Header headerText="Articles Page"/>
 

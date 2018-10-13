@@ -72,7 +72,7 @@ class Purchase extends Component {
 
         return (
             <Grid container justify="center">
-                <Grid item lg={6} md={8} sm={10} xs={12}>
+                <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
 
                         <Header headerText="Make a Purchase" />

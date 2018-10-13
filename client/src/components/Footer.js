@@ -7,7 +7,6 @@ const Wrapper = styled('div')(
     fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
     width: '100%',
     backgroundColor: '#092d63',
-    marginTop: 50,
     height: 60,
     borderTop: '2px solid #3de28c',
     left: 0,
