@@ -18,6 +18,14 @@ export default {
 
   findUSNews: () => {
     return axios.get("/api/scrape/usnews");
+  },
+
+  findToday: () => {
+    return axios.get("/api/scrape/usatoday");
+  },
+
+  findStreet: () => {
+    return axios.get("/api/scrape/street");
   }
 
 };
