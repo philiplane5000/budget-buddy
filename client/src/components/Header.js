@@ -1,16 +1,14 @@
-import React from "react";
-import styled from "react-emotion";
+import React from 'react';
+import styled from 'react-emotion';
 
-const HeaderWrapper = styled('div')(
-    {
-    textAlign: 'center',
-    fontFamily: 'Roboto',
-    fontSize: 40,
-    fontWeight: 400,
-    color: '#1162bc',
-    margin: 10
-    }
-)
+const HeaderWrapper = styled('div')`
+    text-align: center;
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: 400;
+    color: #1162bc;
+    margin: 10px;
+`;
 
 const Header = (props) => (
     <HeaderWrapper>

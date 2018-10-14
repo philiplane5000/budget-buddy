@@ -1,32 +1,30 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-const Wrapper = styled('div')(
-  {
-    color: 'white',
-    fontFamily: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif',
-    width: '100%',
-    backgroundColor: '#092d63',
-    height: 60,
-    borderTop: '2px solid #3de28c',
-    left: 0,
-    bottom: 0,
-    position: 'fixed',
-  }
-)
+const Wrapper = styled('div')`
+  
+    color: white;
+    font-family: roboto;
+    width: 100%;
+    background-color: #092d63;
+    height: 60px,
+    border-top: 2px solid #3de28c;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+`;
 
-const Logo = styled('div')(
-    {
-        width: 200,
-        margin: '0 auto'
-    }
-)
+const Logo = styled('div')`
+    
+        width: 200px;
+        margin: 0 auto;  
+`;
 
 const Footer = () => {
   return (
     <Wrapper>
       <Logo>
-        <h3>&copy; BUDGET BUDDY &copy;</h3>
+        <h4>&copy; BUDGET BUDDY &copy;</h4>
       </Logo>
     </Wrapper>
   );

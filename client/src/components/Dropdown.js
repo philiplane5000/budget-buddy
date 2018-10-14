@@ -2,22 +2,26 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import styled from "react-emotion";
-import { Link } from "react-router-dom";
+import styled from 'react-emotion';
+import { Link } from 'react-router-dom';
 
-const HamWrapper = styled("div")`
+const HamWrapper = styled('div')`
   align-self: center;
   display: none;
 
+  :hover {
+    transform: scale(1.1);
+    } 
+
   @media (max-width: 763px) {
     display: block;
-    margin: 10px;
+    margin: 5px;
   }
 `;
 
-const Bar = styled("div")`
-  width: 35px;
-  height: 5px;
+const Bar = styled('div')`
+  width: 40px;
+  height: 7px;
   background-color: white;
   margin: 8px 0;
   padding: 0 0 0 15px;
