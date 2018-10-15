@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "react-emotion";
+import React from 'react';
+import styled from 'react-emotion';
 
-const BudgetWrapper = styled("div")({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  fontFamily: 'Roboto',
-  margin: '7.5px 0'
-});
+const BudgetWrapper = styled('div')`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: roboto;
+  margin: 7.5px 0;
+`;
 
 const EditButton = styled('div')`
   cursor: pointer;
-  textAlign: center;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,22 +21,22 @@ const EditButton = styled('div')`
   background-color: ${props => props.bg}
 `
 
-const CategoryInput = styled('input')({
-  fontSize: 16,
-  textAlign: 'center',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'black',
-  height: 40,
-  width: 75,
-  border: '1px solid black',
-  marginRight: 10,
-  borderRadius: 10,
-})
+const CategoryInput = styled('input')`
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  height: 40px;
+  width: 75px;
+  border: 1px solid black;
+  margin-right: 10px;
+  border-radius: 10px;
+`;
 
 const Label = styled('div')`
-  font-family: 'Calibri';
+  font-family: 'roboto, sans-serif';
   display: flex;
   align-items: center;
   justify-content: center;

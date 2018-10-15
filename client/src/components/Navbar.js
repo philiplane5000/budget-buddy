@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
-import styled, { keyframes } from "react-emotion";
-import Icon from "../image/money-pig.png";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import styled, { keyframes } from 'react-emotion';
+import Icon from '../image/money-pig.png';
 import SimpleMenu from './Dropdown';
 
 const bounce = keyframes`
@@ -22,28 +22,30 @@ const bounce = keyframes`
   }
 `;
 
-const NavWrapper = styled("div")({
-  display: "flex",
-  height: 80,
-  justifyContent: "space-between"
-});
+const NavWrapper = styled('div')`
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+`;
 
-const Title = styled("div")`
-  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+const Title = styled('div')`
+  font-family: bebas, sans-serif;
   color: white;
   flex: 1;
   align-self: center;
 `;
-const IconWrapper = styled("div")`
+
+const IconWrapper = styled('div')`
   max-height: 100px;
   max-wdith: 100px;
   display: none;
+
   @media (max-width: 763px) {
     display: block;
   }
 `;
 
-const Logo = styled("h1")`
+const Logo = styled('h1')`
   padding: 5px;
   margin-left: 5px;
   font-size: 45px;
@@ -54,49 +56,30 @@ const Logo = styled("h1")`
   }
 `;
 
-const LinksWrapper = styled("div")({
-  color: "white",
-  alignSelf: "center"
-});
+const LinksWrapper = styled('div')`
+  color: white;
+  align-self: center;
+`;
 
-const LinkItem = styled("p")`
-  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+const LinkItem = styled('p')`
+  font-family: Bebas, sans-serif;
   color: white;
   text-decoration: none;
   border-bottom: none;
   padding: 0 15px;
   display: inline-block;
   font-weight: bold;
-  font-size: 25px;
-
+  font-size: 20px;
+  transition: all .2s ease-in-out;
+  :hover {
+    transform: scale(1.2);
+    border-radius: 5px;
+    } 
+  
   @media (max-width: 900px) {
     display: none;
   }
 `;
-
-// const HamWrapper = styled("div")`
-//   align-self: center;
-//   display: none;
-
-//   @media (max-width: 763px) {
-//     display: block;
-//     margin: 10px;
-//   }
-// `;
-
-// const Bar = styled("div")`
-//   width: 35px;
-//   height: 5px;
-//   background-color: white;
-//   margin: 8px 0;
-//   padding: 0 0 0 15px;
-// `;
-// const handleClick = e => {
-//   e.preventDefault();
-//   alert("button works");
-//   let links = <LinkItem />;
-//   console.log(links);
-// };
 
 const Navbar = props => {
   return (
@@ -118,10 +101,8 @@ const Navbar = props => {
             />
           </IconWrapper>
         </Title>
-
         <SimpleMenu />
         <LinksWrapper>
-          
           <Link to="/" style={{ textDecoration: "none" }}>
             <LinkItem>HOME</LinkItem>
           </Link>
