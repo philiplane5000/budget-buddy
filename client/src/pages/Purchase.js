@@ -103,7 +103,7 @@ class Purchase extends Component {
                             <Grid container justify="space-around" spacing={16}>
                                 {this.state.budgets.length > 0 ? (
                                     this.state.budgets.map(doc => (
-                                        <Grid item lg={4} md={4} sm={6} xs={6}>
+                                        <Grid item lg={4} md={4} sm={6} xs={12}>
                                             <BudgetIcon
                                                 bg={this.state._id === doc._id ? "#2fc4ac" : "#1162bc"}
                                                 key={doc._id}
