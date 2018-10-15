@@ -13,10 +13,12 @@ const MainWrapper = styled('div')`
     margin-top: 40px;
 `
 
-const Main = () => {
+const Main = props => {
   return (
     <MainWrapper>
-      <Header headerText="Total Budget = $2000.00"/>
+      <Header>
+      Total Budget = ${props.total}
+      </Header>
       <Button>
         <Link to="/purchase" style={{ textDecoration: "none", color: "white" }}>
           Make a Purchase

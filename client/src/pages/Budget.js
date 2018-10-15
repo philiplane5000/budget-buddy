@@ -77,7 +77,7 @@ class Budget extends Component {
         API.updateBudgetCategory(this.state._id, { amount: adjusted })
             .then(dbBudget => {
                 MySwal.fire({
-                    title: <h3 style={{fontFamily: 'Calibri'}}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                    title: <h3 style={{ fontFamily: 'Calibri' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
                     type: 'success',
                     confirmButtonText: 'Ok'
                 })
@@ -105,7 +105,9 @@ class Budget extends Component {
             <Grid container justify="center">
                 <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
                     <Wrapper>
-                        <Header headerText="Manage Your Budget" />
+                        <Header>
+                            Manage Your Budget
+                        </Header>
 
                         <Grid container justify="center">
 
@@ -147,24 +149,25 @@ class Budget extends Component {
                                 </FormWrapper>
 
                             </Grid>
-
-                            {
-                                this.state.budgets.length > 0
-                                    ? this.state.budgets.map(doc =>
-                                        <Grid item lg={6} md={6} sm={10} xs={10}>
-                                            <BudgetItem
-                                                key={doc._id}
-                                                category={doc.category}
-                                                bg={(this.state.category === doc.category) ? "#2fc4a6" : "#dc3545"}
-                                                label={doc.label}
-                                                amount={doc.amount}
-                                                _id={doc._id}
-                                                handleClick={this.handleClick}
-                                            />
-                                        </Grid>
-                                    )
-                                    : <h2>loading</h2>
-                            }
+                            <Grid container justify="space-around">
+                                {
+                                    this.state.budgets.length > 0
+                                        ? this.state.budgets.map(doc =>
+                                            <Grid item lg={6} md={6} sm={10} xs={10}>
+                                                <BudgetItem
+                                                    key={doc._id}
+                                                    category={doc.category}
+                                                    bg={(this.state.category === doc.category) ? "#2fc4a6" : "#1162bc"}
+                                                    label={doc.label}
+                                                    amount={doc.amount}
+                                                    _id={doc._id}
+                                                    handleClick={this.handleClick}
+                                                />
+                                            </Grid>
+                                        )
+                                        : <h2>loading</h2>
+                                }
+                            </Grid>
                         </Grid>
 
                     </Wrapper>

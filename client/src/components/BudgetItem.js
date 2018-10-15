@@ -18,7 +18,6 @@ const EditButton = styled('div')`
   color: white;
   width: 40px;
   border-radius: 10px;
-  background-color: ${props => props.bg}
 `
 
 const CategoryInput = styled('input')`
@@ -36,19 +35,20 @@ const CategoryInput = styled('input')`
 `;
 
 const Label = styled('div')`
+  cursor: pointer;
   font-family: 'roboto, sans-serif';
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1162bc;
+  background: ${props => props.bg};
   color: white;
   margin-right: 10px;
   border-radius: 10px;
   font-size: 18px;
-  width: 145px;
+  width: 185px;
   @media (min-width: 1460px) {
-    width: 185px;
-    font-size: 22px;
+    width: 230px;
+    font-size: 24px;
   }
 `
 
@@ -56,7 +56,12 @@ const BudgetItem = props => {
 
   return (
     <BudgetWrapper>
-      <Label>{props.label}</Label>
+      <Label
+      bg={props.bg}
+      onClick={(e) => props.handleClick(props.category, props.amount, props._id)}
+      >
+      {props.label}
+      </Label>
       <CategoryInput
         category={props.category}
         amount={props.amount}
@@ -64,12 +69,6 @@ const BudgetItem = props => {
         value={props.amount.toFixed(2)}
         disabled
       />
-      <EditButton
-        onClick={(e) => props.handleClick(props.category, props.amount, props._id)}
-        bg={props.bg}
-      >
-        <i class="far fa-edit"></i>
-      </EditButton>
     </BudgetWrapper>
   )
 }

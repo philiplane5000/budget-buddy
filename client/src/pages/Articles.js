@@ -39,7 +39,9 @@ class Articles extends Component {
 
                 <Grid item lg={8} md={10} sm={10} xs={10}>
                     <Wrapper>
-                        <Header headerText="Staying on Track" />
+                        <Header>
+                            Staying on Track
+                        </Header>
 
                         <Button onClick={this.usNews}>
                             US News
