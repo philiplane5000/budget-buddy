@@ -2,28 +2,26 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 
 module.exports = {
-    findUSNews: (req, res) => {
-        axios.get("https://money.usnews.com/money/personal-finance/saving-and-budgeting").then(function (response) {
+    findCnbc: (req, res) => {
+        axios.get("https://www.cnbc.com/personal-finance").then(function (response) {
 
             let $ = cheerio.load(response.data);
 
             let allArticles = [];
 
-            $(".medium-top").each(function (i, element) {
+            $(".cnbcnewsstory").each(function (i, element) {
 
                 let result = {};
 
-                result.title = $(this).find("h3").text().trim();
-                result.excerpt = $(this).find(".show-for-medium-up").find('.block-flush').text().trim();
-                result.link = $(this).find("a").attr("href");
+                result.title = $(this).find(".headline").find("a").text().trim();
+                result.excerpt = $(this).find("p").text().trim();
+                let cnbcLink = $(this).find("a").attr("href");
+                result.link = `https://www.cnbc.com${cnbcLink}`
 
                 allArticles.push(result);
 
             })
             res.json(allArticles);
-        })
-        .catch (function(err) {
-            res.send(err)
         })
     },
     findToday: (req, res) => {
@@ -47,9 +45,6 @@ module.exports = {
             })
             res.json(allArticles);
         })
-        .catch (function(err) {
-            res.send(err)
-        })
     },
     findStreet: (req, res) => {
         axios.get("https://www.thestreet.com/personal-finance").then(function (response) {
@@ -71,9 +66,6 @@ module.exports = {
 
             })
             res.json(allArticles);
-        })
-        .catch (function(err) {
-            res.send(err)
         })
     }
 
