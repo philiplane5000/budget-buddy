@@ -1,9 +1,9 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import styled from 'react-emotion';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import styled from 'react-emotion'
+import { Link } from 'react-router-dom'
 
 const HamWrapper = styled('div')`
   align-self: center;
@@ -17,7 +17,7 @@ const HamWrapper = styled('div')`
     display: block;
     margin: 5px;
   }
-`;
+`
 
 const Bar = styled('div')`
   width: 40px;
@@ -25,23 +25,23 @@ const Bar = styled('div')`
   background-color: white;
   margin: 8px 0;
   padding: 0 0 0 15px;
-`;
+`
 
 class SimpleMenu extends React.Component {
   state = {
     anchorEl: null,
-  };
+  }
 
   handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+    this.setState({ anchorEl: event.currentTarget })
+  }
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+    this.setState({ anchorEl: null })
+  }
 
   render() {
-    const { anchorEl } = this.state;
+    const { anchorEl } = this.state
 
     return (
       <div>
@@ -76,9 +76,9 @@ class SimpleMenu extends React.Component {
           </Link>
         </Menu>
       </div>
-    );
+    )
   }
 }
 
-export default SimpleMenu;
+export default SimpleMenu
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'react-emotion';
+import React from 'react'
+import styled from 'react-emotion'
 
 const HeaderWrapper = styled('div')`
     text-align: center;
@@ -8,7 +8,7 @@ const HeaderWrapper = styled('div')`
     font-weight: 400;
     color: #1162bc;
     margin: 10px;
-`;
+`
 
 const Header = (props) => (
     <HeaderWrapper>
@@ -17,4 +17,4 @@ const Header = (props) => (
     </HeaderWrapper>
 )
 
-export default Header;
+export default Header

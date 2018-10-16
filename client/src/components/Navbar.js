@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import styled, { keyframes } from 'react-emotion';
-import Icon from '../image/money-pig.png';
-import SimpleMenu from './Dropdown';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import styled, { keyframes } from 'react-emotion'
+import Icon from '../image/money-pig.png'
+import SimpleMenu from './Dropdown'
 
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
@@ -20,20 +20,20 @@ const bounce = keyframes`
   90% {
     transform: translate3d(0,-4px,0);
   }
-`;
+`
 
 const NavWrapper = styled('div')`
   display: flex;
   height: 80px;
   justify-content: space-between;
-`;
+`
 
 const Title = styled('div')`
   font-family: bebas, sans-serif;
   color: white;
   flex: 1;
   align-self: center;
-`;
+`
 
 const IconWrapper = styled('div')`
   max-height: 100px;
@@ -43,7 +43,7 @@ const IconWrapper = styled('div')`
   @media (max-width: 763px) {
     display: block;
   }
-`;
+`
 
 const Logo = styled('h1')`
   padding: 5px;
@@ -54,12 +54,12 @@ const Logo = styled('h1')`
   @media (max-width: 763px) {
     display: none;
   }
-`;
+`
 
 const LinksWrapper = styled('div')`
   color: white;
   align-self: center;
-`;
+`
 
 const LinkItem = styled('p')`
   font-family: Bebas, sans-serif;
@@ -79,7 +79,7 @@ const LinkItem = styled('p')`
   @media (max-width: 900px) {
     display: none;
   }
-`;
+`
 
 const Navbar = props => {
   return (
@@ -118,7 +118,7 @@ const Navbar = props => {
         </LinksWrapper>
       </NavWrapper>
     </AppBar>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

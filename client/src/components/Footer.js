@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'react-emotion';
+import React from 'react'
+import styled from 'react-emotion'
 
 const Wrapper = styled('div')`
   
@@ -12,13 +12,13 @@ const Wrapper = styled('div')`
     left: 0;
     bottom: 0;
     position: fixed;
-`;
+`
 
 const Logo = styled('div')`
     
         width: 200px;
         margin: 0 auto;  
-`;
+`
 
 const Footer = () => {
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
         <h4>&copy; BUDGET BUDDY &copy;</h4>
       </Logo>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

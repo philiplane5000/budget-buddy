@@ -1,7 +1,7 @@
-const router = require("express").Router();
-const budgetRoutes = require("./budgets");
+const router = require('express').Router()
+const budgetRoutes = require('./budgets')
 
 // Budget routes
-router.use("/budgets", budgetRoutes);
+router.use('/budgets', budgetRoutes)
 
-module.exports = router;
+module.exports = router

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'react-emotion';
+import React from 'react'
+import styled from 'react-emotion'
 
 const Btn = styled('button')`
         font-family: roboto;
@@ -20,7 +20,7 @@ const Btn = styled('button')`
             background-color: #3de28c;
             transform: scale(1.1);
         }
-`;
+`
 
 const Button = props => (
     <Btn {...props}>
@@ -28,4 +28,4 @@ const Button = props => (
     </Btn>
 )
 
-export default Button;
+export default Button
