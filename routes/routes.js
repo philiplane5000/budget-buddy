@@ -14,7 +14,7 @@ module.exports = function (app) {
 
     app.delete("/api/budgets/:id", budgetController.remove)
 
-    app.get("/api/scrape/usnews", scrapeController.findUSNews)
+    app.get("/api/scrape/cnbc", scrapeController.findCnbc)
 
     app.get("/api/scrape/usatoday", scrapeController.findToday)
 

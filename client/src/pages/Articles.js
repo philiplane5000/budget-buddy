@@ -14,8 +14,8 @@ class Articles extends Component {
         articles: []
     }
 
-    usNews = () => {
-        API.findUSNews().then(articles => {
+    cnbcNews = () => {
+        API.findCnbc().then(articles => {
             this.setState({ articles: articles.data })
         })
     }
@@ -43,16 +43,16 @@ class Articles extends Component {
                             Staying on Track
                         </Header>
 
-                        <Button onClick={this.usNews}>
-                            US News
+                        <Button onClick={this.todayNews}>
+                            USA Today
                          </Button>
 
                         <Button onClick={this.streetNews}>
                             The Street
                          </Button>
 
-                        <Button onClick={this.todayNews}>
-                            USA Today
+                         <Button onClick={this.cnbcNews}>
+                            CNBC
                          </Button>
 
                         {this.state.articles.length > 0 ? (
