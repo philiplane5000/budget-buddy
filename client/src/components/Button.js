@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 
 const Btn = styled('button')`
-        font-family: roboto;
+        font-family: 'Roboto', sans-serif;
         cursor: pointer;
         color: white;
         height: 70px;

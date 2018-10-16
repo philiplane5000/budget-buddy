@@ -43,7 +43,7 @@ const Headline = styled('h3')(
     {
         fontSize: 24,
         color: '#1162bc',
-        fontFamily: 'roboto'
+        fontFamily: 'Roboto, sans-serif'
     }
 )
 

@@ -46,7 +46,7 @@ class Purchase extends Component {
         API.updateBudgetCategory(this.state._id, { amount: adjusted })
             .then(dbBudget => {
                 MySwal.fire({
-                    title: <h4 style={{ fontFamily: 'Calibri' }}>TRANSACTION ACCOUNTED FOR!</h4>,
+                    title: <h4 style={{ fontFamily: 'Roboto, sans-serif' }}>TRANSACTION ACCOUNTED FOR!</h4>,
                     type: 'success',
                     confirmButtonText: 'Ok'
                 })

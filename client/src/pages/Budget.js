@@ -41,7 +41,7 @@ const Button = styled('div')({
     marginTop: 10,
     backgroundColor: '#ffc107',
     color: 'white',
-    fontFamily: 'roboto',
+    fontFamily: 'Roboto'
 
 })
 
@@ -77,7 +77,7 @@ class Budget extends Component {
         API.updateBudgetCategory(this.state._id, { amount: adjusted })
             .then(dbBudget => {
                 MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Calibri' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
                     type: 'success',
                     confirmButtonText: 'Ok'
                 })
