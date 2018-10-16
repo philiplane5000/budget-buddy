@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'react-emotion'
 
 const Wrapper = styled('div')`
-  
     color: white;
-    font-family: roboto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     width: 100%;
     background-color: #092d63;
     height: 60px,
@@ -15,7 +15,6 @@ const Wrapper = styled('div')`
 `
 
 const Logo = styled('div')`
-    
         width: 200px;
         margin: 0 auto;  
 `
@@ -24,7 +23,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <Logo>
-        <h4>&copy; BUDGET BUDDY &copy;</h4>
+        <h4>2018 &copy; Bean Team</h4>
       </Logo>
     </Wrapper>
   )

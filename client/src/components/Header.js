@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 
 const HeaderWrapper = styled('div')`
     text-align: center;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 40px;
     font-weight: 400;
     color: #1162bc;

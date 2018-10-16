@@ -36,7 +36,7 @@ const CategoryInput = styled('input')`
 
 const Label = styled('div')`
   cursor: pointer;
-  font-family: 'roboto, sans-serif';
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +46,12 @@ const Label = styled('div')`
   border-radius: 10px;
   font-size: 18px;
   width: 185px;
+  transition: all .2s ease-in-out;
+  :hover {
+    background-color: #3de28c;
+    transform: scale(1.1);
+  }
+
   @media (min-width: 1460px) {
     width: 230px;
     font-size: 24px;
