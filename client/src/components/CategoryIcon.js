@@ -4,7 +4,7 @@ import styled from 'react-emotion'
 const IconWrapper = styled('div')`
     display: flex;
     justify-content: center;
-`;
+`
 
 const Icon = styled('div')`
     display: flex;
@@ -46,4 +46,4 @@ const CategoryIcon = props => (
     </IconWrapper>
 )
 
-export default CategoryIcon;
+export default CategoryIcon

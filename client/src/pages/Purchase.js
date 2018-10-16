@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import styled from "react-emotion"
-import Grid from "@material-ui/core/Grid"
-import API from "../utils/API"
-import BudgetIcon from "../components/BudgetIcon"
-import CategoryIcon from "../components/CategoryIcon"
-import TextField from "@material-ui/core/TextField"
-import Button from "../components/Button"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import Wrapper from '../components/Wrapper';
+import styled from 'react-emotion'
+import Grid from '@material-ui/core/Grid'
+import API from '../utils/API'
+import BudgetIcon from '../components/BudgetIcon'
+import CategoryIcon from '../components/CategoryIcon'
+import TextField from '@material-ui/core/TextField'
+import Button from '../components/Button'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import Wrapper from '../components/Wrapper'
 
 const MySwal = withReactContent(Swal)
 
@@ -31,18 +31,18 @@ class Purchase extends Component {
     }
 
     handleInputChange = e => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         this.setState({
             [name]: value
-        });
-    };
+        })
+    }
 
     handleClick = (amount, category, _id) => {
         this.setState({ amount, category, _id })
     }
 
     handlePurchase = () => {
-        let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2);
+        let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2)
         API.updateBudgetCategory(this.state._id, { amount: adjusted })
             .then(dbBudget => {
                 MySwal.fire({
@@ -51,14 +51,14 @@ class Purchase extends Component {
                     confirmButtonText: 'Ok'
                 })
                 API.getCurrentBudget().then(res => {
-                    const stateCopy = this.state;
-                    stateCopy.budgets = res.data;
+                    const stateCopy = this.state
+                    stateCopy.budgets = res.data
                     return stateCopy
                 }).then(stateCopy => {
-                    stateCopy.amount = adjusted;
-                    stateCopy.category = dbBudget.data.label;
-                    stateCopy._id = dbBudget.data._id;
-                    stateCopy.transaction = '0.00';
+                    stateCopy.amount = adjusted
+                    stateCopy.category = dbBudget.data.label
+                    stateCopy._id = dbBudget.data._id
+                    stateCopy.transaction = '0.00'
                     this.setState(stateCopy)
                 })
 
@@ -71,7 +71,7 @@ class Purchase extends Component {
     render() {
 
         return (
-            <Grid container justify="center">
+            <Grid container justify='center'>
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
 
@@ -79,19 +79,19 @@ class Purchase extends Component {
                             Make a Purchase
                         </Header>
 
-                        <Grid container justify="space-around">
+                        <Grid container justify='space-around'>
 
                             {this.state.category !== '' ? (
                                 <Grid item lg={12} md={12} sm={12} xs={12}>
                                     <CategoryIcon
-                                        bg="#2fc4a6"
+                                        bg='#2fc4a6'
                                         category={this.state.category}
                                         amount={(this.state.amount - this.state.transaction).toFixed(2)}
                                     />
                                 </Grid>
                             ) : (
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <CategoryIcon bg="#2fc4ac" category="pick a category" amount="--" />
+                                        <CategoryIcon bg='#2fc4ac' category='pick a category' amount='--' />
                                     </Grid>
 
                                 )
@@ -100,12 +100,12 @@ class Purchase extends Component {
                         </Grid>
 
                         <div style={{ margin: 40 }}>
-                            <Grid container justify="space-around" spacing={16}>
+                            <Grid container justify='space-around' spacing={16}>
                                 {this.state.budgets.length > 0 ? (
                                     this.state.budgets.map(doc => (
                                         <Grid item lg={4} md={4} sm={6} xs={12}>
                                             <BudgetIcon
-                                                bg={this.state._id === doc._id ? "#2fc4ac" : "#1162bc"}
+                                                bg={this.state._id === doc._id ? '#2fc4ac' : '#1162bc'}
                                                 key={doc._id}
                                                 _id={doc._id}
                                                 amount={doc.amount}
@@ -119,7 +119,7 @@ class Purchase extends Component {
                                 ) : (
                                         <Grid item lg={12} md={12} sm={12} xs={12}>
                                             <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                                                <i class="fa fa-cloud-download-alt"></i>
+                                                <i class='fa fa-cloud-download-alt'></i>
                                             </div>
                                         </Grid>
                                     )
@@ -127,23 +127,23 @@ class Purchase extends Component {
                             </Grid>
                         </div>
 
-                        <Grid container justify="center">
+                        <Grid container justify='center'>
 
                             <Grid item lg={7} md={7} sm={8} xs={8}>
-                                <form noValidate autoComplete="off">
+                                <form noValidate autoComplete='off'>
                                     <TextField
-                                        id="filled-number"
-                                        label="Transaction Amount"
-                                        name="transaction"
+                                        id='filled-number'
+                                        label='Transaction Amount'
+                                        name='transaction'
                                         value={this.state.transaction}
                                         fullWidth={true}
                                         onChange={this.handleInputChange}
-                                        type="number"
+                                        type='number'
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                        margin="normal"
-                                        variant="outlined"
+                                        margin='normal'
+                                        variant='outlined'
                                     />
                                 </form>
                             </Grid>
@@ -164,4 +164,4 @@ class Purchase extends Component {
     }
 }
 
-export default Purchase;
+export default Purchase

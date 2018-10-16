@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'react-emotion';
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
-import Header from '../components/Header';
+import React from 'react'
+import styled from 'react-emotion'
+import { Link } from 'react-router-dom'
+import Button from '../components/Button'
+import Header from '../components/Header'
 
 const MainWrapper = styled('div')`
     border: 3px solid #1162bc;
@@ -30,7 +30,7 @@ const Main = props => {
         </Link>
       </Button>
     </MainWrapper>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main
