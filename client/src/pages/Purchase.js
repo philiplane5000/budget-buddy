@@ -76,7 +76,7 @@ class Purchase extends Component {
                     <Wrapper>
 
                         <Header>
-                            Make a Purchase
+                            Make A Purchase
                         </Header>
 
                         <Grid container justify='space-around'>
