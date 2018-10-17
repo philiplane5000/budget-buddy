@@ -23,22 +23,21 @@ const FormWrapper = styled('div')`
     padding-bottom: 25px;
 `
 
-
 const InputWrapper = styled('div')`
-    flex: 0.75px;
+    flex: 0.75;
     flex-wrap: wrap;
     margin-right: 10px;
 `
 
 const Button = styled('div')`
-    flex: .25px;
+    flex: .25;
     flex-wrap: wrap;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10%;
-    height: 65,
+    border-radius: 10px;
+    height: 65px,
     margin-top: 10px;
     background-color: #ffc107;
     color: white;
