@@ -10,7 +10,7 @@ const HamWrapper = styled('div')`
   display: none;
 
   :hover {
-    transform: scale(0.8);
+    transform: scale(1.025);
     } 
 
   @media (max-width: 763px) {
