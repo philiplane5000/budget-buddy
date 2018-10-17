@@ -23,6 +23,7 @@ const FormWrapper = styled('div')`
     padding-bottom: 25px;
 `
 
+
 const InputWrapper = styled('div')`
     flex: 0.75px;
     flex-wrap: wrap;
@@ -43,6 +44,7 @@ const Button = styled('div')`
     color: white;
     font-family: 'Roboto', sans-serif;
 `
+
 
 class Budget extends Component {
 
@@ -101,7 +103,7 @@ class Budget extends Component {
     render() {
         return (
 
-            <Grid container justify='center'>
+            <Grid container justify='center' style={{ marginBottom: 100 }}>
                 <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
                     <Wrapper>
                         <Header>

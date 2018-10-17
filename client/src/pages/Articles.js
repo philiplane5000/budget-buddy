@@ -37,7 +37,7 @@ class Articles extends Component {
             <div>
             <Grid container justify="center" style={{ marginBottom: 100 }}>
 
-                <Grid item lg={8} md={10} sm={10} xs={10}>
+                <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
                         <Header>
                             Staying on Track
