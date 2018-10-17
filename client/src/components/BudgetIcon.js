@@ -13,8 +13,7 @@ const Icon = styled('div')`
     border: 1px solid rgba(0,0,0,0.35);
     transition: all .2s ease-in-out;
     :hover {
-        background-color: #3de28c;
-        transform: scale(1.1);
+        transform: scale(0.8);
     }
 `
 

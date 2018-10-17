@@ -15,12 +15,12 @@ const MySwal = withReactContent(Swal)
 
 
 const FormWrapper = styled('div')`
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        max-width: 350px;
-        margin: 0 auto;
-        padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 350px;
+    margin: 0 auto;
+    padding-bottom: 25px;
 `
 
 const InputWrapper = styled('div')({
@@ -42,7 +42,6 @@ const Button = styled('div')({
     backgroundColor: '#ffc107',
     color: 'white',
     fontFamily: 'Roboto'
-
 })
 
 class Budget extends Component {

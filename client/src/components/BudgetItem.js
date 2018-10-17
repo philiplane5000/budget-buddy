@@ -48,8 +48,7 @@ const Label = styled('div')`
   width: 185px;
   transition: all .2s ease-in-out;
   :hover {
-    background-color: #3de28c;
-    transform: scale(1.1);
+    transform: scale(0.8);
   }
 
   @media (min-width: 1460px) {
