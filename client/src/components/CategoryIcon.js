@@ -10,13 +10,13 @@ const Icon = styled('div')`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    font-family: 'Calibri';
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     width: 350px;
     min-width: 250px;
     min-height: 140px;
     border-radius: 10px;
-    margin: 20px 10px 20px 10px;
+    margin: 20px 10px;
     background: ${props => props.bg}; 
     border: 1px solid rgba(0,0,0,0.35);
 `

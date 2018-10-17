@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 
 const Wrap = styled('div')`
     border: 3px solid #1162bc;
+    margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 40px;
     border-radius: 10px;
