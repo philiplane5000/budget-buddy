@@ -13,7 +13,7 @@ const HeaderWrapper = styled('div')`
 const Header = (props) => (
     <HeaderWrapper>
         {props.children}
-        <hr style={{borderBottom:"2.5px solid #1162bc"}}/>
+        <hr style={{borderBottom:'2.5px solid #1162bc'}}/>
     </HeaderWrapper>
 )
 
