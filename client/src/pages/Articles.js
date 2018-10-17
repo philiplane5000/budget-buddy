@@ -60,7 +60,7 @@ class Articles extends Component {
                                 <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
                             ))
                         ) : (
-                                <p>Read up on how to manage your budget and perfect your personal financing.</p>
+                                <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
                             )
 
                         }

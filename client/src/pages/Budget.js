@@ -23,26 +23,28 @@ const FormWrapper = styled('div')`
     padding-bottom: 25px;
 `
 
-const InputWrapper = styled('div')({
-    flex: 0.75,
-    flexWrap: 'wrap',
-    marginRight: 10
-})
 
-const Button = styled('div')({
-    flex: .25,
-    flexWrap: 'wrap',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
+const InputWrapper = styled('div')`
+    flex: 0.75px;
+    flex-wrap: wrap;
+    margin-right: 10px;
+`
+
+const Button = styled('div')`
+    flex: .25px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10%;
     height: 65,
-    marginTop: 10,
-    backgroundColor: '#ffc107',
-    color: 'white',
-    fontFamily: 'Roboto'
-})
+    margin-top: 10px;
+    background-color: #ffc107;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+`
+
 
 class Budget extends Component {
 
