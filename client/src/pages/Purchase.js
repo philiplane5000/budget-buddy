@@ -71,7 +71,7 @@ class Purchase extends Component {
     render() {
 
         return (
-            <Grid container justify='center'>
+            <Grid container justify='center' style={{ marginBottom: 100 }}>
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
 

@@ -23,7 +23,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid container justify='center'>
+      <Grid container justify='center' style={{ marginBottom: 100 }}>
         <Grid item lg={6} md={6} sm={10} xs={10}>
           {this.state.total === '' ? (
             <Main total='0.00' />
