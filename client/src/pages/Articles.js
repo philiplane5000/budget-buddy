@@ -40,7 +40,7 @@ class Articles extends Component {
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
                         <Header>
-                            Staying on Track
+                            Staying On Track
                         </Header>
 
                         <Button onClick={this.todayNews}>
@@ -57,7 +57,7 @@ class Articles extends Component {
 
                         {this.state.articles.length > 0 ? (
                             this.state.articles.map(article => (
-                                <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
+                                <Article headline={article.title} link={article.link} excerpt={article.excerpt} picture={article.picture}></Article>
                             ))
                         ) : (
                                 <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
