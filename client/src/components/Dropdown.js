@@ -10,7 +10,7 @@ const HamWrapper = styled('div')`
   display: none;
 
   :hover {
-    transform: scale(1.1);
+    transform: scale(0.8);
     } 
 
   @media (max-width: 763px) {
@@ -81,4 +81,3 @@ class SimpleMenu extends React.Component {
 }
 
 export default SimpleMenu
-
