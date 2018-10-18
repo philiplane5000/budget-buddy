@@ -103,7 +103,7 @@ const Navbar = props => {
         </Title>
         <SimpleMenu />
         <LinksWrapper>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <LinkItem>HOME</LinkItem>
           </Link>
           <Link to="/budget" style={{ textDecoration: "none" }}>

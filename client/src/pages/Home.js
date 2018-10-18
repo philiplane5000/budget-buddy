@@ -1,9 +1,21 @@
 import React, { Component } from "react";
+import styled from 'react-emotion';
 import API from "../utils/API";
 import Grid from "@material-ui/core/Grid";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
+import firebase from 'firebase';
+import Wrapper from '../components/Wrapper';
 
+const SignOut = styled('a')`
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffc107;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+`
 
 class Home extends Component {
 
@@ -11,12 +23,20 @@ class Home extends Component {
     total: ''
   };
 
+  signOut = () => {
+    firebase.auth().signOut().then(function () {
+      console.log('USER SIGNED OUT')
+    }).catch(function (error) {
+      console.log(error)
+    });
+  }
+
   componentDidMount() {
     API.getCurrentBudget().then(response => {
       let total = response.data.reduce((acc, doc) => {
         return acc += doc.amount
       }, 0)
-      this.setState({total});
+      this.setState({ total });
       console.log(this.state)
     })
   }
@@ -28,10 +48,13 @@ class Home extends Component {
           {this.state.total === '' ? (
             <Main total="0.00" />
           ) : (
-            <Main total={this.state.total} />
-          )
+              <Main total={this.state.total} />
+            )
           }
+        </Grid>
 
+        <Grid item lg={12} md={12} sm={12} xs={12} style={{marginTop: 50}}>
+          <SignOut onClick={this.signOut} style={{ margin: '0 auto' }}>Sign Out</SignOut>
         </Grid>
         <Footer />
       </Grid>
