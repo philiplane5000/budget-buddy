@@ -35,8 +35,8 @@ class Home extends Component {
               )
             }
           </Grid>
-          <Footer/>
         </Grid>
+        <Footer />
 
       </ProtectedScreen>
     )
