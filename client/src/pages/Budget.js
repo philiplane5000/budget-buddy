@@ -10,6 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Wrapper from "../components/Wrapper";
+import { ProtectedScreen } from '../components/context';
 
 const MySwal = withReactContent(Swal)
 
@@ -51,7 +52,8 @@ class Budget extends Component {
         budgets: [],
         category: 'Pick a Category',
         amount: '--',
-        _id: ''
+        _id: '',
+        uid: ''
     }
 
     componentDidMount() {
@@ -59,6 +61,9 @@ class Budget extends Component {
             this.setState({ budgets: dbBudget.data })
             console.log(this.state)
         })
+        //Retrieve uid from sessionStorage:
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        this.setState({uid: user.uid})
     }
 
     handleChange = (e) => {
@@ -101,79 +106,80 @@ class Budget extends Component {
 
     render() {
         return (
-
-            <Grid container justify="center">
-                <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
-                    <Wrapper>
-                        <Header>
-                            Manage Your Budget
+            <ProtectedScreen>
+                <Grid container justify="center">
+                    <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
+                        <Wrapper>
+                            <Header>
+                                Manage Your Budget
                         </Header>
 
-                        <Grid container justify="center">
+                            <Grid container justify="center">
 
-                            <Grid item lg={10} md={10} sm={10} xs={10}>
+                                <Grid item lg={10} md={10} sm={10} xs={10}>
 
-                                <CategoryIcon
-                                    bg="#2fc4a6"
-                                    category={this.state.category}
-                                    amount={this.state.amount !== '--' ? parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2) : '--'}
-                                />
-                            </Grid>
+                                    <CategoryIcon
+                                        bg="#2fc4a6"
+                                        category={this.state.category}
+                                        amount={this.state.amount !== '--' ? parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2) : '--'}
+                                    />
+                                </Grid>
 
-                            <Grid item lg={10} md={10} sm={10} xs={10}>
-                                <FormWrapper>
+                                <Grid item lg={10} md={10} sm={10} xs={10}>
+                                    <FormWrapper>
 
-                                    <InputWrapper>
-                                        <form noValidate autoComplete="off">
-                                            <TextField
-                                                id="standard-number"
-                                                label="Set/Adjust Spending Limit:"
-                                                name="amount"
-                                                value={this.state.amount}
-                                                onChange={this.handleChange}
-                                                type="number"
-                                                fullWidth={true}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
-                                                margin="normal"
-                                                variant="outlined"
-                                            />
-                                        </form>
-
-                                    </InputWrapper>
-
-                                    <Button onClick={() => this.handleSubmit(this.state.amount)}>
-                                        SUBMIT
-                                    </Button>
-                                </FormWrapper>
-
-                            </Grid>
-                            <Grid container justify="space-around">
-                                {
-                                    this.state.budgets.length > 0
-                                        ? this.state.budgets.map(doc =>
-                                            <Grid item lg={6} md={6} sm={10} xs={10}>
-                                                <BudgetItem
-                                                    key={doc._id}
-                                                    category={doc.category}
-                                                    bg={(this.state.category === doc.category) ? "#2fc4a6" : "#1162bc"}
-                                                    label={doc.label}
-                                                    amount={doc.amount}
-                                                    _id={doc._id}
-                                                    handleClick={this.handleClick}
+                                        <InputWrapper>
+                                            <form noValidate autoComplete="off">
+                                                <TextField
+                                                    id="standard-number"
+                                                    label="Set/Adjust Spending Limit:"
+                                                    name="amount"
+                                                    value={this.state.amount}
+                                                    onChange={this.handleChange}
+                                                    type="number"
+                                                    fullWidth={true}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    margin="normal"
+                                                    variant="outlined"
                                                 />
-                                            </Grid>
-                                        )
-                                        : <h2>loading</h2>
-                                }
-                            </Grid>
-                        </Grid>
+                                            </form>
 
-                    </Wrapper>
+                                        </InputWrapper>
+
+                                        <Button onClick={() => this.handleSubmit(this.state.amount)}>
+                                            SUBMIT
+                                    </Button>
+                                    </FormWrapper>
+
+                                </Grid>
+                                <Grid container justify="space-around">
+                                    {
+                                        this.state.budgets.length > 0
+                                            ? this.state.budgets.map(doc =>
+                                                <Grid item lg={6} md={6} sm={10} xs={10}>
+                                                    <BudgetItem
+                                                        key={doc._id}
+                                                        category={doc.category}
+                                                        bg={(this.state.category === doc.category) ? "#2fc4a6" : "#1162bc"}
+                                                        label={doc.label}
+                                                        amount={doc.amount}
+                                                        _id={doc._id}
+                                                        handleClick={this.handleClick}
+                                                    />
+                                                </Grid>
+                                            )
+                                            : <h2>loading</h2>
+                                    }
+                                </Grid>
+                            </Grid>
+
+                        </Wrapper>
+                    </Grid>
+                    <Footer />
                 </Grid>
-                <Footer />
-            </Grid>
+            </ProtectedScreen>
         )
     }
 }

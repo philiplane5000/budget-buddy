@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Grid from '@material-ui/core/Grid'
 import Footer from '../components/Footer'
-// import Firebase from '../components/Firebase'
 import firebase from 'firebase'
 import Button from '../components/Button'
-// import Router from '../components/Router'
 
 const provider = new firebase.auth.GoogleAuthProvider()
 
@@ -17,29 +15,25 @@ class Login extends Component {
 
         try {
             await firebase.auth().signInWithPopup(provider).then(function (result) {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = result.credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
-                // console.log(user.uid)
-                history.push('/dashboard')
-
-                // ...
+                // Token to access the Google API:
+                let user = JSON.stringify(result.user)
+                sessionStorage.setItem('user', user)
+                // The signed-in user info:
+                let token = JSON.stringify(result.credential.accessToken)
+                sessionStorage.setItem('token', token)
+                // **
             }).catch(function (error) {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // The email of the user's account used.
                 var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
-                console.log(`Sorry, ${email} could not log in due to: ${errorMessage}`)
-                // ...
+                alert(`Sorry could not log in due to: ${errorMessage}`)
             });
         } catch (e) {
             alert(e)
+        } finally {
+            history.push('/dashboard')
         }
-
 
     }
 

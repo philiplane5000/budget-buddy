@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Article from '../components/Article'
 import Wrapper from '../components/Wrapper'
 import Button from '../components/Button'
-
+import { ProtectedScreen } from '../components/context';
 
 class Articles extends Component {
 
@@ -34,43 +34,42 @@ class Articles extends Component {
 
     render() {
         return (
-            <div>
-            <Grid container justify="center" style={{ marginBottom: 100 }}>
+            <ProtectedScreen>
+                <Grid container justify="center" style={{ marginBottom: 100 }}>
 
-                <Grid item lg={8} md={10} sm={10} xs={10}>
-                    <Wrapper>
-                        <Header>
-                            Staying on Track
+                    <Grid item lg={8} md={10} sm={10} xs={10}>
+                        <Wrapper>
+                            <Header>
+                                Staying on Track
                         </Header>
 
-                        <Button onClick={this.usNews}>
-                            US News
+                            <Button onClick={this.usNews}>
+                                US News
                          </Button>
 
-                        <Button onClick={this.streetNews}>
-                            The Street
+                            <Button onClick={this.streetNews}>
+                                The Street
                          </Button>
 
-                        <Button onClick={this.todayNews}>
-                            USA Today
+                            <Button onClick={this.todayNews}>
+                                USA Today
                          </Button>
 
-                        {this.state.articles.length > 0 ? (
-                            this.state.articles.map(article => (
-                                <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
-                            ))
-                        ) : (
-                                <p>Read up on how to manage your budget and perfect your personal financing.</p>
-                            )
+                            {this.state.articles.length > 0 ? (
+                                this.state.articles.map(article => (
+                                    <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
+                                ))
+                            ) : (
+                                    <p>Read up on how to manage your budget and perfect your personal financing.</p>
+                                )
 
-                        }
+                            }
 
-                    </Wrapper>
+                        </Wrapper>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Footer />
-            </div>
-
+                <Footer />
+            </ProtectedScreen>
         )
     }
 }

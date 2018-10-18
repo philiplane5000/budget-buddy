@@ -11,6 +11,7 @@ import Footer from "../components/Footer"
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Wrapper from '../components/Wrapper';
+import { ProtectedScreen } from '../components/context';
 
 const MySwal = withReactContent(Swal)
 
@@ -28,6 +29,9 @@ class Purchase extends Component {
         API.getCurrentBudget().then(dbBudget => {
             this.setState({ budgets: dbBudget.data })
         })
+        //Retrieve uid from sessionStorage:
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        this.setState({ uid: user.uid })
     }
 
     handleInputChange = e => {
@@ -71,95 +75,97 @@ class Purchase extends Component {
     render() {
 
         return (
-            <Grid container justify="center">
-                <Grid item lg={6} md={8} sm={10} xs={10}>
-                    <Wrapper>
+            <ProtectedScreen>
+                <Grid container justify="center">
+                    <Grid item lg={6} md={8} sm={10} xs={10}>
+                        <Wrapper>
 
-                        <Header>
-                            Make a Purchase
+                            <Header>
+                                Make a Purchase
                         </Header>
 
-                        <Grid container justify="space-around">
+                            <Grid container justify="space-around">
 
-                            {this.state.category !== '' ? (
-                                <Grid item lg={12} md={12} sm={12} xs={12}>
-                                    <CategoryIcon
-                                        bg="#2fc4a6"
-                                        category={this.state.category}
-                                        amount={(this.state.amount - this.state.transaction).toFixed(2)}
-                                    />
-                                </Grid>
-                            ) : (
+                                {this.state.category !== '' ? (
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <CategoryIcon bg="#2fc4ac" category="pick a category" amount="--" />
+                                        <CategoryIcon
+                                            bg="#2fc4a6"
+                                            category={this.state.category}
+                                            amount={(this.state.amount - this.state.transaction).toFixed(2)}
+                                        />
                                     </Grid>
-
-                                )
-                            }
-
-                        </Grid>
-
-                        <div style={{ margin: 40 }}>
-                            <Grid container justify="space-around" spacing={16}>
-                                {this.state.budgets.length > 0 ? (
-                                    this.state.budgets.map(doc => (
-                                        <Grid item lg={4} md={4} sm={6} xs={12}>
-                                            <BudgetIcon
-                                                bg={this.state._id === doc._id ? "#2fc4ac" : "#1162bc"}
-                                                key={doc._id}
-                                                _id={doc._id}
-                                                amount={doc.amount}
-                                                label={doc.label}
-                                                handleClick={this.handleClick}
-                                            >
-                                                {doc.label}
-                                            </BudgetIcon>
-                                        </Grid>
-                                    ))
                                 ) : (
                                         <Grid item lg={12} md={12} sm={12} xs={12}>
-                                            <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                                                <i class="fa fa-cloud-download-alt"></i>
-                                            </div>
+                                            <CategoryIcon bg="#2fc4ac" category="pick a category" amount="--" />
                                         </Grid>
+
                                     )
                                 }
-                            </Grid>
-                        </div>
 
-                        <Grid container justify="center">
-
-                            <Grid item lg={7} md={7} sm={8} xs={8}>
-                                <form noValidate autoComplete="off">
-                                    <TextField
-                                        id="filled-number"
-                                        label="Transaction Amount"
-                                        name="transaction"
-                                        value={this.state.transaction}
-                                        fullWidth={true}
-                                        onChange={this.handleInputChange}
-                                        type="number"
-                                        InputLabelProps={{
-                                            shrink: true,
-                                        }}
-                                        margin="normal"
-                                        variant="outlined"
-                                    />
-                                </form>
                             </Grid>
 
-                            <Grid item lg={4} md={4} sm={8} xs={8}>
-                                <Button onClick={this.handlePurchase}>
-                                    COMPLETE PURCHASE
+                            <div style={{ margin: 40 }}>
+                                <Grid container justify="space-around" spacing={16}>
+                                    {this.state.budgets.length > 0 ? (
+                                        this.state.budgets.map(doc => (
+                                            <Grid item lg={4} md={4} sm={6} xs={12}>
+                                                <BudgetIcon
+                                                    bg={this.state._id === doc._id ? "#2fc4ac" : "#1162bc"}
+                                                    key={doc._id}
+                                                    _id={doc._id}
+                                                    amount={doc.amount}
+                                                    label={doc.label}
+                                                    handleClick={this.handleClick}
+                                                >
+                                                    {doc.label}
+                                                </BudgetIcon>
+                                            </Grid>
+                                        ))
+                                    ) : (
+                                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+                                                    <i class="fa fa-cloud-download-alt"></i>
+                                                </div>
+                                            </Grid>
+                                        )
+                                    }
+                                </Grid>
+                            </div>
+
+                            <Grid container justify="center">
+
+                                <Grid item lg={7} md={7} sm={8} xs={8}>
+                                    <form noValidate autoComplete="off">
+                                        <TextField
+                                            id="filled-number"
+                                            label="Transaction Amount"
+                                            name="transaction"
+                                            value={this.state.transaction}
+                                            fullWidth={true}
+                                            onChange={this.handleInputChange}
+                                            type="number"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            margin="normal"
+                                            variant="outlined"
+                                        />
+                                    </form>
+                                </Grid>
+
+                                <Grid item lg={4} md={4} sm={8} xs={8}>
+                                    <Button onClick={this.handlePurchase}>
+                                        COMPLETE PURCHASE
                                 </Button>
+                                </Grid>
+
                             </Grid>
 
-                        </Grid>
-
-                    </Wrapper>
+                        </Wrapper>
+                    </Grid>
+                    <Footer />
                 </Grid>
-                <Footer />
-            </Grid>
+            </ProtectedScreen>
         )
     }
 }

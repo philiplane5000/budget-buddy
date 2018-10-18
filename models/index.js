@@ -1,5 +1,6 @@
 module.exports = {
-    Budget: require("./budget")
+    User: require('./User'),
+    Budget: require('./Budget')
   };
   
 

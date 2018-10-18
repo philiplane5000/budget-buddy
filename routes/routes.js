@@ -1,16 +1,23 @@
 const budgetController = require("../controllers/budgetController")
+const userController = require("../controllers/userController")
 const scrapeController = require("../controllers/scrapeController")
 const path = require("path")
 
 module.exports = function (app) {
 
+    //USER ROUTES:
+    app.get("/api/user/:uid", userController.findByUid)
+
+    app.get("/api/users/", userController.findAllUsers)
+
+    //BUDGET ROUTES:
     app.get("/api/budgets/", budgetController.findAll)
 
     app.post("/api/budgets/", budgetController.create)
 
-    app.get("/api/budgets/:id",budgetController.findById)
+    app.get("/api/budgets/:id", budgetController.findById)
 
-    app.put("/api/budgets/:id",budgetController.update)
+    app.put("/api/budgets/:id", budgetController.update)
 
     app.delete("/api/budgets/:id", budgetController.remove)
 

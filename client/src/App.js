@@ -10,7 +10,7 @@ import Articles from "./pages/Articles.js";
 import Navbar from "./components/Navbar";
 
 import FirebaseAuthProvider from './components/context/FirebaseAuthProvider';
-import {FirebaseAuthContext } from './components/context';
+// import {FirebaseAuthContext } from './components/context';
 
 const config = {
   apiKey: "AIzaSyAHpmg-73LB4g04N70uMKNZw_AAeGFbgbw",
@@ -38,8 +38,9 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Content>
-                <Route exact path="/" component={Login} />
                 <Route exact path="/dashboard" component={Home} />
+                <Route exact path="/" component={Login} />
+                <Route exact path="/login" component={Login} />
                 <Route exact path="/budget" component={Budget} />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/articles" component={Articles} />
