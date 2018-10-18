@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
-import CategoryIcon from '../components/Main'
 import Button from '../components/Button'
 import Wrapper from '../components/Wrapper'
 import Header from '../components/Header'
