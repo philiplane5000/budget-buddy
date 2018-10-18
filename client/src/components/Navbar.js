@@ -5,6 +5,10 @@ import styled, { keyframes } from 'react-emotion';
 import Icon from '../image/money-pig.png';
 import SimpleMenu from './Dropdown';
 
+import firebase from 'firebase';
+import { FirebaseAuthContext } from '../components/context';
+import { Redirect } from 'react-router';
+
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
     transform: translate3d(0,0,0);
@@ -102,20 +106,45 @@ const Navbar = props => {
           </IconWrapper>
         </Title>
         <SimpleMenu />
-        <LinksWrapper>
-          <Link to="/dashboard" style={{ textDecoration: "none" }}>
-            <LinkItem>HOME</LinkItem>
-          </Link>
-          <Link to="/budget" style={{ textDecoration: "none" }}>
-            <LinkItem>BUDGET</LinkItem>
-          </Link>
-          <Link to="/purchase" style={{ textDecoration: "none" }}>
-            <LinkItem>PURCHASE</LinkItem>
-          </Link>
-          <Link to="/articles" style={{ textDecoration: "none" }}>
-            <LinkItem>LEARN</LinkItem>
-          </Link>
-        </LinksWrapper>
+
+        <FirebaseAuthContext.Consumer>
+          {
+            ({ authStatusReported, isUserSignedIn }) => (
+              <div>
+                {
+                  isUserSignedIn && (
+                    //ORIGINAL NAVBAR LINKS:
+                    <LinksWrapper>
+                      <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        <LinkItem>HOME</LinkItem>
+                      </Link>
+                      <Link to="/budget" style={{ textDecoration: "none" }}>
+                        <LinkItem>BUDGET</LinkItem>
+                      </Link>
+                      <Link to="/purchase" style={{ textDecoration: "none" }}>
+                        <LinkItem>PURCHASE</LinkItem>
+                      </Link>
+                      <Link to="/articles" style={{ textDecoration: "none" }}>
+                        <LinkItem>LEARN</LinkItem>
+                      </Link>
+                    </LinksWrapper>
+                    //END ORIGINAL HOME PAGE//
+                  )
+                }
+                {
+                  !(isUserSignedIn) && (
+                    <LinksWrapper>
+                      <Link to="/" style={{ textDecoration: "none" }}>
+                        <LinkItem>SIGN-IN</LinkItem>
+                      </Link>
+                    </LinksWrapper>
+              )
+            }
+            </div>
+            )
+          }
+        </FirebaseAuthContext.Consumer>
+
       </NavWrapper>
     </AppBar>
   );

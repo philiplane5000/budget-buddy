@@ -4,8 +4,10 @@ import API from "../utils/API";
 import Grid from "@material-ui/core/Grid";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
-import firebase from 'firebase';
 import Wrapper from '../components/Wrapper';
+import firebase from 'firebase';
+import {FirebaseAuthContext} from '../components/context';
+import {Redirect} from 'react-router';
 
 const SignOut = styled('a')`
   cursor: pointer;
@@ -43,21 +45,43 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid container justify="center">
-        <Grid item lg={6} md={6} sm={10} xs={10}>
-          {this.state.total === '' ? (
-            <Main total="0.00" />
-          ) : (
-              <Main total={this.state.total} />
-            )
-          }
-        </Grid>
 
-        <Grid item lg={12} md={12} sm={12} xs={12} style={{marginTop: 50}}>
-          <SignOut onClick={this.signOut} style={{ margin: '0 auto' }}>Sign Out</SignOut>
-        </Grid>
-        <Footer />
-      </Grid>
+
+      <FirebaseAuthContext.Consumer>
+        {
+          ({ authStatusReported, isUserSignedIn }) => (
+            <div>
+              {
+                isUserSignedIn  && (
+                  //ORIGINAL HOME PAGE:
+                  <Grid container justify="center">
+                    <Grid item lg={6} md={6} sm={10} xs={10}>
+                      {this.state.total === '' ? (
+                        <Main total="0.00" />
+                      ) : (
+                          <Main total={this.state.total} />
+                        )
+                      }
+                    </Grid>
+
+                    <Grid item lg={12} md={12} sm={12} xs={12} style={{ marginTop: 50 }}>
+                      <SignOut onClick={this.signOut} style={{ margin: '0 auto' }}>Sign Out</SignOut>
+                    </Grid>
+                    <Footer />
+                  </Grid>
+                  //END ORIGINAL HOME PAGE//
+                )
+              }
+              {
+                !(isUserSignedIn) && (
+                  <Redirect to="/" />
+                )
+              }
+            </div>
+          )
+        }
+      </FirebaseAuthContext.Consumer>
+
     );
   }
 }

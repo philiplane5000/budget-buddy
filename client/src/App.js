@@ -8,7 +8,9 @@ import Budget from "./pages/Budget.js";
 import Purchase from "./pages/Purchase.js";
 import Articles from "./pages/Articles.js";
 import Navbar from "./components/Navbar";
-// import FirebaseAuthProvider from './components/FirebaseAuthProvider';
+
+import FirebaseAuthProvider from './components/context/FirebaseAuthProvider';
+import {FirebaseAuthContext } from './components/context';
 
 const config = {
   apiKey: "AIzaSyAHpmg-73LB4g04N70uMKNZw_AAeGFbgbw",
@@ -30,7 +32,7 @@ class App extends Component {
 
   render() {
     return (
-      // <FirebaseAuthProvider>
+      <FirebaseAuthProvider>
         <Router>
           <div>
             <Navbar />
@@ -45,7 +47,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-      // </FirebaseAuthProvider>
+      </FirebaseAuthProvider>
     )
   }
 }
