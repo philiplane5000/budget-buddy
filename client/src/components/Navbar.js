@@ -90,20 +90,20 @@ const LinkItem = styled('p')`
   }
 `
 
-const LoggedOut = styled('p')`
-  font-family: Bebas, sans-serif;
-  color: white;
-  text-decoration: none;
-  border-bottom: none;
-  padding: 0 15px;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 14px;
+// const LoggedOut = styled('p')`
+//   font-family: Bebas, sans-serif;
+//   color: white;
+//   text-decoration: none;
+//   border-bottom: none;
+//   padding: 0 15px;
+//   display: inline-block;
+//   font-weight: bold;
+//   font-size: 14px;
   
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
+//   @media (max-width: 900px) {
+//     display: none;
+//   }
+// `;
 
 
 class Navbar extends React.Component {
@@ -132,7 +132,7 @@ class Navbar extends React.Component {
       >
         <NavWrapper>
           <Title>
-            <Logo>BUDGET BUDDY</Logo>
+            <Logo><LinkItem>BUDGET BUDDY</LinkItem></Logo>
             <IconWrapper>
               <img
                 style={{ height: "80px", width: "80px" }}
@@ -146,7 +146,7 @@ class Navbar extends React.Component {
           <FirebaseAuthContext.Consumer>
             {
               ({ authStatusReported, isUserSignedIn }) => (
-                <div>
+                <div style={{display: 'flex'}}>
                   {
                     isUserSignedIn && (
                       //ORIGINAL NAVBAR LINKS:
@@ -174,7 +174,7 @@ class Navbar extends React.Component {
                     !(isUserSignedIn) && (
                       <LinksWrapper>
                         <Link to="/login" style={{ textDecoration: "none" }}>
-                          <LoggedOut>YOU ARE LOGGED OUT</LoggedOut>
+                          <LinkItem>YOU ARE LOGGED OUT</LinkItem>
                         </Link>
                       </LinksWrapper>
                     )
