@@ -10,7 +10,6 @@ const BudgetWrapper = styled('div')`
 `
 
 const CategoryInput = styled('input')`
-  font-size: 16px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -29,11 +28,11 @@ const Label = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
   background: ${props => props.bg};
   color: white;
   margin-right: 10px;
   border-radius: 10px;
-  font-size: 18px;
   width: 185px;
   transition: all .2s ease-in-out;
   :hover {
@@ -42,7 +41,7 @@ const Label = styled('div')`
 
   @media (min-width: 1460px) {
     width: 230px;
-    font-size: 24px;
+    font-size: 18px;
   }
 `
 

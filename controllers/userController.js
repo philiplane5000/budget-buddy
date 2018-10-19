@@ -1,6 +1,14 @@
 const db = require('../models')
 
 module.exports = {
+
+    getBudgetbyUserUid: function (req, res) {
+    db.User
+        .findOne({uid: req.params.uid}, 'budgets')
+        .then(User => res.json(User))
+        .catch(err => res.status(422).json(err));
+
+    },
     //FIND ONE USER BY GOOGLE UID:
     findByUid: function (req, res) {
         db.User

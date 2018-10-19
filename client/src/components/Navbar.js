@@ -145,7 +145,7 @@ class Navbar extends React.Component {
 
           <FirebaseAuthContext.Consumer>
             {
-              ({ authStatusReported, isUserSignedIn }) => (
+              ({ isUserSignedIn }) => (
                 <div style={{display: 'flex'}}>
                   {
                     isUserSignedIn && (
