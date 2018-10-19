@@ -45,7 +45,8 @@ db.User
   .then(() => db.User.collection.save({
       uid: 'I15ynLa647YgRWSOnMYBTNzUs9S2',
       displayName: 'Philip Taft-Dick',
-      budgets: budgetSeed
+      budgets: budgetSeed,
+      articles: []
   }))
   .then(data => {
     console.log(data.result.n + " records inserted!");

@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 
 import firebase from 'firebase';
@@ -10,16 +9,8 @@ const defaultFirebaseContext = {
 
 export const FirebaseAuthContext = React.createContext(defaultFirebaseContext);
 
-type FireAuthProviderProps = {
-    children: React.Node
-};
 
-type FireAuthProviderState = {
-    authStatusReported: boolean,
-    isUserSignedIn: boolean
-};
-
-export default class FirebaseAuthProvider extends React.Component<FireAuthProviderProps, FireAuthProviderState> {
+export default class FirebaseAuthProvider extends React.Component {
 
     state = defaultFirebaseContext;
 

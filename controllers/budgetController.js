@@ -1,14 +1,6 @@
 const db = require("../models");
 
 module.exports = {
-  //USER CONTROL:
-    findUser: function(req, res) {
-      db.User
-        .find(req.query)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    },
-  //BUDGET CONTROL:
     findAll: function(req, res) {
       db.Budget
         .find(req.query)
