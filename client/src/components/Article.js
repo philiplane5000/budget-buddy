@@ -11,20 +11,6 @@ const Wrapper = styled('div')`
     background-color: #f2f3f4;
 
 `
-
-const IconWrapper = styled('div')`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 15%;
-    margin-right: 40px;
-    border: 2.5px solid #1162bc;
-    border-radius: 5%;
-
-    @media (max-width: 980px) {
-        display: none;
-      }
-`
     
 const ArticleWrapper = styled('div')`
     text-align: left;
@@ -58,7 +44,9 @@ const Text = styled('h3')`
 const Article = props => (
 
     <Wrapper>
-        <IconWrapper><Link href={props.link} target="_blank"><i class="far fa-newspaper fa-3x"></i></Link></IconWrapper>
+        <Link style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', margin: '0px 25px 0px 10px ' }}href={props.link} target="_blank">
+        <img style={{ border: 'solid 03px #1162bc', height: '105px', width: '160px' }} src={props.picture} alt=''></img>
+        </Link>
         <ArticleWrapper>
             <Link href={props.link} target="_blank"><Headline>{props.headline}</Headline></Link>
             <Text>
