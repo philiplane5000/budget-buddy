@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
+import { Motion, spring } from 'react-motion'
 
 const Wrapper = styled('div')`
   color: white;
@@ -21,11 +22,20 @@ const Logo = styled('div')`
 
 const Footer = () => {
   return (
-    <Wrapper>
-      <Logo>
-        <h4>2018 &copy; Bean Team</h4>
-      </Logo>
-    </Wrapper>
+    <Motion
+      defaultStyle={{ x: 400 }}
+      style={{
+        x: spring(0)
+      }}
+    >
+      {style => (
+        <Wrapper style={{ transform: `translateY(${style.x}px)` }}>
+          <Logo>
+            <h4>2018 &copy; Bean Team</h4>
+          </Logo>
+        </Wrapper>
+      )}
+    </Motion>
   )
 }
 
