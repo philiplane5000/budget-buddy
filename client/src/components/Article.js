@@ -9,6 +9,7 @@ const Wrapper = styled('div')`
     padding: 20px;
     margin: 30px;
     background-color: #f2f3f4;
+    border: 02px solid #3de28c
 
 `
     
@@ -23,7 +24,7 @@ const Link = styled('a')`
     color: #1162bc;
 `
 
-const Headline = styled('h3')`
+const Headline = styled('h2')`
     font-size: 24px;
     color: #1162bc;
     font-family: 'Roboto', sans-serif;
@@ -35,8 +36,8 @@ const Headline = styled('h3')`
     }
 `
 
-const Text = styled('h3')`
-    font-size: 20px;
+const Text = styled('h2')`
+    font-size: 17px;
     color: #1162bc;
     font-family: 'Roboto', sans-serif;
 `
