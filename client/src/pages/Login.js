@@ -41,7 +41,9 @@ class Login extends Component {
         return (
             <Grid container justify="center">
                 <Grid item lg={6} md={8} sm={10} xs={10} >
-                    <Button onClick={this.googleSignIn}>SIGN-IN</Button>
+                    <Button onClick={this.googleSignIn} style={{ marginTop: '250px' }}>
+                        SIGN-IN
+                    </Button>
                 </Grid>
                 <Footer />
             </Grid>
