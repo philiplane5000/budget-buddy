@@ -41,6 +41,23 @@ const Text = styled('h3')`
     font-family: 'Roboto', sans-serif;
 `
 
+const Save = styled('button')`
+    cursor: pointer;
+    color: white;
+    margin: 0px 0px 0px 120px;
+    background-color: #1162bc;
+    font-family: 'Roboto', sans-serif;
+    border: solid 03px #1162bc;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: all .3s ease-in-out;
+
+    :hover {
+        transform: scale(1.10)
+    }
+`
+
 const Article = props => (
 
     <Wrapper>
@@ -52,6 +69,9 @@ const Article = props => (
             <Text>
                 {props.excerpt}
             </Text>
+            <Save style={{ margin: '0px 0px 0px 130px'}}>
+                Save
+            </Save>
         </ArticleWrapper>
     </Wrapper>
 
