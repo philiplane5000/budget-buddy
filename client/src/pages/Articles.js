@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Article from '../components/Article'
 import Wrapper from '../components/Wrapper'
 import Button from '../components/Button'
-
+import { ProtectedScreen } from '../components/context';
 
 class Articles extends Component {
 
@@ -34,8 +34,8 @@ class Articles extends Component {
 
     render() {
         return (
-            <div>
-            <Grid container justify="center" style={{ marginBottom: 100 }}>
+            <ProtectedScreen>
+                <Grid container justify="center" style={{ marginBottom: 100 }}>
 
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
@@ -47,8 +47,8 @@ class Articles extends Component {
                             USA Today
                          </Button>
 
-                        <Button onClick={this.streetNews}>
-                            The Street
+                            <Button onClick={this.streetNews}>
+                                The Street
                          </Button>
 
                          <Button onClick={this.cnbcNews}>
@@ -63,14 +63,13 @@ class Articles extends Component {
                                 <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
                             )
 
-                        }
+                            }
 
-                    </Wrapper>
+                        </Wrapper>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Footer />
-            </div>
-
+                <Footer />
+            </ProtectedScreen>
         )
     }
 }

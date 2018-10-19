@@ -1,10 +1,8 @@
-import React from 'react'
-import styled from 'react-emotion'
-import { Link } from 'react-router-dom'
-import Button from '../components/Button'
-import Wrapper from '../components/Wrapper'
-import Header from '../components/Header'
-import Grid from '@material-ui/core/Grid'
+import React, { Component } from 'react';
+import styled from 'react-emotion';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button';
+import Header from '../components/Header';
 
 const Icon = styled('div')`
   display: flex;
@@ -23,34 +21,33 @@ const Icon = styled('div')`
   border: 1px solid rgba(0,0,0,0.35);
 `
 
-const Main = props => {
-  return (
-    <Wrapper>
-      <Header>
-        Total Budget
-      </Header>
+class Main extends Component {
 
-    <Grid container justify="center">
-      <Grid item>
-        <Icon>
-          ${props.total}
-        </Icon>
-      </Grid>
+  constructor(props) {
+    super(props)
+  }
 
-    </Grid>
+  render() {
 
-      <Button>
-        <Link to="/purchase" style={{ textDecoration: "none", color: "white" }}>
-          Make a Purchase
-        </Link>
-      </Button>
-      <Button>
-        <Link to="/budget" style={{ textDecoration: "none", color: "white" }}>
-          Edit Budget
-        </Link>
-      </Button>
-    </Wrapper>
-  )
+    return (
+      <MainWrapper>
+        <Header>
+          Total Budget = ${this.props.total}
+        </Header>
+        <Button>
+          <Link to="/purchase" style={{ textDecoration: "none", color: "white" }}>
+            Make a Purchase
+          </Link>
+        </Button>
+        <Button>
+          <Link to="/budget" style={{ textDecoration: "none", color: "white" }}>
+            Edit Budget
+          </Link>
+        </Button>
+      </MainWrapper>
+    );
+  }
+
 }
 
 export default Main

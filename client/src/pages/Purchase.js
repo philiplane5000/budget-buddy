@@ -1,4 +1,19 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
+import styled from "react-emotion"
+import Grid from "@material-ui/core/Grid"
+import API from "../utils/API"
+import BudgetIcon from "../components/BudgetIcon"
+import CategoryIcon from "../components/CategoryIcon"
+import TextField from "@material-ui/core/TextField"
+import Button from "../components/Button"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import Wrapper from '../components/Wrapper';
+import { ProtectedScreen } from '../components/context';
+=======
 import styled from 'react-emotion'
 import Grid from '@material-ui/core/Grid'
 import API from '../utils/API'
@@ -11,6 +26,7 @@ import Footer from '../components/Footer'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
+>>>>>>> 356cfe46cf2018858261011e9a12b31f029cb30d
 
 const MySwal = withReactContent(Swal)
 
@@ -28,6 +44,9 @@ class Purchase extends Component {
         API.getCurrentBudget().then(dbBudget => {
             this.setState({ budgets: dbBudget.data })
         })
+        //Retrieve uid from sessionStorage:
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        this.setState({ uid: user.uid })
     }
 
     handleInputChange = e => {
@@ -71,6 +90,30 @@ class Purchase extends Component {
     render() {
 
         return (
+<<<<<<< HEAD
+            <ProtectedScreen>
+                <Grid container justify="center">
+                    <Grid item lg={6} md={8} sm={10} xs={10}>
+                        <Wrapper>
+
+                            <Header>
+                                Make a Purchase
+                        </Header>
+
+                            <Grid container justify="space-around">
+
+                                {this.state.category !== '' ? (
+                                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                                        <CategoryIcon
+                                            bg="#2fc4a6"
+                                            category={this.state.category}
+                                            amount={(this.state.amount - this.state.transaction).toFixed(2)}
+                                        />
+                                    </Grid>
+                                ) : (
+                                        <Grid item lg={12} md={12} sm={12} xs={12}>
+                                            <CategoryIcon bg="#2fc4ac" category="pick a category" amount="--" />
+=======
             <Grid container justify='center' style={{ marginBottom: 100 }}>
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
@@ -121,9 +164,14 @@ class Purchase extends Component {
                                             <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                                                 <i class='fa fa-cloud-download-alt'></i>
                                             </div>
+>>>>>>> 356cfe46cf2018858261011e9a12b31f029cb30d
                                         </Grid>
+
                                     )
                                 }
+<<<<<<< HEAD
+
+=======
                             </Grid>
                         </div>
 
@@ -146,20 +194,71 @@ class Purchase extends Component {
                                         variant='outlined'
                                     />
                                 </form>
+>>>>>>> 356cfe46cf2018858261011e9a12b31f029cb30d
                             </Grid>
 
-                            <Grid item lg={4} md={4} sm={8} xs={8}>
-                                <Button onClick={this.handlePurchase}>
-                                    COMPLETE PURCHASE
+                            <div style={{ margin: 40 }}>
+                                <Grid container justify="space-around" spacing={16}>
+                                    {this.state.budgets.length > 0 ? (
+                                        this.state.budgets.map(doc => (
+                                            <Grid item lg={4} md={4} sm={6} xs={12}>
+                                                <BudgetIcon
+                                                    bg={this.state._id === doc._id ? "#2fc4ac" : "#1162bc"}
+                                                    key={doc._id}
+                                                    _id={doc._id}
+                                                    amount={doc.amount}
+                                                    label={doc.label}
+                                                    handleClick={this.handleClick}
+                                                >
+                                                    {doc.label}
+                                                </BudgetIcon>
+                                            </Grid>
+                                        ))
+                                    ) : (
+                                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                                                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+                                                    <i class="fa fa-cloud-download-alt"></i>
+                                                </div>
+                                            </Grid>
+                                        )
+                                    }
+                                </Grid>
+                            </div>
+
+                            <Grid container justify="center">
+
+                                <Grid item lg={7} md={7} sm={8} xs={8}>
+                                    <form noValidate autoComplete="off">
+                                        <TextField
+                                            id="filled-number"
+                                            label="Transaction Amount"
+                                            name="transaction"
+                                            value={this.state.transaction}
+                                            fullWidth={true}
+                                            onChange={this.handleInputChange}
+                                            type="number"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            margin="normal"
+                                            variant="outlined"
+                                        />
+                                    </form>
+                                </Grid>
+
+                                <Grid item lg={4} md={4} sm={8} xs={8}>
+                                    <Button onClick={this.handlePurchase}>
+                                        COMPLETE PURCHASE
                                 </Button>
+                                </Grid>
+
                             </Grid>
 
-                        </Grid>
-
-                    </Wrapper>
+                        </Wrapper>
+                    </Grid>
+                    <Footer />
                 </Grid>
-                <Footer />
-            </Grid>
+            </ProtectedScreen>
         )
     }
 }

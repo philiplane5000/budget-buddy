@@ -6,6 +6,9 @@ import { Motion, spring } from 'react-motion'
 import Icon from '../image/money-pig.png'
 import SimpleMenu from './Dropdown'
 
+import firebase from 'firebase';
+import { FirebaseAuthContext } from '../components/context';
+
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
     transform: translate3d(0,0,0);
@@ -87,54 +90,106 @@ const LinkItem = styled('p')`
   }
 `
 
-const Navbar = props => {
-  return (
-    <Motion
-      defaultStyle={{ x: -400 }}
-      style={{ x: spring(0) }}
-    >
-      {style => (
-        <AppBar
-          position="static"
-          style={{
-            backgroundColor: '#092d63',
-            borderBottom: '2.5px solid #3de28c',
-            transform: `translateY(${style.x}px)`
-          }}
-        >
-          <NavWrapper>
-            <Title>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <Logo><LinkItem>BUDGET BUDDY</LinkItem></Logo>
-              </Link>
-              <IconWrapper>
-                <img
-                  style={{ height: "80px", width: "80px" }}
-                  src={Icon}
-                  alt="moneypig"
-                />
-              </IconWrapper>
-            </Title>
-            <SimpleMenu />
-            <LinksWrapper>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <LinkItem>HOME</LinkItem>
-              </Link>
-              <Link to="/budget" style={{ textDecoration: "none" }}>
-                <LinkItem>BUDGET</LinkItem>
-              </Link>
-              <Link to="/purchase" style={{ textDecoration: "none" }}>
-                <LinkItem>PURCHASE</LinkItem>
-              </Link>
-              <Link to="/articles" style={{ textDecoration: "none" }}>
-                <LinkItem>LEARN</LinkItem>
-              </Link>
-            </LinksWrapper>
-          </NavWrapper>
-        </AppBar>
-      )}
-    </Motion>
-  )
-}
+const LoggedOut = styled('p')`
+  font-family: Bebas, sans-serif;
+  color: white;
+  text-decoration: none;
+  border-bottom: none;
+  padding: 0 15px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 14px;
+  
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+
+class Navbar extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  signOut = () => {
+    firebase.auth().signOut().then(function () {
+      console.log('USER SIGNED OUT')
+      sessionStorage.clear()
+    }).catch(function (error) {
+      console.log(error)
+    });
+  }
+
+  render() {
+    return (
+      <AppBar
+        position="static"
+        style={{
+          backgroundColor: "#092d63",
+          borderBottom: "2.5px solid #3de28c"
+        }}
+      >
+        <NavWrapper>
+          <Title>
+            <Logo>BUDGET BUDDY</Logo>
+            <IconWrapper>
+              <img
+                style={{ height: "80px", width: "80px" }}
+                src={Icon}
+                alt="moneypig"
+              />
+            </IconWrapper>
+          </Title>
+          <SimpleMenu />
+
+          <FirebaseAuthContext.Consumer>
+            {
+              ({ authStatusReported, isUserSignedIn }) => (
+                <div>
+                  {
+                    isUserSignedIn && (
+                      //ORIGINAL NAVBAR LINKS:
+                      <LinksWrapper>
+                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                          <LinkItem>HOME</LinkItem>
+                        </Link>
+                        <Link to="/budget" style={{ textDecoration: "none" }}>
+                          <LinkItem>BUDGET</LinkItem>
+                        </Link>
+                        <Link to="/purchase" style={{ textDecoration: "none" }}>
+                          <LinkItem>PURCHASE</LinkItem>
+                        </Link>
+                        <Link to="/articles" style={{ textDecoration: "none" }}>
+                          <LinkItem>LEARN</LinkItem>
+                        </Link>
+                        <Link to="/login" style={{ textDecoration: "none" }}>
+                          <LinkItem onClick={this.signOut}>SIGN OUT</LinkItem>
+                        </Link>
+                      </LinksWrapper>
+                      //END ORIGINAL HOME PAGE//
+                    )
+                  }
+                  {
+                    !(isUserSignedIn) && (
+                      <LinksWrapper>
+                        <Link to="/login" style={{ textDecoration: "none" }}>
+                          <LoggedOut>YOU ARE LOGGED OUT</LoggedOut>
+                        </Link>
+                      </LinksWrapper>
+                    )
+                  }
+                </div>
+              )
+            }
+          </FirebaseAuthContext.Consumer>
+
+        </NavWrapper>
+      </AppBar>
+    )
+
+  }
+
+};
 
 export default Navbar
