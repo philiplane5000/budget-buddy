@@ -47,7 +47,7 @@ const LogoSmall = styled('div')`
   display: none;
 
   @media (max-width: 763px) {
-    display: inline-block;
+    display: block;
   }
 `
 
@@ -131,13 +131,11 @@ class Navbar extends React.Component {
                   </LinkItem>
                 </LogoBig>
                 <LogoSmall>
-                  <LinkItem>
                     <img
                       style={{ height: "65px", width: "90px" }}
                       src={IconSmall}
                       alt="bb-small"
                     />
-                  </LinkItem>
                 </LogoSmall>
               </Title>
               <SimpleMenu />
