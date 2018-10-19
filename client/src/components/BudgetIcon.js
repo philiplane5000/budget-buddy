@@ -7,7 +7,7 @@ const Icon = styled('div')`
     color: white;
     text-transform: uppercase;
     min-width: 100px;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 10px;
     background: ${props => props.bg}; 
     border: 1px solid rgba(0,0,0,0.35);

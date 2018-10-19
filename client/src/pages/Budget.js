@@ -56,14 +56,16 @@ class Budget extends Component {
         uid: ''
     }
 
+    componentWillMount() {
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        this.setState({ uid: user.uid })
+    }
+
     componentDidMount() {
-        API.getCurrentBudget().then(dbBudget => {
-            this.setState({ budgets: dbBudget.data })
+        API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
+            this.setState({ budgets: dbBudget.data.budgets })
             console.log(this.state)
         })
-        //Retrieve uid from sessionStorage:
-        let user = JSON.parse(sessionStorage.getItem('user'));
-        this.setState({uid: user.uid})
     }
 
     handleChange = (e) => {
@@ -107,7 +109,7 @@ class Budget extends Component {
     render() {
         return (
             <ProtectedScreen>
-                <Grid container justify="center" style={{marginBottom: 100}}>
+                <Grid container justify="center" style={{ marginBottom: 100 }}>
                     <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
                         <Wrapper>
                             <Header>

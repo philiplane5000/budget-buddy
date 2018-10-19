@@ -8,6 +8,8 @@ module.exports = function (app) {
     //USER ROUTES:
     app.get("/api/user/:uid", userController.findByUid)
 
+    app.get("/api/user/budget/:uid", userController.getBudgetbyUserUid)
+
     app.get("/api/users/", userController.findAllUsers)
 
     //BUDGET ROUTES:
