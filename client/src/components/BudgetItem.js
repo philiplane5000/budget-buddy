@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'react-emotion';
+import React from 'react'
+import styled from 'react-emotion'
 
 const BudgetWrapper = styled('div')`
   display: flex;
@@ -7,17 +7,6 @@ const BudgetWrapper = styled('div')`
   justify-content: center;
   font-family: roboto;
   margin: 7.5px 0;
-`;
-
-const EditButton = styled('div')`
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  width: 40px;
-  border-radius: 10px;
 `
 
 const CategoryInput = styled('input')`
@@ -32,11 +21,11 @@ const CategoryInput = styled('input')`
   border: 1px solid black;
   margin-right: 10px;
   border-radius: 10px;
-`;
+`
 
 const Label = styled('div')`
   cursor: pointer;
-  font-family: 'roboto, sans-serif';
+  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +35,11 @@ const Label = styled('div')`
   border-radius: 10px;
   font-size: 18px;
   width: 185px;
+  transition: all .2s ease-in-out;
+  :hover {
+    transform: scale(1.025);
+  }
+
   @media (min-width: 1460px) {
     width: 230px;
     font-size: 24px;

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const BudgetSchema = new Schema({
     category: { type: String, required: true, unique: true},
@@ -9,5 +9,4 @@ const BudgetSchema = new Schema({
   
   const Budget = mongoose.model("Budget", BudgetSchema);
   
-  module.exports = Budget;
-
+  module.exports = Budget

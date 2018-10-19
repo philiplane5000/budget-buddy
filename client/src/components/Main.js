@@ -4,13 +4,21 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Header from '../components/Header';
 
-const MainWrapper = styled('div')`
-    border: 3px solid #1162bc;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    background-color: #f9f9f9;
-    margin-top: 40px;
+const Icon = styled('div')`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  width: 350px;
+  min-width: 250px;
+  min-height: 140px;
+  border-radius: 10px;
+  margin: 20px 10px;
+  background: #2fc4a6;
+  color: white; 
+  font-size: 84px;
+  border: 1px solid rgba(0,0,0,0.35);
 `
 
 class Main extends Component {
@@ -42,4 +50,4 @@ class Main extends Component {
 
 }
 
-export default Main;
+export default Main

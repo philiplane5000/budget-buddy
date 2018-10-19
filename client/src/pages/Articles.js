@@ -14,8 +14,8 @@ class Articles extends Component {
         articles: []
     }
 
-    usNews = () => {
-        API.findUSNews().then(articles => {
+    cnbcNews = () => {
+        API.findCnbc().then(articles => {
             this.setState({ articles: articles.data })
         })
     }
@@ -37,31 +37,31 @@ class Articles extends Component {
             <ProtectedScreen>
                 <Grid container justify="center" style={{ marginBottom: 100 }}>
 
-                    <Grid item lg={8} md={10} sm={10} xs={10}>
-                        <Wrapper>
-                            <Header>
-                                Staying on Track
+                <Grid item lg={6} md={8} sm={10} xs={10}>
+                    <Wrapper>
+                        <Header>
+                            Staying On Track
                         </Header>
 
-                            <Button onClick={this.usNews}>
-                                US News
+                        <Button onClick={this.todayNews}>
+                            USA Today
                          </Button>
 
                             <Button onClick={this.streetNews}>
                                 The Street
                          </Button>
 
-                            <Button onClick={this.todayNews}>
-                                USA Today
+                         <Button onClick={this.cnbcNews}>
+                            CNBC
                          </Button>
 
-                            {this.state.articles.length > 0 ? (
-                                this.state.articles.map(article => (
-                                    <Article headline={article.title} link={article.link} excerpt={article.excerpt}></Article>
-                                ))
-                            ) : (
-                                    <p>Read up on how to manage your budget and perfect your personal financing.</p>
-                                )
+                        {this.state.articles.length > 0 ? (
+                            this.state.articles.map(article => (
+                                <Article headline={article.title} link={article.link} excerpt={article.excerpt} picture={article.picture}></Article>
+                            ))
+                        ) : (
+                                <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
+                            )
 
                             }
 
@@ -74,4 +74,4 @@ class Articles extends Component {
     }
 }
 
-export default Articles;
+export default Articles
