@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import styled, { keyframes } from 'react-emotion'
+import { Motion, spring } from 'react-motion'
 import Icon from '../image/money-pig.png'
 import SimpleMenu from './Dropdown'
 
@@ -88,43 +89,51 @@ const LinkItem = styled('p')`
 
 const Navbar = props => {
   return (
-    <AppBar
-      position="static"
-      style={{
-        backgroundColor: "#092d63",
-        borderBottom: "2.5px solid #3de28c"
-      }}
+    <Motion
+      defaultStyle={{ x: -400 }}
+      style={{ x: spring(0) }}
     >
-      <NavWrapper>
-        <Title>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Logo><LinkItem>BUDGET BUDDY</LinkItem></Logo>
-          </Link>
-          <IconWrapper>
-            <img
-              style={{ height: "80px", width: "80px" }}
-              src={Icon}
-              alt="moneypig"
-            />
-          </IconWrapper>
-        </Title>
-        <SimpleMenu />
-        <LinksWrapper>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <LinkItem>HOME</LinkItem>
-          </Link>
-          <Link to="/budget" style={{ textDecoration: "none" }}>
-            <LinkItem>BUDGET</LinkItem>
-          </Link>
-          <Link to="/purchase" style={{ textDecoration: "none" }}>
-            <LinkItem>PURCHASE</LinkItem>
-          </Link>
-          <Link to="/articles" style={{ textDecoration: "none" }}>
-            <LinkItem>LEARN</LinkItem>
-          </Link>
-        </LinksWrapper>
-      </NavWrapper>
-    </AppBar>
+      {style => (
+        <AppBar
+          position="static"
+          style={{
+            backgroundColor: '#092d63',
+            borderBottom: '2.5px solid #3de28c',
+            transform: `translateY(${style.x}px)`
+          }}
+        >
+          <NavWrapper>
+            <Title>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Logo><LinkItem>BUDGET BUDDY</LinkItem></Logo>
+              </Link>
+              <IconWrapper>
+                <img
+                  style={{ height: "80px", width: "80px" }}
+                  src={Icon}
+                  alt="moneypig"
+                />
+              </IconWrapper>
+            </Title>
+            <SimpleMenu />
+            <LinksWrapper>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <LinkItem>HOME</LinkItem>
+              </Link>
+              <Link to="/budget" style={{ textDecoration: "none" }}>
+                <LinkItem>BUDGET</LinkItem>
+              </Link>
+              <Link to="/purchase" style={{ textDecoration: "none" }}>
+                <LinkItem>PURCHASE</LinkItem>
+              </Link>
+              <Link to="/articles" style={{ textDecoration: "none" }}>
+                <LinkItem>LEARN</LinkItem>
+              </Link>
+            </LinksWrapper>
+          </NavWrapper>
+        </AppBar>
+      )}
+    </Motion>
   )
 }
 
