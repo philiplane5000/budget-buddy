@@ -122,13 +122,11 @@ class Navbar extends React.Component {
             <NavWrapper>
               <Title>
                 <LogoBig>
-                  <LinkItem>
                     <img
                       style={{ height: '65px', width: '120px' }}
                       src={IconBig}
                       alt='bb-big'
                     />
-                  </LinkItem>
                 </LogoBig>
                 <LogoSmall>
                     <img
