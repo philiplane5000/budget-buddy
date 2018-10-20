@@ -16,6 +16,8 @@ module.exports = function (app) {
 
     app.get("/api/users/", userController.findAllUsers)
 
+    app.post('/api/user/savedarticles/:uid', userController.saveArticle)
+
     //BUDGET ROUTES:
     app.get("/api/budgets/", budgetController.findAll)
 

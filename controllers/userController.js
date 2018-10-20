@@ -30,7 +30,6 @@ module.exports = {
     //     'items.$.value': 'two updated'
     // }}, function(err) { ...
     updateBudgetByCategory: function (req, res) {
-        console.log(req.body)
         db.User
             .find({ uid: req.params.uid })
             .then(User => {
@@ -53,6 +52,14 @@ module.exports = {
         // console.log(req.query)
         // console.log(req.body)
         // console.log(req.params.uid)
+    },
+
+    saveArticle: function (req, res) {
+        db.User
+            .update( {uid: req.params.uid }, { $set: { articles: req.body } })
+            .then(response => {
+                res.json(response)
+            })
     },
 
     //RETRIEVE ALL USERS:
