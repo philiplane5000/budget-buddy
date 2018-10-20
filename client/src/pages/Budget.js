@@ -52,7 +52,7 @@ class Budget extends Component {
         budgets: [],
         category: 'Pick a Category',
         amount: '--',
-        _id: '',
+        transaction: '',
         uid: ''
     }
 
@@ -63,8 +63,13 @@ class Budget extends Component {
 
     componentDidMount() {
         API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
-            this.setState({ budgets: dbBudget.data.budgets })
-            console.log(this.state)
+            (dbBudget.data === null)
+                ?
+                API.createNewUser(this.state.uid).then(dbBudget => {
+                    this.setState({ budgets: dbBudget.data.budgets })
+                })
+                :
+                this.setState({ budgets: dbBudget.data.budgets })
         })
     }
 
@@ -75,42 +80,50 @@ class Budget extends Component {
         })
     }
 
-    handleClick = (category, amount, _id) => {
+    handleCategorySelect = (category, amount, _id) => {
         this.setState({ category, amount, _id })
     }
 
     handleSubmit = () => {
         const adjusted = parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2)
-        API.updateBudgetCategory(this.state._id, { amount: adjusted })
-            .then(dbBudget => {
-                MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
-                    type: 'success',
-                    confirmButtonText: 'Ok'
-                })
-                console.log(dbBudget.status)
-                API.getCurrentBudget().then(res => {
+        const budgetData = { category: this.state.category, amount: adjusted }
+        API.updateBudgetByCategory(this.state.uid, budgetData)
+            .then((updatedDb) => {
+                (updatedDb.status === 200)
+                    ?
+                    MySwal.fire({
+                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                        type: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                    :
+                    MySwal.fire({
+                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
+                        type: 'error',
+                        confirmButtonText: 'Ok'
+                    })
+            }).then(() => {
+                API.getCurrentUserBudget(this.state.uid).then(res => {
                     const stateCopy = this.state
-                    stateCopy.budgets = res.data
+                    stateCopy.budgets = res.data.budgets
                     return stateCopy
                 }).then(stateCopy => {
-                    stateCopy.amount = adjusted
-                    stateCopy.category = dbBudget.data.label
-                    stateCopy._id = dbBudget.data._id
-                    stateCopy.transaction = '0.00'
+                    stateCopy.amount = '--'
+                    stateCopy.category = "Pick a Category"
+                    stateCopy.transaction = ''
                     this.setState(stateCopy)
                 })
-            }).catch(error => {
+            })
+            .catch(error => {
                 console.log(error)
             })
-
     }
 
     render() {
         return (
             <ProtectedScreen>
                 <Grid container justify="center" style={{ marginBottom: 100 }}>
-                    <Grid item lg={6} md={8} sm={10} xs={10} spacing={40}>
+                    <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
                             <Header>
                                 Manage Your Budget
@@ -162,13 +175,11 @@ class Budget extends Component {
                                             ? this.state.budgets.map(doc =>
                                                 <Grid item lg={6} md={6} sm={10} xs={10}>
                                                     <BudgetItem
-                                                        key={doc._id}
                                                         category={doc.category}
                                                         bg={(this.state.category === doc.category) ? "#2fc4a6" : "#1162bc"}
-                                                        label={doc.label}
                                                         amount={doc.amount}
                                                         _id={doc._id}
-                                                        handleClick={this.handleClick}
+                                                        handleCategorySelect={this.handleCategorySelect}
                                                     />
                                                 </Grid>
                                             )

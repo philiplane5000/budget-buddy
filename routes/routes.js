@@ -10,6 +10,10 @@ module.exports = function (app) {
 
     app.get("/api/user/budget/:uid", userController.getBudgetbyUserUid)
 
+    app.post("/api/user/new/:uid", userController.createNewUser)
+
+    app.put("/api/user/update/:uid", userController.updateBudgetByCategory)
+
     app.get("/api/users/", userController.findAllUsers)
 
     //BUDGET ROUTES:
