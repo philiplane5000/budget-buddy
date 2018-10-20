@@ -28,6 +28,10 @@ export default {
     return axios.delete('/api/budgets/' + id)
   },
 
+  savedArticles: (uid, articleData) => {
+    return axios.put(`/api/user/savedarticles/${uid}`, articleData)
+  },
+
   findCnbc: () => {
     return axios.get('/api/scrape/cnbc')
   },
