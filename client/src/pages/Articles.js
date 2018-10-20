@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import API from '../utils/API'
 import Grid from '@material-ui/core/Grid'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Article from '../components/Article'
 import Wrapper from '../components/Wrapper'
 import Button from '../components/Button'
@@ -52,7 +51,7 @@ class Articles extends Component {
         API.deleteArticle(this.state.uid, article).then(res => {
             console.log(res)
         }).then(() => {
-            API. retrieveSavedArticles(this.state.uid).then(dbUser => {
+            API.retrieveSavedArticles(this.state.uid).then(dbUser => {
                 this.setState({ articles: dbUser.data.articles })
                 console.log(this.state)
             })
