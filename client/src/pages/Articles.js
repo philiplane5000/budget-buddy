@@ -68,7 +68,6 @@ class Articles extends Component {
                         </Wrapper>
                     </Grid>
                 </Grid>
-                <Footer />
             </ProtectedScreen>
         )
     }

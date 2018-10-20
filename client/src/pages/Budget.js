@@ -5,7 +5,6 @@ import BudgetItem from '../components/BudgetItem'
 import API from '../utils/API'
 import CategoryIcon from '../components/CategoryIcon'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import TextField from '@material-ui/core/TextField'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -190,7 +189,6 @@ class Budget extends Component {
 
                         </Wrapper>
                     </Grid>
-                    <Footer />
                 </Grid>
             </ProtectedScreen>
         )

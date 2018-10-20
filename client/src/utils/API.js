@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   // Gets all saved budgets: (user)
   getCurrentUserBudget: (uid) => {
-    return axios.get(`/api/user/budget/${uid}`);
+    return axios.get(`/api/user/budget/${uid}`)
   },
   // Gets all saved budgets: (prev)
   getCurrentBudget: () => {
-    return axios.get("/api/budgets");
+    return axios.get('/api/budgets')
   },
 
   createNewUser: (uid) => {
-    return axios.post(`/api/user/new/${uid}`);
+    return axios.post(`/api/user/new/${uid}`)
   },
 
   // Update the amount of category with id: (user)
@@ -25,7 +25,7 @@ export default {
 
   // Deletes the budget category with id: 
   deleteSavedbudget: (id) => {
-    return axios.delete("/api/budgets/" + id);
+    return axios.delete('/api/budgets/' + id)
   },
 
   savedArticles: (uid, articleData) => {
@@ -33,15 +33,15 @@ export default {
   },
 
   findCnbc: () => {
-    return axios.get("/api/scrape/cnbc");
+    return axios.get('/api/scrape/cnbc')
   },
 
   findToday: () => {
-    return axios.get("/api/scrape/usatoday");
+    return axios.get('/api/scrape/usatoday')
   },
 
   findStreet: () => {
-    return axios.get("/api/scrape/street");
+    return axios.get('/api/scrape/street')
   }
 
-};
+}

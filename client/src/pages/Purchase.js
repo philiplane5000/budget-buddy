@@ -177,7 +177,6 @@ class Purchase extends Component {
 
                         </Wrapper>
                     </Grid>
-                    <Footer />
                 </Grid>
             </ProtectedScreen>
         )

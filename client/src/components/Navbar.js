@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import styled, { keyframes } from 'react-emotion'
 import { Motion, spring } from 'react-motion'
-import IconSmall from '../image/BB.png'
-import IconBig from '../image/BudgetBuddy.png'
+import IconSmall from '../image/bb-small.png'
+import IconBig from '../image/bb-big.png'
 import SimpleMenu from './Dropdown'
 
 import firebase from 'firebase'
@@ -82,7 +82,7 @@ const LinkItem = styled('p')`
     color: #3de28c;
   }
   
-  @media (max-width: 900px) {
+  @media (max-width: 763px) {
     display: none;
   }
 `
@@ -122,13 +122,11 @@ class Navbar extends React.Component {
             <NavWrapper>
               <Title>
                 <LogoBig>
-                  <LinkItem>
                     <img
                       style={{ height: '65px', width: '120px' }}
                       src={IconBig}
                       alt='bb-big'
                     />
-                  </LinkItem>
                 </LogoBig>
                 <LogoSmall>
                     <img
