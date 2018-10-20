@@ -5,7 +5,7 @@ import { Motion, spring } from 'react-motion'
 const Wrapper = styled('div')`
   color: white;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   width: 100%;
   background-color: #092d63;
   height: 60px,
@@ -29,9 +29,13 @@ const Footer = () => {
       }}
     >
       {style => (
-        <Wrapper style={{ transform: `translateY(${style.x}px)` }}>
+        <Wrapper style={{ 
+          transform: `translateY(${style.x}px)`,
+          backgroundColor: '#092d63',
+          borderTop: '2.5px solid #3de28c' 
+        }}>
           <Logo>
-            <h4>2018 &copy; Bean Team</h4>
+            <h4>2018 &copy; Budget Buddy</h4>
           </Logo>
         </Wrapper>
       )}

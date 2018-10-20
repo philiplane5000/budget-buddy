@@ -42,7 +42,6 @@ class Login extends Component {
                         SIGN-IN
                     </Button>
                 </Grid>
-                <Footer />
             </Grid>
         )
 

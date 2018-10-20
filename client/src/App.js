@@ -8,6 +8,7 @@ import Budget from './pages/Budget.js'
 import Purchase from './pages/Purchase.js'
 import Articles from './pages/Articles.js'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 import FirebaseAuthProvider from './components/context/FirebaseAuthProvider'
 // import {FirebaseAuthContext } from './components/context'
@@ -46,6 +47,7 @@ class App extends Component {
                 <Route exact path='/articles' component={Articles} />
               </Content>
             </Switch>
+            <Footer />
           </div>
         </Router>
       </FirebaseAuthProvider>
