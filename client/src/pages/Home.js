@@ -9,16 +9,23 @@ import { ProtectedScreen } from '../components/context'
 class Home extends Component {
 
   state = {
-    total: ''
+    total: '',
+    uid: '',
   };
 
+  componentWillMount() {
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    this.setState({ uid: user.uid })
+}
+
   componentDidMount() {
-    API.getCurrentBudget().then(response => {
-      let total = response.data.reduce((acc, doc) => {
-        return acc += doc.amount
-      }, 0)
-      this.setState({ total });
-      console.log(this.state)
+    API.getCurrentUserBudget(this.state.uid).then(response => {
+      console.log(response)
+      // let total = response.data.budgets.reduce((acc, doc) => {
+      //   return acc += doc.amount
+      // }, 0)
+      // this.setState({ total });
+      // console.log(this.state)
     })
   }
 
