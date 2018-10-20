@@ -66,13 +66,23 @@ const Article = props => (
         <img style={{ border: 'solid 03px #1162bc', height: '105px', width: '160px' }} src={props.picture} alt=''></img>
         </Link>
         <ArticleWrapper>
-            <Link href={props.link} target="_blank"><Headline>{props.headline}</Headline></Link>
+            <Link href={props.link} target="_blank"><Headline>{props.title}</Headline></Link>
             <Text>
                 {props.excerpt}
             </Text>
-            <Save style={{ margin: '0px 0px 0px 130px'}}>
-                Save
+
+
+            <Save style={{ margin: '0px 0px 0px 130px'}} 
+                title={props.title}
+                excerpt = {props.excerpt}
+                link = {props.link}
+                picture = {props.picture}
+                onClick= { () => {props.onClickFn(props.title, props.excerpt, props.link, props.picture)} }
+                >
+                {props.buttonText}
             </Save>
+
+
         </ArticleWrapper>
     </Wrapper>
 

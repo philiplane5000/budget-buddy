@@ -15,8 +15,12 @@ module.exports = function (app) {
     app.put("/api/user/update/:uid", userController.updateBudgetByCategory)
 
     app.get("/api/users/", userController.findAllUsers)
+    
+    app.get('/api/user/articles/:uid', userController.getArticlesbyUserUid)
 
-    app.post('/api/user/savedarticles/:uid', userController.saveArticle)
+    app.put('/api/user/savedarticles/:uid', userController.saveArticle)
+
+    app.put('/api/user/deletearticle/:uid', userController.deleteArticle)
 
     //BUDGET ROUTES:
     app.get("/api/budgets/", budgetController.findAll)

@@ -11,7 +11,7 @@ import { ProtectedScreen } from '../components/context'
 class Articles extends Component {
 
     state = {
-        articles: []
+        articles: [],
     }
 
     cnbcNews = () => {
@@ -32,6 +32,47 @@ class Articles extends Component {
         })
     }
 
+    saveArticle = (title, excerpt, link, picture) => {
+        const article = {
+            title,
+            excerpt,
+            link,
+            picture
+        }
+       API.saveArticle(this.state.uid, article)
+    }
+
+    deleteArticle = (title, excerpt, link, picture) => {
+        const article = {
+            title,
+            excerpt,
+            link,
+            picture
+        }
+        API.deleteArticle(this.state.uid, article).then(res => {
+            console.log(res)
+        }).then(() => {
+            API. retrieveSavedArticles(this.state.uid).then(dbUser => {
+                this.setState({ articles: dbUser.data.articles })
+                console.log(this.state)
+            })
+        })
+    }
+
+    componentWillMount() {
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        this.setState({ uid: user.uid })
+    }
+
+     retrieveSavedArticles =() => {
+    
+            API. retrieveSavedArticles(this.state.uid).then(dbUser => {
+                this.setState({ articles: dbUser.data.articles })
+                console.log(this.state)
+            })
+    
+    }
+    
     render() {
         return (
             <ProtectedScreen>
@@ -55,9 +96,22 @@ class Articles extends Component {
                             CNBC
                          </Button>
 
+                         <Button onClick={this.retrieveSavedArticles}>
+                           Saved Articles
+                         </Button>
+
+                        {console.log(this.state.articles)}
+
                         {this.state.articles.length > 0 ? (
                             this.state.articles.map(article => (
-                                <Article headline={article.title} link={article.link} excerpt={article.excerpt} picture={article.picture}></Article>
+                                <Article 
+                                title={article.title} 
+                                link={article.link} 
+                                excerpt={article.excerpt} 
+                                picture={article.picture}
+                                onClickFn={(article.saved) ? this.deleteArticle : this.saveArticle} 
+                                buttonText={(article.saved) ? 'Delete' : 'Save'}>
+                                </Article>
                             ))
                         ) : (
                                 <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
