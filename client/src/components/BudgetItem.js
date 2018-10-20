@@ -50,12 +50,13 @@ const BudgetItem = props => {
   return (
     <BudgetWrapper>
       <Label
-      bg={props.bg}
-      onClick={(e) => props.handleClick(props.category, props.amount, props._id)}
+        bg={props.bg}
+        onClick={(e) => props.handleCategorySelect(props.category, props.amount, props._id)}
       >
-      {props.label}
+        {props.category}
       </Label>
       <CategoryInput
+        key={props._id}   
         category={props.category}
         amount={props.amount}
         onChange={props.onChangeFn}

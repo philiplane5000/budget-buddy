@@ -1,23 +1,26 @@
 import axios from "axios";
 
 export default {
-  // Gets all saved budgets: (prev)
-  getCurrentBudget: () => {
-      return axios.get("/api/budgets");
-  },
-
   // Gets all saved budgets: (user)
   getCurrentUserBudget: (uid) => {
-      return axios.get(`/api/user/budget/${uid}`);
+    return axios.get(`/api/user/budget/${uid}`);
+  },
+  // Gets all saved budgets: (prev)
+  getCurrentBudget: () => {
+    return axios.get("/api/budgets");
   },
 
-  // Update the amount of category with id: (prev)
+  createNewUser: (uid) => {
+    return axios.post(`/api/user/new/${uid}`);
+  },
+
+  // Update the amount of category with id: (user)
   updateBudgetByCategory: (uid, budgetData) => {
-      return axios.put(`/api/users/${uid}`, budgetData)
+    return axios.put(`/api/user/update/${uid}`, budgetData)
   },
   // Update the amount of category with id: (prev)
   updateBudgetCategory: (id, budgetData) => {
-      return axios.put(`/api/budgets/${id}`, budgetData)
+    return axios.put(`/api/budgets/${id}`, budgetData)
   },
 
   // Deletes the budget category with id: 
