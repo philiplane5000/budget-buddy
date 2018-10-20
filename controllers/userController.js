@@ -38,11 +38,9 @@ module.exports = {
                     })
             })
     },
-
-
     saveArticle: function (req, res) {
         db.User
-            .update( {uid: req.params.uid }, { $push: { articles: req.body } })
+            .update({ uid: req.params.uid }, { $push: { articles: req.body } })
             .then(response => {
                 res.json(response)
             })
@@ -52,21 +50,20 @@ module.exports = {
         // console.log(req.body)
         // console.log(req.params.uid)
         db.User
-        .find({ uid: req.params.uid })
-        .then(User => {
-            return User[0].articles.filter(article => {
-                 return article.title !== req.body.title
-            })
-        })
-        .then(updatedArticles => {
-            db.User
-                .update({ uid: req.params.uid }, { $set: { articles: updatedArticles } })
-                .then(response => {
-                    res.json(response)
+            .find({ uid: req.params.uid })
+            .then(User => {
+                return User[0].articles.filter(article => {
+                    return article.title !== req.body.title
                 })
-        })
+            })
+            .then(updatedArticles => {
+                db.User
+                    .update({ uid: req.params.uid }, { $set: { articles: updatedArticles } })
+                    .then(response => {
+                        res.json(response)
+                    })
+            })
     },
-
     //GET SPECIFIC USER DATA BY GOOGLE UID:
     getBudgetbyUserUid: function (req, res) {
         db.User
@@ -81,7 +78,6 @@ module.exports = {
             .then(User => res.json(User))
             .catch(err => res.status(422).json(err));
     },
-
     //RETRIEVE ALL USERS:
     findAllUsers: function (req, res) {
         db.User

@@ -22,17 +22,6 @@ module.exports = function (app) {
 
     app.put('/api/user/deletearticle/:uid', userController.deleteArticle)
 
-    //BUDGET ROUTES:
-    app.get("/api/budgets/", budgetController.findAll)
-
-    app.post("/api/budgets/", budgetController.create)
-
-    app.get("/api/budgets/:id", budgetController.findById)
-
-    app.put("/api/budgets/:id", budgetController.update)
-
-    app.delete("/api/budgets/:id", budgetController.remove)
-
     app.get("/api/scrape/cnbc", scrapeController.findCnbc)
 
     app.get("/api/scrape/usatoday", scrapeController.findToday)
