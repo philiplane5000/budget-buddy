@@ -42,42 +42,16 @@ module.exports = {
 
     saveArticle: function (req, res) {
         db.User
-            .update( {uid: req.params.uid }, { $push: { articles: req.body } })
+            .update( {uid: req.params.uid }, { $set: { articles: req.body } })
             .then(response => {
                 res.json(response)
             })
-    },
-
-    deleteArticle: function (req, res) {
-        // console.log(req.body)
-        // console.log(req.params.uid)
-        db.User
-        .find({ uid: req.params.uid })
-        .then(User => {
-            return User[0].articles.filter(article => {
-                 return article.title !== req.body.title
-            })
-        })
-        .then(updatedArticles => {
-            db.User
-                .update({ uid: req.params.uid }, { $set: { articles: updatedArticles } })
-                .then(response => {
-                    res.json(response)
-                })
-        })
     },
 
     //GET SPECIFIC USER DATA BY GOOGLE UID:
     getBudgetbyUserUid: function (req, res) {
         db.User
             .findOne({ uid: req.params.uid }, 'budgets')
-            .then(User => res.json(User))
-            .catch(err => res.status(422).json(err));
-    },
-
-    getArticlesbyUserUid: function (req, res) {
-        db.User
-            .findOne({ uid: req.params.uid }, 'articles')
             .then(User => res.json(User))
             .catch(err => res.status(422).json(err));
     },
