@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'react-emotion';
-import Grid from "@material-ui/core/Grid";
-import BudgetItem from "../components/BudgetItem";
-import API from "../utils/API";
-import CategoryIcon from "../components/CategoryIcon"
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import TextField from "@material-ui/core/TextField";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import Wrapper from "../components/Wrapper";
-import { ProtectedScreen } from '../components/context';
+import React, { Component } from 'react'
+import styled from 'react-emotion'
+import Grid from '@material-ui/core/Grid'
+import BudgetItem from '../components/BudgetItem'
+import API from '../utils/API'
+import CategoryIcon from '../components/CategoryIcon'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import TextField from '@material-ui/core/TextField'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import Wrapper from '../components/Wrapper'
+import { ProtectedScreen } from '../components/context'
 
 const MySwal = withReactContent(Swal)
 
@@ -109,7 +109,7 @@ class Budget extends Component {
                     return stateCopy
                 }).then(stateCopy => {
                     stateCopy.amount = '--'
-                    stateCopy.category = "Pick a Category"
+                    stateCopy.category = 'Pick a Category'
                     stateCopy.transaction = ''
                     this.setState(stateCopy)
                 })
@@ -122,19 +122,19 @@ class Budget extends Component {
     render() {
         return (
             <ProtectedScreen>
-                <Grid container justify="center" style={{ marginBottom: 100 }}>
+                <Grid container justify='center' style={{ marginBottom: 100 }}>
                     <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
                             <Header>
                                 Manage Your Budget
                         </Header>
 
-                            <Grid container justify="center">
+                            <Grid container justify='center'>
 
                                 <Grid item lg={10} md={10} sm={10} xs={10}>
 
                                     <CategoryIcon
-                                        bg="#2fc4a6"
+                                        bg='#2fc4a6'
                                         category={this.state.category}
                                         amount={this.state.amount !== '--' ? parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2) : '--'}
                                     />
@@ -144,20 +144,20 @@ class Budget extends Component {
                                     <FormWrapper>
 
                                         <InputWrapper>
-                                            <form noValidate autoComplete="off">
+                                            <form noValidate autoComplete='off'>
                                                 <TextField
-                                                    id="standard-number"
-                                                    label="Set/Adjust Spending Limit:"
-                                                    name="amount"
+                                                    id='standard-number'
+                                                    label='Set/Adjust Spending Limit:'
+                                                    name='amount'
                                                     value={this.state.amount}
                                                     onChange={this.handleChange}
-                                                    type="number"
+                                                    type='number'
                                                     fullWidth={true}
                                                     InputLabelProps={{
                                                         shrink: true,
                                                     }}
-                                                    margin="normal"
-                                                    variant="outlined"
+                                                    margin='normal'
+                                                    variant='outlined'
                                                 />
                                             </form>
 
@@ -169,14 +169,14 @@ class Budget extends Component {
                                     </FormWrapper>
 
                                 </Grid>
-                                <Grid container justify="space-around">
+                                <Grid container justify='space-around'>
                                     {
                                         this.state.budgets.length > 0
                                             ? this.state.budgets.map(doc =>
                                                 <Grid item lg={6} md={6} sm={10} xs={10}>
                                                     <BudgetItem
                                                         category={doc.category}
-                                                        bg={(this.state.category === doc.category) ? "#2fc4a6" : "#1162bc"}
+                                                        bg={(this.state.category === doc.category) ? '#2fc4a6' : '#1162bc'}
                                                         amount={doc.amount}
                                                         _id={doc._id}
                                                         handleCategorySelect={this.handleCategorySelect}

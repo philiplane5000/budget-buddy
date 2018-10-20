@@ -7,8 +7,8 @@ import IconSmall from '../image/BB.png'
 import IconBig from '../image/BudgetBuddy.png'
 import SimpleMenu from './Dropdown'
 
-import firebase from 'firebase';
-import { FirebaseAuthContext } from '../components/context';
+import firebase from 'firebase'
+import { FirebaseAuthContext } from '../components/context'
 
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
@@ -99,7 +99,7 @@ class Navbar extends React.Component {
       sessionStorage.clear()
     }).catch(function (error) {
       console.log(error)
-    });
+    })
   }
 
   render() {
@@ -115,8 +115,8 @@ class Navbar extends React.Component {
             position='static'
             style={{
               transform: `translateY(${style.x}px)`,
-              backgroundColor: "#092d63",
-              borderBottom: "2.5px solid #3de28c"
+              backgroundColor: '#092d63',
+              borderBottom: '2.5px solid #3de28c'
             }}
           >
             <NavWrapper>
@@ -124,17 +124,17 @@ class Navbar extends React.Component {
                 <LogoBig>
                   <LinkItem>
                     <img
-                      style={{ height: "65px", width: "120px" }}
+                      style={{ height: '65px', width: '120px' }}
                       src={IconBig}
-                      alt="bb-big"
+                      alt='bb-big'
                     />
                   </LinkItem>
                 </LogoBig>
                 <LogoSmall>
                     <img
-                      style={{ height: "65px", width: "90px" }}
+                      style={{ height: '65px', width: '90px' }}
                       src={IconSmall}
-                      alt="bb-small"
+                      alt='bb-small'
                     />
                 </LogoSmall>
               </Title>
@@ -147,19 +147,19 @@ class Navbar extends React.Component {
                       {
                         isUserSignedIn && (
                           <LinksWrapper>
-                            <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                            <Link to='/dashboard' style={{ textDecoration: 'none' }}>
                               <LinkItem>HOME</LinkItem>
                             </Link>
-                            <Link to="/budget" style={{ textDecoration: "none" }}>
+                            <Link to='/budget' style={{ textDecoration: 'none' }}>
                               <LinkItem>BUDGET</LinkItem>
                             </Link>
-                            <Link to="/purchase" style={{ textDecoration: "none" }}>
+                            <Link to='/purchase' style={{ textDecoration: 'none' }}>
                               <LinkItem>PURCHASE</LinkItem>
                             </Link>
-                            <Link to="/articles" style={{ textDecoration: "none" }}>
+                            <Link to='/articles' style={{ textDecoration: 'none' }}>
                               <LinkItem>LEARN</LinkItem>
                             </Link>
-                            <Link to="/login" style={{ textDecoration: "none" }}>
+                            <Link to='/login' style={{ textDecoration: 'none' }}>
                               <LinkItem onClick={this.signOut}>SIGN OUT</LinkItem>
                             </Link>
                           </LinksWrapper>
@@ -168,7 +168,7 @@ class Navbar extends React.Component {
                       {
                         !(isUserSignedIn) && (
                           <LinksWrapper>
-                            <Link to="/login" style={{ textDecoration: "none" }}>
+                            <Link to='/login' style={{ textDecoration: 'none' }}>
                               <LinkItem>YOU ARE LOGGED OUT</LinkItem>
                             </Link>
                           </LinksWrapper>
@@ -187,6 +187,6 @@ class Navbar extends React.Component {
 
   }
 
-};
+}
 
 export default Navbar
