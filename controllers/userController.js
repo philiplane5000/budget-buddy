@@ -38,6 +38,16 @@ module.exports = {
                     })
             })
     },
+
+
+    saveArticle: function (req, res) {
+        db.User
+            .update( {uid: req.params.uid }, { $set: { articles: req.body } })
+            .then(response => {
+                res.json(response)
+            })
+    },
+
     //GET SPECIFIC USER DATA BY GOOGLE UID:
     getBudgetbyUserUid: function (req, res) {
         db.User
