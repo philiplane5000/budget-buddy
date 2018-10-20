@@ -10,7 +10,7 @@ const provider = new firebase.auth.GoogleAuthProvider()
 class Login extends Component {
 
     googleSignIn = async (event) => {
-        const { history } = this.props;
+        const { history } = this.props
         event.preventDefault()
 
         try {
@@ -36,7 +36,7 @@ class Login extends Component {
 
     render() {
         return (
-            <Grid container justify="center">
+            <Grid container justify='center'>
                 <Grid item lg={6} md={8} sm={10} xs={10} >
                     <Button onClick={this.googleSignIn} style={{ marginTop: '250px' }}>
                         SIGN-IN

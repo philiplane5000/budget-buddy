@@ -2,14 +2,6 @@ const db = require('../models')
 const BudgetSeed = require('../scripts/BudgetSeed')
 
 module.exports = {
-
-    getBudgetbyUserUid: function (req, res) {
-        db.User
-            .findOne({ uid: req.params.uid }, 'budgets')
-            .then(User => res.json(User))
-            .catch(err => res.status(422).json(err));
-
-    },
     //FIND ONE USER BY GOOGLE UID:
     findByUid: function (req, res) {
         db.User
@@ -24,11 +16,7 @@ module.exports = {
             .then(User => res.json(User))
             .catch(err => res.status(422).json(err));
     },
-
-    // Person.update({'items.id': 2}, {'$set': {
-    //     'items.$.name': 'updated item2',
-    //     'items.$.value': 'two updated'
-    // }}, function(err) { ...
+    //UPDATE THE BUDGET BY CATEGORY AND INCOMING AMOUNT
     updateBudgetByCategory: function (req, res) {
         db.User
             .find({ uid: req.params.uid })
@@ -44,15 +32,13 @@ module.exports = {
             })
             .then(updatedBudget => {
                 db.User
-                    .update({ uid: req.params.uid }, { $set: { budgets: updatedBudget}})
+                    .update({ uid: req.params.uid }, { $set: { budgets: updatedBudget } })
                     .then(response => {
                         res.json(response)
                     })
             })
-        // console.log(req.query)
-        // console.log(req.body)
-        // console.log(req.params.uid)
     },
+
 
     saveArticle: function (req, res) {
         db.User
@@ -62,6 +48,13 @@ module.exports = {
             })
     },
 
+    //GET SPECIFIC USER DATA BY GOOGLE UID:
+    getBudgetbyUserUid: function (req, res) {
+        db.User
+            .findOne({ uid: req.params.uid }, 'budgets')
+            .then(User => res.json(User))
+            .catch(err => res.status(422).json(err));
+    },
     //RETRIEVE ALL USERS:
     findAllUsers: function (req, res) {
         db.User

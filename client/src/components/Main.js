@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'react-emotion';
-import { Link } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Button from '../components/Button';
-import Header from '../components/Header';
-import Wrapper from '../components/Wrapper';
+import React, { Component } from 'react'
+import styled from 'react-emotion'
+import { Link } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid'
+import Button from '../components/Button'
+import Header from '../components/Header'
+import Wrapper from '../components/Wrapper'
 
 const Icon = styled('div')`
   display: flex;
@@ -30,13 +30,12 @@ class Main extends Component {
   }
 
   render() {
-
     return (
       <Wrapper>
         <Header>
           Total Budget
         </Header>
-        <Grid container justify="center">
+        <Grid container justify='center'>
           <Grid item>
             <Icon>
               ${this.props.total}
@@ -44,17 +43,17 @@ class Main extends Component {
           </Grid>
         </Grid>
         <Button>
-          <Link to="/purchase" style={{ textDecoration: "none", color: "white" }}>
+          <Link to='/purchase' style={{ textDecoration: 'none', color: 'white' }}>
             Make a Purchase
           </Link>
         </Button>
         <Button>
-          <Link to="/budget" style={{ textDecoration: "none", color: "white" }}>
+          <Link to='/budget' style={{ textDecoration: 'none', color: 'white' }}>
             Edit Budget
           </Link>
         </Button>
       </Wrapper>
-    );
+    )
   }
 
 }

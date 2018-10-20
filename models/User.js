@@ -6,12 +6,8 @@ const BudgetSchema = new Schema({
     category: { type: String, required: true, unique: false },
 });
 
-// BudgetSchema.index({_id: 1}, {unique: true})
-// BudgetSchema.index({category: 1}, {unique: false})
-
-//(UNSURE ABOUT BEHAVIOR OF ID)
 const ArticleSchema = new Schema({
-    _id: { type: Schema.Types.ObjectId},
+    _id: { type: Schema.Types.ObjectId },
     title: { type: String, required: true },
     excerpt: { type: String, required: true },
     link: { type: String, required: true },

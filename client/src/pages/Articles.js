@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Article from '../components/Article'
 import Wrapper from '../components/Wrapper'
 import Button from '../components/Button'
-import { ProtectedScreen } from '../components/context';
+import { ProtectedScreen } from '../components/context'
 
 class Articles extends Component {
 
@@ -35,7 +35,7 @@ class Articles extends Component {
     render() {
         return (
             <ProtectedScreen>
-                <Grid container justify="center" style={{ marginBottom: 100 }}>
+                <Grid container justify='center' style={{ marginBottom: 100 }}>
 
                 <Grid item lg={6} md={8} sm={10} xs={10}>
                     <Wrapper>
