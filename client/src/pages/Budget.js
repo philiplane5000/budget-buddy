@@ -62,13 +62,7 @@ class Budget extends Component {
 
     componentDidMount() {
         API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
-            (dbBudget.data === null)
-                ?
-                API.createNewUser(this.state.uid).then(dbBudget => {
-                    this.setState({ budgets: dbBudget.data.budgets })
-                })
-                :
-                this.setState({ budgets: dbBudget.data.budgets })
+            this.setState({ budgets: dbBudget.data.budgets })
         })
     }
 

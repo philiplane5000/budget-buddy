@@ -1,4 +1,3 @@
-const budgetController = require("../controllers/budgetController")
 const userController = require("../controllers/userController")
 const scrapeController = require("../controllers/scrapeController")
 const path = require("path")

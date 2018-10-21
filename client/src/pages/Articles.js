@@ -38,7 +38,7 @@ class Articles extends Component {
             link,
             picture
         }
-       API.saveArticle(this.state.uid, article)
+        API.saveArticle(this.state.uid, article)
     }
 
     deleteArticle = (title, excerpt, link, picture) => {
@@ -58,63 +58,61 @@ class Articles extends Component {
         })
     }
 
+    retrieveSavedArticles = () => {
+        API.retrieveSavedArticles(this.state.uid).then(dbUser => {
+            this.setState({ articles: dbUser.data.articles })
+            console.log(this.state)
+        })
+    }
+
     componentWillMount() {
         let user = JSON.parse(sessionStorage.getItem('user'));
         this.setState({ uid: user.uid })
     }
 
-     retrieveSavedArticles =() => {
-    
-            API. retrieveSavedArticles(this.state.uid).then(dbUser => {
-                this.setState({ articles: dbUser.data.articles })
-                console.log(this.state)
-            })
-    
-    }
-    
     render() {
         return (
             <ProtectedScreen>
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
 
-                <Grid item lg={6} md={8} sm={10} xs={10}>
-                    <Wrapper>
-                        <Header>
-                            Staying On Track
+                    <Grid item lg={6} md={8} sm={10} xs={10}>
+                        <Wrapper>
+                            <Header>
+                                Staying On Track
                         </Header>
 
-                        <Button onClick={this.todayNews}>
-                            USA Today
+                            <Button onClick={this.todayNews}>
+                                USA Today
                          </Button>
 
                             <Button onClick={this.streetNews}>
                                 The Street
                          </Button>
 
-                         <Button onClick={this.cnbcNews}>
-                            CNBC
+                            <Button onClick={this.cnbcNews}>
+                                CNBC
                          </Button>
 
-                         <Button onClick={this.retrieveSavedArticles}>
-                           Saved Articles
+                            <Button onClick={this.retrieveSavedArticles}>
+                                Saved Articles
                          </Button>
 
-                        {console.log(this.state.articles)}
+                            {console.log(this.state.articles)}
 
-                        {this.state.articles.length > 0 ? (
-                            this.state.articles.map(article => (
-                                <Article 
-                                title={article.title} 
-                                link={article.link} 
-                                excerpt={article.excerpt} 
-                                picture={article.picture}
-                                onClickFn={(article.saved) ? this.deleteArticle : this.saveArticle} 
-                                buttonText={(article.saved) ? 'Delete' : 'Save'}>
-                                </Article>
-                            ))
-                        ) : (
-                                <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
-                            )
+                            {this.state.articles.length > 0 ? (
+                                this.state.articles.map(article => (
+                                    <Article
+                                        title={article.title}
+                                        link={article.link}
+                                        excerpt={article.excerpt}
+                                        picture={article.picture}
+                                        onClickFn={(article.saved) ? this.deleteArticle : this.saveArticle}
+                                        buttonText={(article.saved) ? 'Delete' : 'Save'}>
+                                    </Article>
+                                ))
+                            ) : (
+                                    <h3 style={{ color: '#1162bc', fontFamily: 'Roboto, sans-serif', fontSize: 20 }}>Read up on how to manage your budget and perfect your personal financing.</h3>
+                                )
 
                             }
 

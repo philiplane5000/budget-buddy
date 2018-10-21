@@ -9,7 +9,7 @@ module.exports = {
             .then(User => res.json(User))
             .catch(err => res.status(422).json(err));
     },
-    //CREATE NEW USER WITH EMPTY BUDGET VALUES:
+    //CREATE NEW USER WITH DEFAULT BUDGET VALUES AND NO SAVED ARTICLES:
     createNewUser: function (req, res) {
         db.User
             .create({ uid: req.params.uid, budgets: BudgetSeed, articles: [] })
