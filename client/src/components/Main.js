@@ -19,7 +19,7 @@ const Icon = styled('div')`
   margin: 20px 10px;
   background: #2fc4a6;
   color: white; 
-  font-size: 84px;
+  font-size: 72px;
   border: 1px solid rgba(0,0,0,0.35);
 `
 

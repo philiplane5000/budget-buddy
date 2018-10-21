@@ -21,11 +21,12 @@ class Home extends Component {
   componentDidMount() {
     API.getCurrentUserBudget(this.state.uid).then(response => {
       console.log(response)
-      // let total = response.data.budgets.reduce((acc, doc) => {
-      //   return acc += doc.amount
-      // }, 0)
-      // this.setState({ total });
-      // console.log(this.state)
+      let total = response.data.budgets.reduce((acc, doc) => {
+        return acc += doc.amount
+      }, 0)
+      total = parseFloat(Math.round(total * 100) / 100).toFixed(2)
+      this.setState({ total });
+      console.log(this.state)
     })
   }
 
