@@ -36,8 +36,7 @@ const Button = styled('div')`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    height: 65px,
+    border-radius: 5px;
     margin-top: 10px;
     background-color: #ffc107;
     color: white;

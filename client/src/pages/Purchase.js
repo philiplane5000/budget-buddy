@@ -6,7 +6,6 @@ import CategoryIcon from '../components/CategoryIcon'
 import TextField from '@material-ui/core/TextField'
 import Button from '../components/Button'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
@@ -15,7 +14,6 @@ import { ProtectedScreen } from '../components/context'
 const MySwal = withReactContent(Swal)
 
 class Purchase extends Component {
-
     state = {
         budgets: [],
         amount: '0.00',
@@ -62,37 +60,81 @@ class Purchase extends Component {
     handlePurchase = () => {
         let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2)
         const budgetData = { category: this.state.category, amount: adjusted }
-        API.updateBudgetByCategory(this.state.uid, budgetData)
-            .then((updatedDb) => {
-                (updatedDb.status === 200)
-                    ?
-                    MySwal.fire({
-                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
-                        type: 'success',
-                        confirmButtonText: 'Ok'
-                    })
-                    :
-                    MySwal.fire({
-                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
-                        type: 'error',
-                        confirmButtonText: 'Ok'
-                    })
-            }).then(() => {
-                API.getCurrentUserBudget(this.state.uid).then(res => {
-                    const stateCopy = this.state
-                    stateCopy.budgets = res.data.budgets
-                    return stateCopy
-                }).then(stateCopy => {
-                    stateCopy.amount = ''
-                    stateCopy.category = 'Pick a Category'
-                    stateCopy.transaction = ''
-                    this.setState(stateCopy)
-                })
+        if (adjusted < 0) {
+            MySwal.fire({
+                title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Are you sure?</h3>,
+                html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>You are about to overspend in '{this.state.category.toUpperCase()}'</p>,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#dc3545',
+                cancelButtonText: <div style={{ fontFamily: 'Roboto, sans-serif' }}>Cancel</div>,
+                confirmButtonText: <div style={{ fontFamily: 'Roboto, sans-serif' }}>Yes</div>
+            }).then((result) => {
+                if (result.value) {
+                    API.updateBudgetByCategory(this.state.uid, budgetData)
+                        .then((updatedDb) => {
+                            (updatedDb.status === 200)
+                                ?
+                                MySwal.fire({
+                                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                                    type: 'success',
+                                    confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                                })
+                                :
+                                MySwal.fire({
+                                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
+                                    type: 'error',
+                                    confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                                })
+                        }).then(() => {
+                            API.getCurrentUserBudget(this.state.uid).then(res => {
+                                const stateCopy = this.state
+                                stateCopy.budgets = res.data.budgets
+                                return stateCopy
+                            }).then(stateCopy => {
+                                stateCopy.amount = ''
+                                stateCopy.category = 'Pick a Category'
+                                stateCopy.transaction = ''
+                                this.setState(stateCopy)
+                            })
+                        })
+                }
             })
+        } else {
+            API.updateBudgetByCategory(this.state.uid, budgetData)
+                .then((updatedDb) => {
+                    (updatedDb.status === 200)
+                        ?
+                        MySwal.fire({
+                            title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                            type: 'success',
+                            confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                        })
+                        :
+                        MySwal.fire({
+                            title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
+                            type: 'error',
+                            confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                        })
+                }).then(() => {
+                    API.getCurrentUserBudget(this.state.uid).then(res => {
+                        const stateCopy = this.state
+                        stateCopy.budgets = res.data.budgets
+                        return stateCopy
+                    }).then(stateCopy => {
+                        stateCopy.amount = ''
+                        stateCopy.category = 'Pick a Category'
+                        stateCopy.transaction = ''
+                        this.setState(stateCopy)
+                    })
+                })
+        }
+
+
     }
 
     render() {
-
         return (
             <ProtectedScreen>
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
@@ -101,14 +143,14 @@ class Purchase extends Component {
 
                             <Header>
                                 Make a Purchase
-                        </Header>
+                            </Header>
 
                             <Grid container justify='space-around'>
 
                                 {this.state.category !== '' ? (
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <CategoryIcon
-                                            bg='#2fc4a6'
+                                            bg={(((this.state.amount - this.state.transaction) < 25) && (this.state.category !== 'Pick a Category')) ? '#dc3545' : '#2fc4a6'}
                                             category={this.state.category}
                                             amount={(this.state.amount - this.state.transaction).toFixed(2)}
                                         />
