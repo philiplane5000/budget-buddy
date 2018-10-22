@@ -29,7 +29,7 @@ class Login extends Component {
         } catch (e) {
             alert(e)
         } finally {
-            history.push('/dashboard')
+            history.push('/home')
         }
 
     }
@@ -38,7 +38,7 @@ class Login extends Component {
         return (
             <Grid container justify='center'>
                 <Grid item lg={6} md={8} sm={10} xs={10} >
-                    <Button onClick={this.googleSignIn} style={{ marginTop: '250px' }}>
+                    <Button onClick={this.googleSignIn} style={{ marginTop: '200px' }}>
                         SIGN-IN
                     </Button>
                 </Grid>
