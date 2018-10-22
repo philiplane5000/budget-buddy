@@ -30,16 +30,19 @@ class Purchase extends Component {
     }
 
     componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
-            (dbBudget.data === null)
-                ?
+        API.getCurrentUserBudget(this.state.uid).then(User => {
+            let total = User.data.budgets.reduce((acc, doc) => {
+                return acc += doc.amount
+            }, 0);
+            if (total <= 0) {
                 MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Edit Your Budget!</h3>,
+                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
+                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(...it's empty)</p>,
                     type: 'error',
                     confirmButtonText: 'Ok'
                 })
-                :
-                this.setState({ budgets: dbBudget.data.budgets })
+            }
+            this.setState({ budgets: User.data.budgets })
             console.log(this.state)
         })
     }
