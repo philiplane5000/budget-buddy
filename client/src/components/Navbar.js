@@ -6,7 +6,6 @@ import { Motion, spring } from 'react-motion'
 import IconSmall from '../image/bb-small.png'
 import IconBig from '../image/bb-big.png'
 import SimpleMenu from './Dropdown'
-
 import firebase from 'firebase'
 import { FirebaseAuthContext } from '../components/context'
 
@@ -145,7 +144,7 @@ class Navbar extends React.Component {
                       {
                         isUserSignedIn && (
                           <LinksWrapper>
-                            <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                            <Link to='/home' style={{ textDecoration: 'none' }}>
                               <LinkItem>HOME</LinkItem>
                             </Link>
                             <Link to='/budget' style={{ textDecoration: 'none' }}>

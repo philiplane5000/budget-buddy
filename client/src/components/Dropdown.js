@@ -4,6 +4,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
+import firebase from 'firebase'
 
 const HamWrapper = styled('div')`
   align-self: center;
@@ -32,6 +33,15 @@ class SimpleMenu extends React.Component {
     anchorEl: null,
   }
 
+  signOut = () => {
+    firebase.auth().signOut().then(function () {
+      console.log('USER SIGNED OUT')
+      sessionStorage.clear()
+    }).catch(function (error) {
+      console.log(error)
+    })
+  }
+
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget })
   }
@@ -50,11 +60,11 @@ class SimpleMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-            <HamWrapper>
-                <Bar />
-                <Bar />
-                <Bar />          
-            </HamWrapper>
+          <HamWrapper>
+            <Bar />
+            <Bar />
+            <Bar />
+          </HamWrapper>
         </Button>
         <Menu
           id="simple-menu"
@@ -62,7 +72,7 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/home" style={{ textDecoration: "none" }}>
             <MenuItem>HOME</MenuItem>
           </Link>
           <Link to="/budget" style={{ textDecoration: "none" }}>
@@ -73,6 +83,9 @@ class SimpleMenu extends React.Component {
           </Link>
           <Link to="/articles" style={{ textDecoration: "none" }}>
             <MenuItem>LEARN</MenuItem>
+          </Link>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <MenuItem onClick={this.signOut}>SIGN OUT</MenuItem>
           </Link>
         </Menu>
       </div>
