@@ -6,7 +6,7 @@ const Wrap = styled('div')`
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 40px;
-    border-radius: 10px;
+    border-radius: 05px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     background-color: #f9f9f9;
 `

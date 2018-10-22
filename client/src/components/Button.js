@@ -10,7 +10,7 @@ const Btn = styled('button')`
     min-width: 50px;
     background-color: #1162bc;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 05px;
     border: none;
     font-size: 25px;
     outline: none;
