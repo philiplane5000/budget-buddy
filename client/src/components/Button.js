@@ -18,6 +18,7 @@ const Btn = styled('button')`
     transition: all .2s ease-in-out;
     :hover {
         transform: scale(1.025);
+        background-color: #3de28c;
     }
 `
 
