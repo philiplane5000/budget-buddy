@@ -15,7 +15,7 @@ const Icon = styled('div')`
     width: 350px;
     min-width: 250px;
     min-height: 140px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 20px 10px;
     background: ${props => props.bg}; 
     border: 1px solid rgba(0,0,0,0.35);

@@ -32,7 +32,7 @@ const Label = styled('div')`
   background: ${props => props.bg};
   color: white;
   margin-right: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 185px;
   transition: all .2s ease-in-out;
   :hover {
