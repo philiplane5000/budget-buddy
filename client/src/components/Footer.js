@@ -8,7 +8,7 @@ const Wrapper = styled('div')`
   font-weight: 300;
   width: 100%;
   background-color: #092d63;
-  height: 60px,
+  height: 40px,
   border-top: 2px solid #3de28c;
   left: 0;
   bottom: 0;
