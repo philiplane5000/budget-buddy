@@ -4,8 +4,11 @@ import styled from 'react-emotion'
 const Wrapper = styled('div')`
     
     display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    border-radius: 10px;
+    border-radius: 05px;
     padding: 20px;
     margin: 30px;
     background-color: #f2f3f4;
@@ -49,7 +52,7 @@ const Save = styled('button')`
     background-color: #1162bc;
     font-family: 'Roboto', sans-serif;
     border: solid 03px #1162bc;
-    border-radius: 10px;
+    border-radius: 05px;
     outline: none;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     transition: all .3s ease-in-out;
@@ -59,11 +62,26 @@ const Save = styled('button')`
     }
 `
 
+const Img = styled('div') `
+    border: solid 03px #1162bc;
+    height: 105px;
+    width: 160px;
+    margin: 0px 25px 0px 10px;
+    background-image:  url(${props => props.picture});
+    background-position: center;
+    background-repeat: no repeat;
+    background-size: cover;
+
+    @media (max-width: 765px) {
+        display: none;
+      }
+`
+
 const Article = props => (
 
     <Wrapper>
-        <Link style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', margin: '0px 25px 0px 10px ' }}href={props.link} target="_blank">
-        <img style={{ border: 'solid 03px #1162bc', height: '105px', width: '160px' }} src={props.picture} alt=''></img>
+        <Link href={props.link} target="_blank">
+        <Img picture={props.picture} />
         </Link>
         <ArticleWrapper>
             <Link href={props.link} target="_blank"><Headline>{props.title}</Headline></Link>

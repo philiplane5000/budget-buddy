@@ -15,7 +15,7 @@ const Icon = styled('div')`
   width: 350px;
   min-width: 250px;
   min-height: 140px;
-  border-radius: 10px;
+  border-radius: 05px;
   margin: 20px 10px;
   background: #2fc4a6;
   color: white; 
