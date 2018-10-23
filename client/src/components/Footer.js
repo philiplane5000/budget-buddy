@@ -11,10 +11,15 @@ const Wrapper = styled('div')`
   width: 100%;
   background-color: #092d63;
   border-top: 2.5px solid #3de28c;
-  height: 60px;
+  height: 50px;
   left: 0;
   bottom: 0;
   position: fixed;
+
+  @media (max-width: 765px) {
+    display; flex;
+    justify-content: center;
+  }
 `
 
 const Team = styled('div')`
@@ -24,11 +29,32 @@ const Team = styled('div')`
   color: inherit;
   text-decoration: none;
   margin-left: 10px;
+
+  @media (max-width: 765px) {
+    display: none;
+  }
 `
 
+const Copyright = styled('div')`
+  margin-right: 170px;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 765px) {
+    margin: auto;
+  }
+`
+
+
 const Github = styled('div')`
+  display: flex;
+  justify-content: flex-end;
   text-decoration: none;
   margin-right: 10px;
+
+  @media (max-width: 765px) {
+    display: none;
+  }
 `
 
 const Footer = () => {
@@ -57,7 +83,9 @@ const Footer = () => {
             color: 'inherit', textDecoration: 'none', fontWeight: '300' 
             }}>Phil</a>
           </Team>
+          <Copyright>
           <div>2018 &copy; Budget Buddy</div>
+          </Copyright>
           <Github>
             <a href='https://github.com/philiptd5000/budget-buddy' target='https://github.com/philiptd5000/budget-buddy' style={{ color: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }}>
               <i class="fab fa-github"></i> Github

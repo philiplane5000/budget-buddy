@@ -19,6 +19,11 @@ const Icon = styled('div')`
     margin: 20px 10px;
     background: ${props => props.bg}; 
     border: 1px solid rgba(0,0,0,0.35);
+
+    @media (max-width: 765px) {
+        width: 250px;
+        font-size: 50px;
+      }
 `
 
 const Category = styled('div')`
