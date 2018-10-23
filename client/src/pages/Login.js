@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Grid from '@material-ui/core/Grid'
-import Footer from '../components/Footer'
 import firebase from 'firebase'
 import Button from '../components/Button'
 

@@ -20,7 +20,7 @@ export default class FirebaseAuthProvider extends React.Component {
         }));
     }
 
-    render(): React.Node {
+    render() {
         const {children} = this.props
         const {authStatusReported, isUserSignedIn} = this.state
         return (
