@@ -57,6 +57,36 @@ class Purchase extends Component {
         this.setState({ amount, category })
     }
 
+    submitTransaction = (budgetData) => {
+        API.updateBudgetByCategory(this.state.uid, budgetData)
+            .then((updatedDb) => {
+                (updatedDb.status === 200)
+                    ?
+                    MySwal.fire({
+                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                        type: 'success',
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                    })
+                    :
+                    MySwal.fire({
+                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
+                        type: 'error',
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
+                    })
+            }).then(() => {
+                API.getCurrentUserBudget(this.state.uid).then(res => {
+                    const stateCopy = this.state
+                    stateCopy.budgets = res.data.budgets
+                    return stateCopy
+                }).then(stateCopy => {
+                    stateCopy.amount = ''
+                    stateCopy.category = 'Pick a Category'
+                    stateCopy.transaction = ''
+                    this.setState(stateCopy)
+                })
+            })
+    }
+
     handlePurchase = () => {
         let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2)
         const budgetData = { category: this.state.category, amount: adjusted }
@@ -72,65 +102,12 @@ class Purchase extends Component {
                 confirmButtonText: <div style={{ fontFamily: 'Roboto, sans-serif' }}>Yes</div>
             }).then((result) => {
                 if (result.value) {
-                    API.updateBudgetByCategory(this.state.uid, budgetData)
-                        .then((updatedDb) => {
-                            (updatedDb.status === 200)
-                                ?
-                                MySwal.fire({
-                                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
-                                    type: 'success',
-                                    confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
-                                })
-                                :
-                                MySwal.fire({
-                                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
-                                    type: 'error',
-                                    confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
-                                })
-                        }).then(() => {
-                            API.getCurrentUserBudget(this.state.uid).then(res => {
-                                const stateCopy = this.state
-                                stateCopy.budgets = res.data.budgets
-                                return stateCopy
-                            }).then(stateCopy => {
-                                stateCopy.amount = ''
-                                stateCopy.category = 'Pick a Category'
-                                stateCopy.transaction = ''
-                                this.setState(stateCopy)
-                            })
-                        })
+                    this.submitTransaction(budgetData)
                 }
             })
         } else {
-            API.updateBudgetByCategory(this.state.uid, budgetData)
-                .then((updatedDb) => {
-                    (updatedDb.status === 200)
-                        ?
-                        MySwal.fire({
-                            title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
-                            type: 'success',
-                            confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
-                        })
-                        :
-                        MySwal.fire({
-                            title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
-                            type: 'error',
-                            confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
-                        })
-                }).then(() => {
-                    API.getCurrentUserBudget(this.state.uid).then(res => {
-                        const stateCopy = this.state
-                        stateCopy.budgets = res.data.budgets
-                        return stateCopy
-                    }).then(stateCopy => {
-                        stateCopy.amount = ''
-                        stateCopy.category = 'Pick a Category'
-                        stateCopy.transaction = ''
-                        this.setState(stateCopy)
-                    })
-                })
+            this.submitTransaction(budgetData)
         }
-
 
     }
 

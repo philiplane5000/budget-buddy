@@ -17,7 +17,7 @@ const Icon = styled('div')`
   min-height: 140px;
   border-radius: 05px;
   margin: 20px 10px;
-  background: #2fc4a6;
+  background: ${props => props.bg}; 
   color: white; 
   font-size: 72px;
   border: 1px solid rgba(0,0,0,0.35);
@@ -37,7 +37,7 @@ class Main extends Component {
         </Header>
         <Grid container justify='center'>
           <Grid item>
-            <Icon>
+            <Icon bg={(this.props.total < 25) ? '#dc3545' : '#2fc4a6'}>
               ${this.props.total}
             </Icon>
           </Grid>
