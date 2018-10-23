@@ -119,7 +119,7 @@ class Purchase extends Component {
                         <Wrapper>
 
                             <Header>
-                                Make A Purchase
+                               <div style={{ fontWeight: 'bold' }}> Make A Purchase </div> 
                             </Header>
 
                             <Grid container justify='space-around'>

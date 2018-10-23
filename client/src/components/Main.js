@@ -38,7 +38,7 @@ class Main extends Component {
     return (
       <Wrapper>
         <Header>
-          Total Budget
+          <div style={{ fontWeight: 'bold' }}> Total Budget </div>
         </Header>
         <Grid container justify='center'>
           <Grid item>
