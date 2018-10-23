@@ -49,7 +49,7 @@ class Main extends Component {
         </Grid>
         <Button>
           <Link to='/purchase' style={{ textDecoration: 'none', color: 'white' }}>
-            Make a Purchase
+            Make A Purchase
           </Link>
         </Button>
         <Button>
