@@ -11,7 +11,7 @@ class Login extends Component {
     googleSignIn = async (event) => {
         const { history } = this.props
         event.preventDefault()
-
+        sessionStorage.clear()
         try {
             await firebase.auth().signInWithPopup(provider).then(function (result) {
                 // Token to access the Google API:
