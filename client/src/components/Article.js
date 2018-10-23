@@ -4,8 +4,11 @@ import styled from 'react-emotion'
 const Wrapper = styled('div')`
     
     display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    border-radius: 10px;
+    border-radius: 05px;
     padding: 20px;
     margin: 30px;
     background-color: #f2f3f4;
@@ -17,6 +20,11 @@ const ArticleWrapper = styled('div')`
     text-align: left;
     flex: 85%;
     margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 `
 
 const Link = styled('a')`
@@ -45,34 +53,61 @@ const Text = styled('h2')`
 const Save = styled('button')`
     cursor: pointer;
     color: white;
-    margin: 0px 0px 0px 120px;
+    min-width: 20%;
+    height: 40px;
     background-color: #1162bc;
     font-family: 'Roboto', sans-serif;
-    border: solid 03px #1162bc;
-    border-radius: 10px;
+    border-radius: 05px;
+    border: none;
     outline: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 05px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     transition: all .3s ease-in-out;
 
     :hover {
-        transform: scale(1.10)
+        transform: scale(1.10);
+        background-color: #3de28c;
     }
+`
+
+const Img = styled('div') `
+    border: solid 03px #1162bc;
+    height: 105px;
+    width: 160px;
+    margin: 0px 25px 0px 10px;
+    background-image:  url(${props => props.picture});
+    background-position: center;
+    background-repeat: no repeat;
+    background-size: cover;
+
+    @media (max-width: 765px) {
+        display: none;
+      }
 `
 
 const Article = props => (
 
     <Wrapper>
-        <Link style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', margin: '0px 25px 0px 10px ' }}href={props.link} target="_blank">
-        <img style={{ border: 'solid 03px #1162bc', height: '105px', width: '160px' }} src={props.picture} alt=''></img>
+        <Link href={props.link} target="_blank">
+        <Img picture={props.picture} />
         </Link>
         <ArticleWrapper>
-            <Link href={props.link} target="_blank"><Headline>{props.headline}</Headline></Link>
+            <Link href={props.link} target="_blank"><Headline>{props.title}</Headline></Link>
             <Text>
                 {props.excerpt}
             </Text>
-            <Save style={{ margin: '0px 0px 0px 130px'}}>
-                Save
+
+
+            <Save 
+                title={props.title}
+                excerpt = {props.excerpt}
+                link = {props.link}
+                picture = {props.picture}
+                onClick= { () => {props.onClickFn(props.title, props.excerpt, props.link, props.picture)} }
+                >
+                {props.buttonText}
             </Save>
+
+
         </ArticleWrapper>
     </Wrapper>
 

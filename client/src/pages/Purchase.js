@@ -6,7 +6,6 @@ import CategoryIcon from '../components/CategoryIcon'
 import TextField from '@material-ui/core/TextField'
 import Button from '../components/Button'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
@@ -15,7 +14,6 @@ import { ProtectedScreen } from '../components/context'
 const MySwal = withReactContent(Swal)
 
 class Purchase extends Component {
-
     state = {
         budgets: [],
         amount: '0.00',
@@ -30,16 +28,19 @@ class Purchase extends Component {
     }
 
     componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
-            (dbBudget.data === null)
-                ?
+        API.getCurrentUserBudget(this.state.uid).then(User => {
+            let total = User.data.budgets.reduce((acc, doc) => {
+                return acc += doc.amount
+            }, 0);
+            if (total <= 0) {
                 MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Edit Your Budget!</h3>,
+                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
+                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(...it's empty)</p>,
                     type: 'error',
                     confirmButtonText: 'Ok'
                 })
-                :
-                this.setState({ budgets: dbBudget.data.budgets })
+            }
+            this.setState({ budgets: User.data.budgets })
             console.log(this.state)
         })
     }
@@ -56,9 +57,7 @@ class Purchase extends Component {
         this.setState({ amount, category })
     }
 
-    handlePurchase = () => {
-        let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2)
-        const budgetData = { category: this.state.category, amount: adjusted }
+    submitTransaction = (budgetData) => {
         API.updateBudgetByCategory(this.state.uid, budgetData)
             .then((updatedDb) => {
                 (updatedDb.status === 200)
@@ -66,13 +65,13 @@ class Purchase extends Component {
                     MySwal.fire({
                         title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
                         type: 'success',
-                        confirmButtonText: 'Ok'
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
                     })
                     :
                     MySwal.fire({
                         title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
                         type: 'error',
-                        confirmButtonText: 'Ok'
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
                     })
             }).then(() => {
                 API.getCurrentUserBudget(this.state.uid).then(res => {
@@ -88,8 +87,31 @@ class Purchase extends Component {
             })
     }
 
-    render() {
+    handlePurchase = () => {
+        let adjusted = parseFloat(Math.round((this.state.amount - this.state.transaction) * 100) / 100).toFixed(2)
+        const budgetData = { category: this.state.category, amount: adjusted }
+        if (adjusted < 0) {
+            MySwal.fire({
+                title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Are you sure?</h3>,
+                html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>You are about to overspend in '{this.state.category.toUpperCase()}'</p>,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#dc3545',
+                cancelButtonText: <div style={{ fontFamily: 'Roboto, sans-serif' }}>Cancel</div>,
+                confirmButtonText: <div style={{ fontFamily: 'Roboto, sans-serif' }}>Yes</div>
+            }).then((result) => {
+                if (result.value) {
+                    this.submitTransaction(budgetData)
+                }
+            })
+        } else {
+            this.submitTransaction(budgetData)
+        }
 
+    }
+
+    render() {
         return (
             <ProtectedScreen>
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
@@ -98,14 +120,14 @@ class Purchase extends Component {
 
                             <Header>
                                 Make a Purchase
-                        </Header>
+                            </Header>
 
                             <Grid container justify='space-around'>
 
                                 {this.state.category !== '' ? (
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <CategoryIcon
-                                            bg='#2fc4a6'
+                                            bg={(((this.state.amount - this.state.transaction) < 25) && (this.state.category !== 'Pick a Category')) ? '#dc3545' : '#2fc4a6'}
                                             category={this.state.category}
                                             amount={(this.state.amount - this.state.transaction).toFixed(2)}
                                         />

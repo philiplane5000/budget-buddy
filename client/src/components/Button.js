@@ -10,7 +10,7 @@ const Btn = styled('button')`
     min-width: 50px;
     background-color: #1162bc;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 05px;
     border: none;
     font-size: 25px;
     outline: none;
@@ -18,6 +18,7 @@ const Btn = styled('button')`
     transition: all .2s ease-in-out;
     :hover {
         transform: scale(1.025);
+        background-color: #3de28c;
     }
 `
 

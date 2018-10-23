@@ -1,4 +1,3 @@
-const budgetController = require("../controllers/budgetController")
 const userController = require("../controllers/userController")
 const scrapeController = require("../controllers/scrapeController")
 const path = require("path")
@@ -15,19 +14,12 @@ module.exports = function (app) {
     app.put("/api/user/update/:uid", userController.updateBudgetByCategory)
 
     app.get("/api/users/", userController.findAllUsers)
+    
+    app.get('/api/user/articles/:uid', userController.getArticlesbyUserUid)
 
-    app.post('/api/user/savedarticles/:uid', userController.saveArticle)
+    app.put('/api/user/savedarticles/:uid', userController.saveArticle)
 
-    //BUDGET ROUTES:
-    app.get("/api/budgets/", budgetController.findAll)
-
-    app.post("/api/budgets/", budgetController.create)
-
-    app.get("/api/budgets/:id", budgetController.findById)
-
-    app.put("/api/budgets/:id", budgetController.update)
-
-    app.delete("/api/budgets/:id", budgetController.remove)
+    app.put('/api/user/deletearticle/:uid', userController.deleteArticle)
 
     app.get("/api/scrape/cnbc", scrapeController.findCnbc)
 
