@@ -53,7 +53,6 @@ const Text = styled('h2')`
 const Save = styled('button')`
     cursor: pointer;
     color: white;
-    max-width: auto;
     background-color: #1162bc;
     font-family: 'Roboto', sans-serif;
     border-radius: 05px;
