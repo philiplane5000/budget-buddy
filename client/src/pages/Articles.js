@@ -117,19 +117,19 @@ class Articles extends Component {
 
                             <Button onClick={this.todayNews}>
                                 USA Today
-                         </Button>
+                            </Button>
 
                             <Button onClick={this.streetNews}>
                                 The Street
-                         </Button>
+                            </Button>
 
                             <Button onClick={this.cnbcNews}>
                                 CNBC
-                         </Button>
+                            </Button>
 
                             <Button onClick={this.retrieveSavedArticles}>
                                 Saved Articles
-                         </Button>
+                            </Button>
 
                             {console.log(this.state.articles)}
 
