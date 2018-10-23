@@ -39,7 +39,7 @@ class Login extends Component {
                 <Grid item lg={6} md={8} sm={10} xs={10} >
                     <div 
                     style={{ 
-                        marginTop: '200px',
+                        marginTop: '50px',
                         fontFamily: 'Roboto, sans-serif',
                         color: '#092d63',
                         fontSize: '50px',
