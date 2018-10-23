@@ -7,6 +7,7 @@ const Wrapper = styled('div')`
     justify-content: center;
     align-content: center;
     align-items: center;
+    flex-direction: column;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     border-radius: 05px;
     padding: 20px;
@@ -21,7 +22,7 @@ const ArticleWrapper = styled('div')`
     flex: 85%;
     margin: 10px 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -55,6 +56,9 @@ const Save = styled('button')`
     color: white;
     background-color: #1162bc;
     font-family: 'Roboto', sans-serif;
+    min-width: 80px;
+    height: 40px;
+    margin: 0px 0px 05px 185px;
     border-radius: 05px;
     border: none;
     outline: none;
@@ -62,9 +66,15 @@ const Save = styled('button')`
     transition: all .3s ease-in-out;
 
     :hover {
-        transform: scale(1.10);
+        transform: scale(1.05);
         background-color: #3de28c;
     }
+
+    @media (max-width: 765px) {
+        margin: auto;
+      }
+
+
 `
 
 const Img = styled('div') `
@@ -85,17 +95,18 @@ const Img = styled('div') `
 const Article = props => (
 
     <Wrapper>
+        <ArticleWrapper>
         <Link href={props.link} target="_blank">
         <Img picture={props.picture} />
         </Link>
-        <ArticleWrapper>
+            <div style={{ display: 'flex', flexDirection: 'column'}}>
             <Link href={props.link} target="_blank"><Headline>{props.title}</Headline></Link>
             <Text>
                 {props.excerpt}
             </Text>
-
-
-            <Save 
+            </div>
+        </ArticleWrapper>
+        <Save 
                 title={props.title}
                 excerpt = {props.excerpt}
                 link = {props.link}
@@ -104,9 +115,6 @@ const Article = props => (
                 >
                 {props.buttonText}
             </Save>
-
-
-        </ArticleWrapper>
     </Wrapper>
 
 )
