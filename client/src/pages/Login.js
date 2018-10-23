@@ -7,6 +7,14 @@ import Button from '../components/Button'
 const provider = new firebase.auth.GoogleAuthProvider()
 
 class Login extends Component {
+    
+    componentWillMount() {
+        firebase.auth().signOut().then(function () {
+            sessionStorage.clear()
+          }).catch(function (error) {
+            console.log(error)
+          })
+    }
 
     googleSignIn = async (event) => {
         const { history } = this.props
