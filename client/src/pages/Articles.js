@@ -112,8 +112,8 @@ class Articles extends Component {
                     <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
                             <Header>
-                                Staying On Track
-                        </Header>
+                                <div style={{ fontWeight: 'bold' }}> Staying On Track  </div>
+                            </Header>
 
                             <Button onClick={this.todayNews}>
                                 USA Today

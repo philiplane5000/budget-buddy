@@ -117,8 +117,8 @@ class Budget extends Component {
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
                     <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
-                            <Header>
-                                Manage Your Budget
+                        <Header>
+                              <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div> 
                         </Header>
 
                             <Grid container justify='center'>

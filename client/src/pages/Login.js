@@ -37,7 +37,17 @@ class Login extends Component {
         return (
             <Grid container justify='center'>
                 <Grid item lg={6} md={8} sm={10} xs={10} >
-                    <Button onClick={this.googleSignIn} style={{ marginTop: '200px' }}>
+                    <div 
+                    style={{ 
+                        marginTop: '200px',
+                        fontFamily: 'Roboto, sans-serif',
+                        color: '#092d63',
+                        fontSize: '50px',
+                        fontWeight: 'bold'
+                    }}>
+                    
+                    Welcome to Budget Buddy</div>
+                    <Button onClick={this.googleSignIn} style={{ marginTop: '30px' }}>
                         SIGN-IN
                     </Button>
                 </Grid>
