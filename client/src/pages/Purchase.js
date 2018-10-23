@@ -189,7 +189,7 @@ class Purchase extends Component {
                                     </form>
                                 </Grid>
 
-                                <Grid item lg={4} md={4} sm={8} xs={8}>
+                                <Grid item lg={4} md={4} sm={8} xs={10}>
                                     <Button onClick={this.handlePurchase}>
                                         COMPLETE PURCHASE
                                 </Button>
