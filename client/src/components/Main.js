@@ -21,6 +21,11 @@ const Icon = styled('div')`
   color: white; 
   font-size: 72px;
   border: 1px solid rgba(0,0,0,0.35);
+
+  @media (max-width: 765px) {
+    width: 250px;
+    font-size: 50px;
+  }
 `
 
 class Main extends Component {

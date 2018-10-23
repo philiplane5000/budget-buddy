@@ -129,7 +129,7 @@ class Navbar extends React.Component {
                 </LogoBig>
                 <LogoSmall>
                     <img
-                      style={{ height: '65px', width: '90px' }}
+                      style={{ height: '65px' }}
                       src={IconSmall}
                       alt='bb-small'
                     />

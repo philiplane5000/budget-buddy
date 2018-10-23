@@ -35,7 +35,7 @@ class Purchase extends Component {
             if (total <= 0) {
                 MySwal.fire({
                     title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
-                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(...it's empty)</p>,
+                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(It's Empty)</p>,
                     type: 'error',
                     confirmButtonText: 'Ok'
                 })
@@ -92,7 +92,7 @@ class Purchase extends Component {
         const budgetData = { category: this.state.category, amount: adjusted }
         if (adjusted < 0) {
             MySwal.fire({
-                title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Are you sure?</h3>,
+                title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Are You Sure?</h3>,
                 html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>You are about to overspend in '{this.state.category.toUpperCase()}'</p>,
                 type: 'warning',
                 showCancelButton: true,
@@ -119,7 +119,7 @@ class Purchase extends Component {
                         <Wrapper>
 
                             <Header>
-                                Make a Purchase
+                                Make A Purchase
                             </Header>
 
                             <Grid container justify='space-around'>
