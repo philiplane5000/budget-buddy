@@ -77,6 +77,7 @@ class Budget extends Component {
     }
 
     handleSubmit = () => {
+        //change
         const adjusted = parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2)
         const budgetData = { category: this.state.category, amount: adjusted }
         API.updateBudgetByCategory(this.state.uid, budgetData)
