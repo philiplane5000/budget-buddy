@@ -86,7 +86,7 @@ class Budget extends Component {
                     MySwal.fire({
                         title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
                         type: 'success',
-                        confirmButtonText: 'Ok'
+                        confirmButtonText: <p style={{fontFamily: 'Roboto, sans-serif'}}>OK</p>
                     })
                     :
                     MySwal.fire({
