@@ -88,7 +88,7 @@ const Footer = () => {
           </Copyright>
           <Github>
             <a href='https://github.com/philiptd5000/budget-buddy' target='https://github.com/philiptd5000/budget-buddy' style={{ color: 'inherit', fontFamily: 'inherit', textDecoration: 'none' }}>
-              <i class="fab fa-github"></i> Github
+              <i className="fab fa-github"></i> Github
             </a>
           </Github>
         </Wrapper>

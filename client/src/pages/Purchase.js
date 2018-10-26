@@ -22,13 +22,9 @@ class Purchase extends Component {
         uid: ''
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'))
-        this.setState({ uid: user.uid })
-    }
-
-    componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(User => {
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'))
+        API.getCurrentUserBudget(user.uid).then(User => {
             let total = User.data.budgets.reduce((acc, doc) => {
                 return acc += doc.amount
             }, 0);
@@ -40,7 +36,7 @@ class Purchase extends Component {
                     confirmButtonText: 'Ok'
                 })
             }
-            this.setState({ budgets: User.data.budgets })
+            this.setState({ budgets: User.data.budgets, uid: user.uid })
             console.log(this.state)
         })
     }
@@ -50,7 +46,6 @@ class Purchase extends Component {
         this.setState({
             [name]: value
         })
-        console.log(this.state)
     }
 
     handleClick = (amount, category) => {
@@ -119,7 +114,7 @@ class Purchase extends Component {
                         <Wrapper>
 
                             <Header>
-                               <div style={{ fontWeight: 'bold' }}> Make A Purchase </div> 
+                                <div style={{ fontWeight: 'bold' }}> Make A Purchase </div>
                             </Header>
 
                             <Grid container justify='space-around'>
@@ -144,11 +139,11 @@ class Purchase extends Component {
                             <div style={{ margin: 40 }}>
                                 <Grid container justify='space-around' spacing={16}>
                                     {this.state.budgets.length > 0 ? (
-                                        this.state.budgets.map(doc => (
-                                            <Grid item lg={4} md={4} sm={6} xs={12}>
+                                        this.state.budgets.map((doc, index) => (
+                                            <Grid item lg={4} md={4} sm={6} xs={12} key={index}>
                                                 <BudgetIcon
                                                     bg={this.state.category === doc.category ? '#2fc4ac' : '#1162bc'}
-                                                    key={doc._id}
+                                                    key={index}
                                                     amount={doc.amount}
                                                     category={doc.category}
                                                     handleClick={this.handleClick}
@@ -160,7 +155,7 @@ class Purchase extends Component {
                                     ) : (
                                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                                 <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                                                    <i class='fa fa-cloud-download-alt'></i>
+                                                    <i className='fa fa-cloud-download-alt'></i>
                                                 </div>
                                             </Grid>
                                         )

@@ -54,15 +54,12 @@ class Budget extends Component {
         uid: ''
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'));
-        this.setState({ uid: user.uid })
-    }
-
-    componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'))
+        API.getCurrentUserBudget(user.uid).then(dbBudget => {
             this.setState({ budgets: dbBudget.data.budgets })
         })
+        this.setState({ uid: user.uid })
     }
 
     handleChange = (e) => {
@@ -85,13 +82,13 @@ class Budget extends Component {
                 (updatedDb.status === 200)
                     ?
                     MySwal.fire({
-                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
+                        title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h2>,
                         type: 'success',
-                        confirmButtonText: <p style={{fontFamily: 'Roboto, sans-serif'}}>OK</p>
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
                     })
                     :
                     MySwal.fire({
-                        title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h3>,
+                        title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h2>,
                         type: 'error',
                         confirmButtonText: 'Ok'
                     })
@@ -118,9 +115,9 @@ class Budget extends Component {
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
                     <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
-                        <Header>
-                              <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div> 
-                        </Header>
+                            <Header>
+                                <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div>
+                            </Header>
 
                             <Grid container justify='center'>
 
@@ -163,21 +160,22 @@ class Budget extends Component {
 
                                 </Grid>
                                 <Grid container justify='space-around'>
-                                    {
-                                        this.state.budgets.length > 0
-                                            ? this.state.budgets.map(doc =>
-                                                <Grid item lg={6} md={6} sm={10} xs={10}>
+                                    <Grid item lg={6} md={6} sm={10} xs={10}>
+                                        {
+                                            this.state.budgets.length > 0
+                                                ? this.state.budgets.map((doc, index) =>
                                                     <BudgetItem
+                                                        key={index}
                                                         category={doc.category}
                                                         bg={(this.state.category === doc.category) ? '#2fc4a6' : '#1162bc'}
                                                         amount={doc.amount}
                                                         _id={doc._id}
                                                         handleCategorySelect={this.handleCategorySelect}
                                                     />
-                                                </Grid>
-                                            )
-                                            : <h2>loading</h2>
-                                    }
+                                                )
+                                                : <h2>loading</h2>
+                                        }
+                                    </Grid>
                                 </Grid>
                             </Grid>
 

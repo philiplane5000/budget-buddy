@@ -3,7 +3,8 @@ import firebase from 'firebase'
 
 const defaultFirebaseContext = {
     authStatusReported: false,
-    isUserSignedIn: false
+    isUserSignedIn: false,
+    googleUser: {}
 };
 
 export const FirebaseAuthContext = React.createContext(defaultFirebaseContext)
@@ -16,16 +17,16 @@ export default class FirebaseAuthProvider extends React.Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => this.setState({
             authStatusReported: true,
-            isUserSignedIn: !!user
+            isUserSignedIn: !!user,
+            googleUser: user
         }));
     }
 
     render() {
-        const {children} = this.props
-        const {authStatusReported, isUserSignedIn} = this.state
+        const {authStatusReported, isUserSignedIn, googleUser} = this.state
         return (
-            <FirebaseAuthContext.Provider value={{isUserSignedIn, authStatusReported}}>
-                {authStatusReported && children}
+            <FirebaseAuthContext.Provider value={{isUserSignedIn, authStatusReported, googleUser}}>
+                {this.props.children}
             </FirebaseAuthContext.Provider>
         )
     }

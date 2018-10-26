@@ -8,19 +8,16 @@ class Home extends Component {
 
   state = {
     total: '',
-    uid: '',
   };
 
-  componentWillMount() {
-    let user = JSON.parse(sessionStorage.getItem('user'));
-    this.setState({ uid: user.uid })
-  }
-
-  componentDidMount() {
-    API.getCurrentUserBudget(this.state.uid).then(User => {
+  async componentDidMount() {
+    const user = await JSON.parse(sessionStorage.getItem('user'))
+    API.getCurrentUserBudget(user.uid).then(User => {
       if (User.data === null) {
-        API.createNewUser(this.state.uid).then(User => {
+        API.createNewUser(user.uid).then(User => {
           this.setState({ articles: User.data.articles })
+        }).catch(err => {
+          console.log(err)
         })
       } else {
         let total = User.data.budgets.reduce((acc, doc) => {

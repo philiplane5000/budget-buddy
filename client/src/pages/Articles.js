@@ -15,7 +15,8 @@ class Articles extends Component {
 
     state = {
         articles: [],
-        save: 'ARTICLE'
+        save: 'ARTICLE',
+        uid: ''
     }
 
     cnbcNews = () => {
@@ -99,8 +100,8 @@ class Articles extends Component {
         })
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'));
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
         this.setState({ uid: user.uid })
     }
 
@@ -134,8 +135,9 @@ class Articles extends Component {
                             {console.log(this.state.articles)}
 
                             {this.state.articles.length > 0 ? (
-                                this.state.articles.map(article => (
+                                this.state.articles.map((article, index) => (
                                     <Article
+                                        key={index}
                                         title={article.title}
                                         link={article.link}
                                         excerpt={article.excerpt}

@@ -88,9 +88,9 @@ const LinkItem = styled('p')`
 
 class Navbar extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   signOut = () => {
     firebase.auth().signOut().then(function () {

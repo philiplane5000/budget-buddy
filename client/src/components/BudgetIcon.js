@@ -20,7 +20,6 @@ const Icon = styled('div')`
 const BudgetIcon = props => (
     <Icon
         bg={props.bg}
-        key={props.key}
         amount={props.amount}
         label={props.label}
         onClick={(e) => props.handleClick(props.amount, props.category)}

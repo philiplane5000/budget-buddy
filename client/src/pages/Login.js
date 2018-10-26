@@ -8,7 +8,7 @@ const provider = new firebase.auth.GoogleAuthProvider()
 
 class Login extends Component {
     
-    componentWillMount() {
+    componentDidMount() {
         firebase.auth().signOut().then(function () {
             sessionStorage.clear()
           }).catch(function (error) {

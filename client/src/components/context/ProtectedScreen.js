@@ -8,7 +8,7 @@ export default class ProtectedScreen extends React.Component {
         return (
             <FirebaseAuthContext.Consumer>
                 {
-                    ({isUserSignedIn}) => {
+                    ({isUserSignedIn, googleUser}) => {
                         if (isUserSignedIn) {
                             return children
                         }
