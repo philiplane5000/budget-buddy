@@ -35,9 +35,7 @@ class Home extends Component {
     return (
       <ProtectedScreen>
         <FirebaseAuthContext.Consumer>
-
           {({ googleUser }) => {
-
             const uid = googleUser.uid;
             API.getCurrentUser(uid).then(User => {
               if (User.data === null) {
@@ -67,9 +65,7 @@ class Home extends Component {
                 </Grid>
               </Grid>
             )
-
           }}
-
         </FirebaseAuthContext.Consumer>
       </ProtectedScreen>
     )
