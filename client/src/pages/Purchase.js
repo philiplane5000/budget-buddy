@@ -23,7 +23,7 @@ class Purchase extends Component {
     }
 
     async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'))
+        const user = await JSON.parse(localStorage.getItem('user'))
         API.getCurrentUserBudget(user.uid).then(User => {
             let total = User.data.budgets.reduce((acc, doc) => {
                 return acc += doc.amount

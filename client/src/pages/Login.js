@@ -10,7 +10,7 @@ class Login extends Component {
     
     componentDidMount() {
         firebase.auth().signOut().then(function () {
-            sessionStorage.clear()
+            localStorage.clear()
           }).catch(function (error) {
             console.log(error)
           })
@@ -19,15 +19,15 @@ class Login extends Component {
     googleSignIn = async (event) => {
         const { history } = this.props
         event.preventDefault()
-        sessionStorage.clear()
+        localStorage.clear()
         try {
             await firebase.auth().signInWithPopup(provider).then(function (result) {
                 // Token to access the Google API:
                 let user = JSON.stringify(result.user)
-                sessionStorage.setItem('user', user)
+                localStorage.setItem('user', user)
                 // The signed-in user info:
                 let token = JSON.stringify(result.credential.accessToken)
-                sessionStorage.setItem('token', token)
+                localStorage.setItem('token', token)
                 // **
             }).catch(function (error) {
                 var errorMessage = error.message;

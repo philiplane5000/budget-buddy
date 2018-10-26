@@ -101,7 +101,7 @@ class Articles extends Component {
     }
 
     async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'));
+        const user = await JSON.parse(localStorage.getItem('user'));
         this.setState({ uid: user.uid })
     }
 

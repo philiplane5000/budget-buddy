@@ -55,7 +55,7 @@ class Budget extends Component {
     }
 
     async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'))
+        const user = await JSON.parse(localStorage.getItem('user'))
         API.getCurrentUserBudget(user.uid).then(dbBudget => {
             this.setState({ budgets: dbBudget.data.budgets })
         })
