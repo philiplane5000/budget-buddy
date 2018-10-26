@@ -9,9 +9,7 @@ import Purchase from './pages/Purchase.js'
 import Articles from './pages/Articles.js'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-
 import FirebaseAuthProvider from './components/context/FirebaseAuthProvider'
-// import {FirebaseAuthContext } from './components/context'
 
 const config = {
   apiKey: 'AIzaSyAHpmg-73LB4g04N70uMKNZw_AAeGFbgbw',
