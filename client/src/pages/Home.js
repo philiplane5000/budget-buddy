@@ -20,10 +20,7 @@ class Home extends Component {
             API.getCurrentUser(googleUser.uid).then(User => {
               if (User.data === null) {
                 API.createNewUser(googleUser.uid).then(User => {
-                  console.log('**************')
-                  console.log(User)
-                  console.log('**************')
-                  // this.setState({ budgets: User.data.budgets })
+                  console.log('NEW USER CREATED!')
                 }).catch(err => {
                   console.log(err)
                 })
