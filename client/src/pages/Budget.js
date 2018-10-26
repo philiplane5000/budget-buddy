@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
-import { ProtectedScreen } from '../components/context'
+import { ProtectedScreen, FirebaseAuthContext } from '../components/context'
 
 const MySwal = withReactContent(Swal)
 
@@ -54,12 +54,20 @@ class Budget extends Component {
         uid: ''
     }
 
-    async componentDidMount() {
-        const user = await JSON.parse(localStorage.getItem('user'))
-        API.getCurrentUserBudget(user.uid).then(dbBudget => {
-            this.setState({ budgets: dbBudget.data.budgets })
+    alertUpdateSuccess = (category) => {
+        MySwal.fire({
+            title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>{category.toUpperCase()} UPDATED!</h2>,
+            type: 'success',
+            confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
         })
-        this.setState({ uid: user.uid })
+    }
+
+    alertUpdateError = () => {
+        MySwal.fire({
+            title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h2>,
+            type: 'error',
+            confirmButtonText: 'Ok'
+        })
     }
 
     handleChange = (e) => {
@@ -80,20 +88,10 @@ class Budget extends Component {
         API.updateBudgetByCategory(this.state.uid, budgetData)
             .then((updatedDb) => {
                 (updatedDb.status === 200)
-                    ?
-                    MySwal.fire({
-                        title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h2>,
-                        type: 'success',
-                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
-                    })
-                    :
-                    MySwal.fire({
-                        title: <h2 style={{ fontFamily: 'Roboto, sans-serif' }}>Something went Wrong...</h2>,
-                        type: 'error',
-                        confirmButtonText: 'Ok'
-                    })
+                    ? this.alertUpdateSuccess(this.state.category)
+                    : this.alertUpdateError()
             }).then(() => {
-                API.getCurrentUserBudget(this.state.uid).then(res => {
+                API.getCurrentUser(this.state.uid).then(res => {
                     const stateCopy = this.state
                     stateCopy.budgets = res.data.budgets
                     return stateCopy
@@ -112,76 +110,86 @@ class Budget extends Component {
     render() {
         return (
             <ProtectedScreen>
-                <Grid container justify='center' style={{ marginBottom: 100 }}>
-                    <Grid item lg={6} md={8} sm={10} xs={10}>
-                        <Wrapper>
-                            <Header>
-                                <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div>
-                            </Header>
+                <FirebaseAuthContext.Consumer>
+                    {({ googleUser }) => {
+                        const uid = googleUser.uid;
+                        API.getCurrentUser(uid).then(User => {
+                            this.setState({ budgets: User.data.budgets, uid: googleUser.uid })
+                        }).catch(err => { throw err })
+                        return (
+                            <Grid container justify='center' style={{ marginBottom: 100 }}>
+                                <Grid item lg={6} md={8} sm={10} xs={10}>
+                                    <Wrapper>
+                                        <Header>
+                                            <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div>
+                                        </Header>
 
-                            <Grid container justify='center'>
+                                        <Grid container justify='center'>
 
-                                <Grid item lg={10} md={10} sm={10} xs={10}>
+                                            <Grid item lg={10} md={10} sm={10} xs={10}>
 
-                                    <CategoryIcon
-                                        bg='#2fc4a6'
-                                        category={this.state.category}
-                                        amount={this.state.amount !== '--' ? parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2) : '--'}
-                                    />
-                                </Grid>
-
-                                <Grid item lg={10} md={10} sm={10} xs={10}>
-                                    <FormWrapper>
-
-                                        <InputWrapper>
-                                            <form noValidate autoComplete='off'>
-                                                <TextField
-                                                    id='standard-number'
-                                                    label='Set/Adjust Spending Limit:'
-                                                    name='amount'
-                                                    value={this.state.amount}
-                                                    onChange={this.handleChange}
-                                                    type='number'
-                                                    fullWidth={true}
-                                                    InputLabelProps={{
-                                                        shrink: true,
-                                                    }}
-                                                    margin='normal'
-                                                    variant='outlined'
+                                                <CategoryIcon
+                                                    bg='#2fc4a6'
+                                                    category={this.state.category}
+                                                    amount={this.state.amount !== '--' ? parseFloat(Math.round(this.state.amount * 100) / 100).toFixed(2) : '--'}
                                                 />
-                                            </form>
+                                            </Grid>
 
-                                        </InputWrapper>
+                                            <Grid item lg={10} md={10} sm={10} xs={10}>
+                                                <FormWrapper>
 
-                                        <Button onClick={() => this.handleSubmit(this.state.amount)}>
-                                            SUBMIT
-                                    </Button>
-                                    </FormWrapper>
+                                                    <InputWrapper>
+                                                        <form noValidate autoComplete='off'>
+                                                            <TextField
+                                                                id='standard-number'
+                                                                label='Set/Adjust Spending Limit:'
+                                                                name='amount'
+                                                                value={this.state.amount}
+                                                                onChange={this.handleChange}
+                                                                type='number'
+                                                                fullWidth={true}
+                                                                InputLabelProps={{
+                                                                    shrink: true,
+                                                                }}
+                                                                margin='normal'
+                                                                variant='outlined'
+                                                            />
+                                                        </form>
 
-                                </Grid>
-                                <Grid container justify='space-around'>
-                                    <Grid item lg={6} md={6} sm={10} xs={10}>
-                                        {
-                                            this.state.budgets.length > 0
-                                                ? this.state.budgets.map((doc, index) =>
-                                                    <BudgetItem
-                                                        key={index}
-                                                        category={doc.category}
-                                                        bg={(this.state.category === doc.category) ? '#2fc4a6' : '#1162bc'}
-                                                        amount={doc.amount}
-                                                        _id={doc._id}
-                                                        handleCategorySelect={this.handleCategorySelect}
-                                                    />
-                                                )
-                                                : <h2>loading</h2>
-                                        }
-                                    </Grid>
+                                                    </InputWrapper>
+
+                                                    <Button onClick={() => this.handleSubmit(this.state.amount)}>
+                                                        SUBMIT
+                                                    </Button>
+                                                </FormWrapper>
+
+                                            </Grid>
+                                            <Grid container justify='space-around'>
+                                                <Grid item lg={6} md={6} sm={10} xs={10}>
+                                                    {
+                                                        this.state.budgets.length > 0
+                                                            ? this.state.budgets.map((doc, index) =>
+                                                                <BudgetItem
+                                                                    key={index}
+                                                                    category={doc.category}
+                                                                    bg={(this.state.category === doc.category) ? '#2fc4a6' : '#1162bc'}
+                                                                    amount={doc.amount}
+                                                                    _id={doc._id}
+                                                                    handleCategorySelect={this.handleCategorySelect}
+                                                                />
+                                                            )
+                                                            : <h2>loading</h2>
+                                                    }
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+
+                                    </Wrapper>
                                 </Grid>
                             </Grid>
-
-                        </Wrapper>
-                    </Grid>
-                </Grid>
+                        )
+                    }}
+                </FirebaseAuthContext.Consumer>
             </ProtectedScreen>
         )
     }

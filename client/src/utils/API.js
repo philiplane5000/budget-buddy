@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
   // Gets all saved budgets: (user)
-  getCurrentUserBudget: (uid) => {
+  getCurrentUser: (uid) => {
     return axios.get(`/api/user/budget/${uid}`)
   },
 
