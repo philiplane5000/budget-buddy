@@ -14,7 +14,7 @@ module.exports = {
         db.User
             .create({ uid: req.params.uid, budgets: BudgetSeed, articles: [] })
             .then(User => res.json(User))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.json(err));
     },
     //UPDATE THE BUDGET BY CATEGORY AND INCOMING AMOUNT
     updateBudgetByCategory: function (req, res) {
