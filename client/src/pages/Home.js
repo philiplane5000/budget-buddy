@@ -8,39 +8,20 @@ class Home extends Component {
 
   state = {
     total: '',
-    budets: []
+    budgets: []
   };
-
-  async componentDidMount() {
-    // const user = await JSON.parse(localStorage.getItem('user'))
-    // API.getCurrentUser(user.uid).then(User => {
-    //   if (User.data === null) {
-    //     API.createNewUser(user.uid).then(User => {
-    //       this.setState({ articles: User.data.articles })
-    //     }).catch(err => {
-    //       console.log(err)
-    //     })
-    //   } else {
-    //     let total = User.data.budgets.reduce((acc, doc) => {
-    //       return acc += doc.amount
-    //     }, 0)
-    //     total = parseFloat(Math.round(total * 100) / 100).toFixed(2)
-    //     this.setState({ total });
-    //     console.log(this.state)
-    //   }
-    // })
-  }
 
   render() {
     return (
       <ProtectedScreen>
         <FirebaseAuthContext.Consumer>
           {({ googleUser }) => {
-            const uid = googleUser.uid;
-            API.getCurrentUser(uid).then(User => {
+
+            API.getCurrentUser(googleUser.uid).then(User => {
+
               if (User.data === null) {
-                API.createNewUser(uid).then(User => {
-                  this.setState({ budgets: User.data.budgets })
+                API.createNewUser(googleUser.uid).then(User => {
+                  console.log('NEW USER CREATED!')
                 }).catch(err => {
                   console.log(err)
                 })
