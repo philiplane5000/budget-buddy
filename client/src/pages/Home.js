@@ -15,9 +15,10 @@ class Home extends Component {
     return (
       <ProtectedScreen>
         <FirebaseAuthContext.Consumer>
-
           {({ googleUser }) => {
+
             API.getCurrentUser(googleUser.uid).then(User => {
+
               if (User.data === null) {
                 API.createNewUser(googleUser.uid).then(User => {
                   console.log('NEW USER CREATED!')
@@ -45,9 +46,7 @@ class Home extends Component {
                 </Grid>
               </Grid>
             )
-
           }}
-
         </FirebaseAuthContext.Consumer>
       </ProtectedScreen>
     )
