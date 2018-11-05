@@ -54,6 +54,13 @@ class Budget extends Component {
         uid: ''
     }
 
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
+        API.getCurrentUserBudget(user.uid).then(User => {
+            this.setState({ budgets: User.data.budgets, uid: user.uid })
+        })
+    }
+
     handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
@@ -99,13 +106,6 @@ class Budget extends Component {
             .catch(error => {
                 console.log(error)
             })
-    }
-
-    async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'));
-        API.getCurrentUserBudget(user.uid).then(User => {
-            this.setState({ budgets: User.data.budgets, uid: user.uid })
-        })
     }
 
     render() {

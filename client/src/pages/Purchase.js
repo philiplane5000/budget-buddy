@@ -22,6 +22,25 @@ class Purchase extends Component {
         uid: ''
     }
 
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
+        API.getCurrentUserBudget(user.uid).then(User => {
+            let total = User.data.budgets.reduce((acc, doc) => {
+                return acc += doc.amount
+            }, 0);
+            if (total <= 0) {
+                MySwal.fire({
+                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
+                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(It's Empty)</p>,
+                    type: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            }
+            this.setState({ budgets: User.data.budgets, uid: user.uid })
+            console.log(this.state)
+        })
+    }
+
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({
@@ -85,26 +104,6 @@ class Purchase extends Component {
         } else {
             this.submitTransaction(budgetData)
         }
-    }
-
-    async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'));
-
-        API.getCurrentUserBudget(user.uid).then(User => {
-            let total = User.data.budgets.reduce((acc, doc) => {
-                return acc += doc.amount
-            }, 0);
-            if (total <= 0) {
-                MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
-                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(It's Empty)</p>,
-                    type: 'error',
-                    confirmButtonText: 'Ok'
-                })
-            }
-            this.setState({ budgets: User.data.budgets, uid: user.uid })
-            console.log(this.state)
-        })
     }
 
 

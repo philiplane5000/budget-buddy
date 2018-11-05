@@ -19,6 +19,11 @@ class Articles extends Component {
         save: 'ARTICLE'
     }
 
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
+        this.setState({ uid: user.uid })
+    }
+
     cnbcNews = () => {
         API.findCnbc().then(articles => {
             this.setState({ articles: articles.data })
@@ -98,11 +103,6 @@ class Articles extends Component {
             this.setState({ articles: dbUser.data.articles })
             console.log(this.state)
         })
-    }
-
-    async componentDidMount() {
-        const user = await JSON.parse(sessionStorage.getItem('user'));
-        this.setState({ uid: user.uid })
     }
 
     render() {
