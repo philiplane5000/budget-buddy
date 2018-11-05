@@ -46,7 +46,6 @@ class Purchase extends Component {
         this.setState({
             [name]: value
         })
-        console.log(this.state)
     }
 
     handleClick = (amount, category) => {
