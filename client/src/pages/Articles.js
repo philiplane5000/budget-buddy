@@ -15,6 +15,7 @@ class Articles extends Component {
 
     state = {
         articles: [],
+        uid: '',
         save: 'ARTICLE'
     }
 
@@ -99,8 +100,8 @@ class Articles extends Component {
         })
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'));
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
         this.setState({ uid: user.uid })
     }
 
@@ -158,4 +159,4 @@ class Articles extends Component {
     }
 }
 
-export default Articles
+export default Articles;

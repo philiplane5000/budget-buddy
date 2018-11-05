@@ -22,29 +22,6 @@ class Purchase extends Component {
         uid: ''
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'))
-        this.setState({ uid: user.uid })
-    }
-
-    componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(User => {
-            let total = User.data.budgets.reduce((acc, doc) => {
-                return acc += doc.amount
-            }, 0);
-            if (total <= 0) {
-                MySwal.fire({
-                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
-                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(It's Empty)</p>,
-                    type: 'error',
-                    confirmButtonText: 'Ok'
-                })
-            }
-            this.setState({ budgets: User.data.budgets })
-            console.log(this.state)
-        })
-    }
-
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({
@@ -108,8 +85,28 @@ class Purchase extends Component {
         } else {
             this.submitTransaction(budgetData)
         }
-
     }
+
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
+
+        API.getCurrentUserBudget(user.uid).then(User => {
+            let total = User.data.budgets.reduce((acc, doc) => {
+                return acc += doc.amount
+            }, 0);
+            if (total <= 0) {
+                MySwal.fire({
+                    title: <h3 style={{ fontFamily: 'Roboto, sans-serif', marginBottom: -20 }}>Edit Your Budget!</h3>,
+                    html: <p style={{ fontFamily: 'Roboto, sans-serif', textAlign: 'center' }}>(It's Empty)</p>,
+                    type: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            }
+            this.setState({ budgets: User.data.budgets, uid: user.uid })
+            console.log(this.state)
+        })
+    }
+
 
     render() {
         return (
@@ -119,11 +116,10 @@ class Purchase extends Component {
                         <Wrapper>
 
                             <Header>
-                               <div style={{ fontWeight: 'bold' }}> Make A Purchase </div> 
+                                <div style={{ fontWeight: 'bold' }}> Make A Purchase </div>
                             </Header>
 
                             <Grid container justify='space-around'>
-
                                 {this.state.category !== '' ? (
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
                                         <CategoryIcon
@@ -205,4 +201,4 @@ class Purchase extends Component {
     }
 }
 
-export default Purchase
+export default Purchase;

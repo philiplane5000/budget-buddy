@@ -11,16 +11,12 @@ class Home extends Component {
     uid: '',
   };
 
-  componentWillMount() {
-    let user = JSON.parse(sessionStorage.getItem('user'));
-    this.setState({ uid: user.uid })
-  }
-
-  componentDidMount() {
-    API.getCurrentUserBudget(this.state.uid).then(User => {
+  async componentDidMount() {
+    const user = await JSON.parse(sessionStorage.getItem('user'));
+    API.getCurrentUserBudget(user.uid).then(User => {
       if (User.data === null) {
-        API.createNewUser(this.state.uid).then(User => {
-          this.setState({ articles: User.data.articles })
+        API.createNewUser(user.uid).then(User => {
+          this.setState({ articles: User.data.articles, uid: user.uid })
         })
       } else {
         let total = User.data.budgets.reduce((acc, doc) => {
@@ -28,7 +24,6 @@ class Home extends Component {
         }, 0)
         total = parseFloat(Math.round(total * 100) / 100).toFixed(2)
         this.setState({ total });
-        console.log(this.state)
       }
     })
   }

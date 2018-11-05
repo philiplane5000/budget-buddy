@@ -54,17 +54,6 @@ class Budget extends Component {
         uid: ''
     }
 
-    componentWillMount() {
-        let user = JSON.parse(sessionStorage.getItem('user'));
-        this.setState({ uid: user.uid })
-    }
-
-    componentDidMount() {
-        API.getCurrentUserBudget(this.state.uid).then(dbBudget => {
-            this.setState({ budgets: dbBudget.data.budgets })
-        })
-    }
-
     handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
@@ -87,7 +76,7 @@ class Budget extends Component {
                     MySwal.fire({
                         title: <h3 style={{ fontFamily: 'Roboto, sans-serif' }}>{this.state.category.toUpperCase()} UPDATED!</h3>,
                         type: 'success',
-                        confirmButtonText: <p style={{fontFamily: 'Roboto, sans-serif'}}>OK</p>
+                        confirmButtonText: <p style={{ fontFamily: 'Roboto, sans-serif' }}>OK</p>
                     })
                     :
                     MySwal.fire({
@@ -112,20 +101,26 @@ class Budget extends Component {
             })
     }
 
+    async componentDidMount() {
+        const user = await JSON.parse(sessionStorage.getItem('user'));
+        API.getCurrentUserBudget(user.uid).then(User => {
+            this.setState({ budgets: User.data.budgets, uid: user.uid })
+        })
+    }
+
     render() {
         return (
             <ProtectedScreen>
                 <Grid container justify='center' style={{ marginBottom: 100 }}>
+
                     <Grid item lg={6} md={8} sm={10} xs={10}>
                         <Wrapper>
-                        <Header>
-                              <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div> 
-                        </Header>
+                            <Header>
+                                <div style={{ fontWeight: 'bold' }}> Manage Your Budget </div>
+                            </Header>
 
                             <Grid container justify='center'>
-
                                 <Grid item lg={10} md={10} sm={10} xs={10}>
-
                                     <CategoryIcon
                                         bg='#2fc4a6'
                                         category={this.state.category}
@@ -135,7 +130,6 @@ class Budget extends Component {
 
                                 <Grid item lg={10} md={10} sm={10} xs={10}>
                                     <FormWrapper>
-
                                         <InputWrapper>
                                             <form noValidate autoComplete='off'>
                                                 <TextField
@@ -153,14 +147,11 @@ class Budget extends Component {
                                                     variant='outlined'
                                                 />
                                             </form>
-
                                         </InputWrapper>
-
                                         <Button onClick={() => this.handleSubmit(this.state.amount)}>
                                             SUBMIT
-                                    </Button>
+                                        </Button>
                                     </FormWrapper>
-
                                 </Grid>
                                 <Grid container justify='space-around'>
                                     {
@@ -176,7 +167,7 @@ class Budget extends Component {
                                                     />
                                                 </Grid>
                                             )
-                                            : <h2>loading</h2>
+                                            : <h2>loading</h2> /*CSS TRANSITION*/
                                     }
                                 </Grid>
                             </Grid>
@@ -189,4 +180,4 @@ class Budget extends Component {
     }
 }
 
-export default Budget
+export default Budget;
