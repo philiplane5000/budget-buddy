@@ -1,6 +1,6 @@
 # Budget Buddy
 
-Hosted on Heroku: [Budget Buddy](https://budget-buddy-22022.herokuapp.com/)
+Hosted on Heroku: [Budget Buddy](https://budget-buddy-63236.herokuapp.com/)
 
 ## About
 
@@ -16,7 +16,7 @@ percent have over $10,000 stashed away.”*
 
 ### Get Started
 
-* `Step One:` Save [Budget Buddy](https://budget-buddy-22022.herokuapp.com/) as a bookmark in your cellphone's web browser. While accessible from any device connected to the internet, we designed `Budget Buddy` as a mobile-first application to more easily track spending while on the go! 
+* `Step One:` Save [Budget Buddy](https://budget-buddy-63236.herokuapp.com/) as a bookmark in your cellphone's web browser. While accessible from any device connected to the internet, we designed `Budget Buddy` as a mobile-first application to more easily track spending while on the go! 
 
 * `Step Two:` Navigate to the "BUDGET" page to setup your budget. Click any one of the six categories to set/adjust a spending limit for that category. Once you have set spending limits for each of the six categories, your setup is complete! Every purchase you make from here on out should be deducted from one of these six categories. 
     * NOTE: No timeline is provided or baked in to the application. According to [some](https://money.cnn.com/2018/01/19/pf/weekly-budget/index.html), "You'll gain greater control by budgeting weekly... monthly budgets are not setting you up for success"
