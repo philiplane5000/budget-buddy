@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
+import Loader from '../components/Loader'
 import { ProtectedScreen } from '../components/context'
 
 const MySwal = withReactContent(Swal)
@@ -167,7 +168,7 @@ class Budget extends Component {
                                                     />
                                                 </Grid>
                                             )
-                                            : <h2>loading</h2> /*CSS TRANSITION*/
+                                            : <Loader/>
                                     }
                                 </Grid>
                             </Grid>

@@ -9,6 +9,7 @@ import Header from '../components/Header'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Wrapper from '../components/Wrapper'
+import Loader from '../components/Loader'
 import { ProtectedScreen } from '../components/context'
 
 const MySwal = withReactContent(Swal)
@@ -154,7 +155,7 @@ class Purchase extends Component {
                                     ) : (
                                             <Grid item lg={12} md={12} sm={12} xs={12}>
                                                 <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                                                    <i class='fa fa-cloud-download-alt'></i>
+                                                    <Loader/>
                                                 </div>
                                             </Grid>
                                         )
